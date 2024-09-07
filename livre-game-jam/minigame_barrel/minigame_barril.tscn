@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://gux2d446iehj"]
+
+[ext_resource type="PackedScene" uid="uid://cngsfaq7lk1se" path="res://minigame_barrel/barrel.tscn" id="1_md43f"]
+[ext_resource type="Script" path="res://minigame_barrel/static_body_3d.gd" id="1_spdey"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8468c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_16i54"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["ground"]]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0)
+script = ExtResource("1_spdey")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_8468c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_16i54")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_md43f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2.5, 2)
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, 1.13133e-08, -0.258819, 0.258819, -4.22219e-08, 0.965926, 7.13962e-16, -1, -4.37114e-08, -3, 4, 0)
+shadow_enabled = true
