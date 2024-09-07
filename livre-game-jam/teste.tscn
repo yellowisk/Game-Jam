@@ -1,21 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2fi2m0gas6bx"]
+[gd_scene load_steps=10 format=3 uid="uid://b2fi2m0gas6bx"]
 
-[ext_resource type="PackedScene" uid="uid://d0nuf73ejflib" path="res://floor.tscn" id="1_73ad8"]
 [ext_resource type="Script" path="res://teste.gd" id="1_sa3fu"]
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://player.tscn" id="2_btk2o"]
 [ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://ocean.tscn" id="4_ios3a"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="5_gidye"]
+[ext_resource type="PackedScene" uid="uid://ditavbfwqddxv" path="res://navio_pirata.tscn" id="6_is37f"]
 [ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="6_umlvv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpmkp"]
-albedo_color = Color(0.917647, 0.745098, 0.705882, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_2grac"]
-material = SubResource("StandardMaterial3D_wpmkp")
-height = 20.0
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_768c7"]
-height = 20.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l12u6"]
 shader = ExtResource("5_gidye")
@@ -36,9 +26,6 @@ reflected_light_source = 2
 [node name="Main" type="Node3D"]
 script = ExtResource("1_sa3fu")
 player_scene = ExtResource("2_btk2o")
-
-[node name="Floor" parent="." instance=ExtResource("1_73ad8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.769201, 0)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://player.tscn")
@@ -69,17 +56,6 @@ offset_top = 217.0
 offset_right = 722.0
 offset_bottom = 254.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705547, 3.49697)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-mesh = SubResource("CylinderMesh_2grac")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-shape = SubResource("CylinderShape3D_768c7")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.492727, 0.870184, 0, -0.870184, 0.492727, 9.707, 50, 8.538)
 light_color = Color(0.876256, 0.840835, 0.652193, 1)
@@ -87,6 +63,9 @@ sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xd0cc")
+
+[node name="navio_pirata" parent="." instance=ExtResource("6_is37f")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5, 0)
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
