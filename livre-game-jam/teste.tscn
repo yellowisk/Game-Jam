@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://teste.gd" id="1_sa3fu"]
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://player.tscn" id="2_btk2o"]
 [ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://ocean.tscn" id="4_ios3a"]
+[ext_resource type="PackedScene" uid="uid://c14f3i5flv0gi" path="res://player.tscn" id="2_btk2o"]
+)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpmkp"]
 transparency = 1
