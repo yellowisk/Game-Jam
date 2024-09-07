@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://boek1ilr05u8b"]
+[gd_scene load_steps=5 format=3 uid="uid://boek1ilr05u8b"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ns3c6"]
 height = 1.0
@@ -6,15 +6,37 @@ height = 1.0
 [sub_resource type="CylinderMesh" id="CylinderMesh_fxtrj"]
 height = 1.0
 
+[sub_resource type="BoxMesh" id="BoxMesh_pyada"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjh82"]
+
 [node name="Barrel" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_ns3c6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("CylinderMesh_fxtrj")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.5, 2)
+spring_length = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0, -1, -4.37114e-08, -3, 3, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 0.1, 0, 0, 0, 30, -3, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+mesh = SubResource("BoxMesh_pyada")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_pjh82")
