@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c14f3i5flv0gi"]
+[gd_scene load_steps=8 format=3 uid="uid://bvctmpf0hmq2k"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_u720k"]
 
@@ -53,8 +53,9 @@ skeleton = NodePath("../..")
 replication_config = SubResource("SceneReplicationConfig_u8qhb")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.727282, 0.686339, 0, -0.686339, 0.727282, 0, 3.05902, 4.07213)
+transform = Transform3D(1, 0, 0, 0, 0.727282, 0.686339, 0, -0.686339, 0.727282, 0, 2.77003, 4.07213)
 spring_length = 5.0
 margin = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.981912, -0.189335, 0, 0.189335, 0.981912, 0, 0, 0)
