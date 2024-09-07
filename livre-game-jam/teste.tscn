@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2fi2m0gas6bx"]
+
+[ext_resource type="PackedScene" uid="uid://d0nuf73ejflib" path="res://floor.tscn" id="1_73ad8"]
+[ext_resource type="Script" path="res://teste.gd" id="1_sa3fu"]
+[ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://player.tscn" id="2_btk2o"]
+
+[sub_resource type="Gradient" id="Gradient_5avej"]
+colors = PackedColorArray(0.979242, 0.990144, 0.999031, 1, 0.796558, 1, 0.996305, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ofu67"]
+gradient = SubResource("Gradient_5avej")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jgtx7"]
+panorama = SubResource("GradientTexture2D_ofu67")
+
+[sub_resource type="Sky" id="Sky_4gwy5"]
+sky_material = SubResource("PanoramaSkyMaterial_jgtx7")
+
+[sub_resource type="Environment" id="Environment_gka7h"]
+background_mode = 2
+sky = SubResource("Sky_4gwy5")
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_sa3fu")
+player_scene = ExtResource("2_btk2o")
+
+[node name="Floor" parent="." instance=ExtResource("1_73ad8")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gka7h")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Host" type="Button" parent="CanvasLayer"]
+offset_left = 535.0
+offset_top = 385.0
+offset_right = 672.0
+offset_bottom = 423.0
+text = "Host Server"
+
+[node name="Join" type="Button" parent="CanvasLayer"]
+offset_left = 533.0
+offset_top = 270.0
+offset_right = 672.0
+offset_bottom = 310.0
+text = "Join Server"
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+offset_left = 487.0
+offset_top = 217.0
+offset_right = 722.0
+offset_bottom = 254.0
+
+[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]

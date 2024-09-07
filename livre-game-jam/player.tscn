@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvctmpf0hmq2k"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_u720k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kxbtn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27d51"]
+albedo_color = Color(0.911162, 0.730815, 0.794876, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0vdww"]
+material = SubResource("StandardMaterial3D_27d51")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3nn5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gewnt"]
+material = SubResource("StandardMaterial3D_o3nn5")
+radius = 0.1
+height = 0.2
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u8qhb"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_u720k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kxbtn")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0vdww")
+
+[node name="Eye" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.5, 0.5)
+mesh = SubResource("SphereMesh_gewnt")
+
+[node name="Eye2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.5, 0.5)
+mesh = SubResource("SphereMesh_gewnt")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_u8qhb")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.727282, 0.686339, 0, -0.686339, 0.727282, 0, 3.05902, 4.07213)
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
