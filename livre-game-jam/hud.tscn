@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bfo5ddh7c4naw"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="Host" type="Button" parent="."]
+offset_left = 535.0
+offset_top = 385.0
+offset_right = 672.0
+offset_bottom = 423.0
+text = "Host Server"
+
+[node name="Join" type="Button" parent="."]
+offset_left = 533.0
+offset_top = 270.0
+offset_right = 672.0
+offset_bottom = 310.0
+text = "Join Server"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 487.0
+offset_top = 217.0
+offset_right = 722.0
+offset_bottom = 254.0

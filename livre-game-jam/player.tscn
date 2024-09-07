@@ -26,6 +26,9 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath(".:motion_mode")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_u720k")
@@ -36,13 +39,15 @@ shape = SubResource("CapsuleShape3D_kxbtn")
 [node name="Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_0vdww")
 
-[node name="Eye" type="MeshInstance3D" parent="."]
+[node name="Eye" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.5, 0.5)
 mesh = SubResource("SphereMesh_gewnt")
+skeleton = NodePath("../..")
 
-[node name="Eye2" type="MeshInstance3D" parent="."]
+[node name="Eye2" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.5, 0.5)
 mesh = SubResource("SphereMesh_gewnt")
+skeleton = NodePath("../..")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_u8qhb")
@@ -50,5 +55,6 @@ replication_config = SubResource("SceneReplicationConfig_u8qhb")
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.727282, 0.686339, 0, -0.686339, 0.727282, 0, 3.05902, 4.07213)
 spring_length = 5.0
+margin = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
