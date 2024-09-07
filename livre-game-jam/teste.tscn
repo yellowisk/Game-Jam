@@ -32,7 +32,7 @@ _spawnable_scenes = PackedStringArray("res://player.tscn")
 spawn_path = NodePath("..")
 
 [node name="Ocean" parent="." instance=ExtResource("4_ios3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.647372, -24.1526)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.89003, -24.1526)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -65,7 +65,7 @@ sky_mode = 1
 environment = SubResource("Environment_xd0cc")
 
 [node name="navio_pirata" parent="." instance=ExtResource("6_is37f")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -3.60103, 0)
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
