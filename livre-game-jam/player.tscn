@@ -4,21 +4,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kxbtn"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27d51"]
-albedo_color = Color(0.911162, 0.730815, 0.794876, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_0vdww"]
-material = SubResource("StandardMaterial3D_27d51")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3nn5"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_gewnt"]
-material = SubResource("StandardMaterial3D_o3nn5")
-radius = 0.1
-height = 0.2
-radial_segments = 16
-rings = 8
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u8qhb"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -30,24 +15,27 @@ properties/2/path = NodePath(".:motion_mode")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27d51"]
+albedo_color = Color(0.911162, 0.730815, 0.794876, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0vdww"]
+material = SubResource("StandardMaterial3D_27d51")
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3nn5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gewnt"]
+material = SubResource("StandardMaterial3D_o3nn5")
+radius = 0.1
+height = 0.2
+radial_segments = 16
+rings = 8
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_u720k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kxbtn")
-
-[node name="Body" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_0vdww")
-
-[node name="Eye" type="MeshInstance3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.5, 0.5)
-mesh = SubResource("SphereMesh_gewnt")
-skeleton = NodePath("../..")
-
-[node name="Eye2" type="MeshInstance3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.5, 0.5)
-mesh = SubResource("SphereMesh_gewnt")
-skeleton = NodePath("../..")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_u8qhb")
@@ -59,3 +47,31 @@ margin = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.981912, -0.189335, 0, 0.189335, 0.981912, 0, 0, 0)
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="RayCastBottom" type="RayCast3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.85, 0.537577)
+target_position = Vector3(0, 0, 0.4)
+
+[node name="RayCastMid" type="RayCast3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.411452, 0.537577)
+target_position = Vector3(0, 0, 0.4)
+
+[node name="RayCastTop" type="RayCast3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0939556, 0.537228)
+target_position = Vector3(0, 0, 0.4)
+
+[node name="BodyShape" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("CapsuleMesh_0vdww")
+skeleton = NodePath("../..")
+
+[node name="Eye" type="MeshInstance3D" parent="Body/BodyShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.5, 0.5)
+mesh = SubResource("SphereMesh_gewnt")
+skeleton = NodePath("../../..")
+
+[node name="Eye2" type="MeshInstance3D" parent="Body/BodyShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.5, 0.5)
+mesh = SubResource("SphereMesh_gewnt")
+skeleton = NodePath("../../..")
