@@ -14,15 +14,6 @@ config/name="Livre Game Jam"
 run/main_scene="res://teste.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
-"<<<<<<<HEAD[filesystem]import/blender/enabled"=false
-
-[autoload]
-
-Global="*res://Global.gd"
-
-[filesystem]
-
-import/blender/enabled=false
 
 [input]
 
