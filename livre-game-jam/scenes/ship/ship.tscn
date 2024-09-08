@@ -7,4 +7,3 @@
 script = ExtResource("1_4anhi")
 
 [node name="navio_pequeno" parent="." instance=ExtResource("2_f1nrq")]
-script = null
