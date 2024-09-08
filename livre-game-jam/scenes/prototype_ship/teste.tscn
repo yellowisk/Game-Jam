@@ -128,6 +128,7 @@ transform = Transform3D(0.99897, 0, 0.0453804, 0, 1, 0, -0.0453804, 0, 0.99897, 
 [node name="Ship" parent="." instance=ExtResource("6_yxho2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35496, 0, 0)
 
+[connection signal="stop_player_flag" from="." to="." method="_on_stop_player_flag"]
 [connection signal="body_entered" from="MinigameController/Cannons/CannonStart" to="MinigameController" method="_on_cannon_start_body_entered"]
 [connection signal="body_exited" from="MinigameController/Cannons/CannonStart" to="MinigameController" method="_on_cannon_start_body_exited"]
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]

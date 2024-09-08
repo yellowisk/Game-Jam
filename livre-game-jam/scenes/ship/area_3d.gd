@@ -10,6 +10,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_body_entered(body: Node3D) -> void:
-	get_parent().wheel_flag.emit()
+	get_parent().wheel_flag.emit(body)
