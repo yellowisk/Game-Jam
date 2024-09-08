@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2fi2m0gas6bx"]
+[gd_scene load_steps=13 format=3 uid="uid://b2fi2m0gas6bx"]
 
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/teste.gd" id="1_sa3fu"]
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_btk2o"]
 [ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/prototype_ship/ocean.tscn" id="4_ios3a"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="5_gidye"]
-[ext_resource type="PackedScene" uid="uid://ilrpfa0adgie" path="res://scenes/prototype_ship/navio_pequen_glb.tscn" id="6_b5xhp"]
 [ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="6_umlvv"]
+[ext_resource type="PackedScene" uid="uid://qd4pui8hx7ml" path="res://scenes/ship/ship.tscn" id="6_yxho2"]
+[ext_resource type="Script" path="res://scenes/ship/ship.gd" id="7_sduts"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l12u6"]
 shader = ExtResource("5_gidye")
@@ -22,6 +23,10 @@ sky = SubResource("Sky_1e3tw")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fqawv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lhmqx"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_sa3fu")
@@ -63,7 +68,21 @@ environment = SubResource("Environment_xd0cc")
 [node name="Ocean" parent="." instance=ExtResource("4_ios3a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.27856, 0)
 
-[node name="navio_pequeno" parent="." instance=ExtResource("6_b5xhp")]
+[node name="Ship" parent="." instance=ExtResource("6_yxho2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35496, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09402, 0)
+script = ExtResource("7_sduts")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_fqawv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_lhmqx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.60347)
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
