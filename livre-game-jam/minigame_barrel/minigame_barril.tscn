@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://gux2d446iehj"]
 
 [ext_resource type="PackedScene" uid="uid://cngsfaq7lk1se" path="res://minigame_barrel/barrel.tscn" id="1_md43f"]
-[ext_resource type="Script" path="res://minigame_barrel/static_body_3d.gd" id="1_spdey"]
+[ext_resource type="Script" path="res://ai_minigame/static_body_3d.gd" id="1_spdey"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8468c"]
 
