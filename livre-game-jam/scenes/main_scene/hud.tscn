@@ -1,29 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfo5ddh7c4naw"]
+[gd_scene load_steps=4 format=3 uid="uid://bfo5ddh7c4naw"]
 
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/hud.gd" id="1_72k7c"]
+[ext_resource type="Texture2D" uid="uid://4ef0kamb8ljc" path="res://scenes/main_scene/fundo.png" id="2_oag1o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ufqg"]
+font_size = 60
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_72k7c")
 
+[node name="Fundo" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_oag1o")
+
 [node name="Host" type="Button" parent="."]
-offset_left = 535.0
-offset_top = 385.0
-offset_right = 672.0
-offset_bottom = 423.0
+offset_left = 510.0
+offset_top = 464.0
+offset_right = 647.0
+offset_bottom = 502.0
 text = "Host Server"
 
 [node name="Join" type="Button" parent="."]
-offset_left = 533.0
-offset_top = 270.0
-offset_right = 672.0
-offset_bottom = 310.0
+offset_left = 508.0
+offset_top = 349.0
+offset_right = 647.0
+offset_bottom = 389.0
 text = "Join Server"
 
 [node name="TextEdit" type="TextEdit" parent="."]
-offset_left = 487.0
-offset_top = 217.0
-offset_right = 722.0
-offset_bottom = 254.0
+offset_left = 462.0
+offset_top = 296.0
+offset_right = 697.0
+offset_bottom = 333.0
+
+[node name="Title" type="Label" parent="."]
+offset_left = 337.0
+offset_top = 164.0
+offset_right = 815.0
+offset_bottom = 258.0
+text = "Piratas VS Aliens"
+label_settings = SubResource("LabelSettings_0ufqg")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
