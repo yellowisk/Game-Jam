@@ -1,15 +1,18 @@
 extends Node3D
 
-var MinigameEvent =  {
+@onready var ENEMY_SHIP = $"EnemysShip";
+
+@onready var MinigameEvent =  {
 	CANNON_WAR = {
 		start = Callable(self, "start_war"),
 		end = Callable(self, "end_war"),
+		cam = $"Cannons/Camera3D",
 	},
 }
 
 var CURRENT_EVENT = null;
 
-signal start_event(event)
+const MINIGAMES_PATH = ["res://scenes/minigames/ai_minigame/follow_path.tscn", "res://scenes/minigames/cannon_minigame/cannonball_minigame.tscn", "res://scenes/minigames/minigame_barrel/minigame_barril.tscn"]
 
 const MINIGAMES = {
 	"invader": {
@@ -23,12 +26,9 @@ const MINIGAMES = {
 	}
 }
 
-const MINIGAMES_PATH = ["res://scenes/minigames/ai_minigame/follow_path.tscn", "res://scenes/minigames/cannon_minigame/cannonball_minigame.tscn", "res://scenes/minigames/minigame_barrel/minigame_barril.tscn"]
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	CURRENT_EVENT = MinigameEvent.CANNON_WAR;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,12 +37,18 @@ func _process(_delta):
 
 
 func _on_cannon_start_body_entered(body):
-	if body.is_in_group("players") and CURRENT_EVENT == MinigameEvent.INVASION:
+	if body.is_in_group("players") and CURRENT_EVENT == MinigameEvent.CANNON_WAR:
 		body.action = Callable(MinigameEvent.CANNON_WAR.start)
 		
+func _on_cannon_start_body_exited(body):
+	body.action = null;
 		
-func start_invasion():
-	pass
+func start_war(_player):
+	ENEMY_SHIP.visible = true;
+	ENEMY_SHIP.start_minigame();
 	
-func end_invasion():
-	pass
+	MinigameEvent.CANNON_WAR.cam.make_current();
+	
+func end_war():
+	MinigameEvent.CANNON_WAR.cam.clear_current();
+	$"EnemysShip".visible = false;

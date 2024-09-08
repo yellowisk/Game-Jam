@@ -8,6 +8,7 @@ const JUMP_VELOCITY = 7
 @onready var cam = $SpringArm3D/Camera3D
 @onready var animation = $Body/PlayerRig/AnimationPlayer
 @onready var area_colision = $Body/Area3D/CollisionShape3D
+@onready var action;
 
 @export var current_animation = "idle"
 
@@ -33,12 +34,12 @@ func _enter_tree() -> void:
 	
 func _ready():
 	cam.current = is_multiplayer_authority()
-	add_to_group("players")
+	self.add_to_group("players")
 
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
 		
-		if Input.is_action_just_pressed("quit"):
+		if Input.is_action_just_released("quit"):
 			$"../".exit_game(name.to_int()) 
 			get_tree().quit()
 			
@@ -69,8 +70,10 @@ func _physics_process(delta: float) -> void:
 				current_animation = "idle"
 			$Body.rotation.y = lerp_angle($Body.rotation.y, atan2(direction.x, direction.z), delta * ANGULAR_ACELERATION)
 			
-		if Input.is_action_just_pressed("ui_accept"):
-			if not is_hold:
+		if Input.is_action_just_pressed("shoot"):
+			if action != null:
+				action.call(self)
+			elif not is_hold:
 				if is_on_floor():
 					velocity.y = JUMP_VELOCITY
 				current_animation = "jump"
