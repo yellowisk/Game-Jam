@@ -1,6 +1,7 @@
 extends Node3D
 
 signal finished_barrel
+signal finished_timao
 
 @export var points = 0;
 
@@ -17,10 +18,15 @@ signal finished_barrel
 		start = Callable(self, "start_barrel"),
 		end = Callable(self, "end_barrel"),
 		cam = $"BarrilGame/SpringArm3D/Camera3D",
+	},
+	TIMAO = {
+		start = Callable(self, "start_timao"),
+		end = Callable(self, "end_timao"),
+		cam = $"BarrilGame/SpringArm3D/Camera3D",
 	}
 }
 
-@onready var EventList = ["CANNON_WAR", "BARREL"]
+@onready var EventList = ["TIMAO", "CANNON_WAR", "BARREL"]
 
 const MINIGAMES_PATH = ["res://scenes/minigames/ai_minigame/follow_path.tscn", "res://scenes/minigames/cannon_minigame/cannonball_minigame.tscn", "res://scenes/minigames/minigame_barrel/minigame_barril.tscn"]
 
@@ -39,7 +45,7 @@ const MINIGAMES = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if is_multiplayer_authority():
-		await get_tree().create_timer(20).timeout;
+		await get_tree().create_timer(10).timeout;
 		minigame_loop();
 
 	
@@ -100,7 +106,29 @@ func start_barrel(player: Node3D):
 	
 	Lobby.end_event.rpc("BARREL");
 
+func start_timao(player: CharacterBody3D):
+	player.visible = false;
+	player.is_on_event = true;
+	MinigameEvent.TIMAO.cam.make_current();
+	$"/root/Main/Ship".player_controlled = true;
+	
+	await finished_timao;
+	
+	player.visible = true;
+	player.is_on_event = false;
+	player.get_node("SpringArm3D/Camera3D").make_current();
+	
+	Lobby.score(15);	
+	Lobby.end_event.rpc("TIMAO");
 
 func _on_barrel_start_body_entered(body):
 	if body.is_in_group("players") and Lobby.CURRENT_EVENT == "BARREL":
 		body.action = Callable(MinigameEvent.BARREL.start)
+		
+func _on_timao_start_body_entered(body):
+	if body.is_in_group("players") and Lobby.CURRENT_EVENT == "TIMAO":
+		body.action = Callable(MinigameEvent.TIMAO.start)
+
+
+func _on_timao_start_body_exited(body):
+	body.action = null;

@@ -23,7 +23,7 @@ func _on_host_pressed() -> void:
 	$Hud.hide()
 
 func _on_join_pressed() -> void:
-	peer.create_client("127.0.0.1" if $CanvasLayer/TextEdit.text == "" else $CanvasLayer/TextEdit.text,1027)
+	peer.create_client("127.0.0.1" if $Hud/TextEdit.text == "" else $Hud/TextEdit.text,1027)
 	multiplayer.multiplayer_peer = peer
 	$Hud.hide()
 
@@ -43,13 +43,3 @@ func del_player(id):
 @rpc("any_peer", "call_local")
 func _del_player(id):
 	get_node(str(id)).queue_free()
-
-func _on_stop_player_flag(id) -> void:
-	#get all children that are from the group players
-	var player = null
-	for child in get_children():
-		if child.is_in_group("players") && child.name == id:
-			player = child
-			break
-	
-	player.is_on_wheel = true

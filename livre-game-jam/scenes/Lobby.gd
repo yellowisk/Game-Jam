@@ -7,6 +7,7 @@ extends Node
 @onready var ENEMY_SHIP = $"/root/Main/MinigameController/EnemysShip";
 @onready var START_CANNON = $"/root/Main/MinigameController/Cannons/CannonStart";
 @onready var START_BARREL = $"/root/Main/MinigameController/BarrilGame/BarrelStart";
+@onready var START_TIMAO = $"/root/Main/Ship/TimaoStart";
 
 	
 @rpc("any_peer", "call_local", "reliable")
@@ -22,6 +23,8 @@ func set_event(event):
 		ENEMY_SHIP.visible = true;
 	elif CURRENT_EVENT == "BARREL":
 		START_BARREL.visible = true;
+	elif CURRENT_EVENT == "TIMAO":
+		START_TIMAO.visible = true;
 		
 		
 @rpc("any_peer", "call_local", "reliable")
@@ -33,3 +36,5 @@ func end_event(event):
 		ENEMY_SHIP.visible = false;
 	elif event == "BARREL":
 		START_BARREL.visible = false;
+	elif event == "TIMAO":
+		START_TIMAO.visible = false;

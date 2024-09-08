@@ -69,5 +69,6 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.14033)
 shape = SubResource("BoxShape3D_ji3wg")
+disabled = true
 
 [connection signal="body_entered" from="Body/Area3D" to="." method="_on_area_3d_body_entered"]

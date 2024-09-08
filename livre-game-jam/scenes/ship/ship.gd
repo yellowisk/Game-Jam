@@ -12,7 +12,7 @@ signal wheel_flag
 const water_height := 0.0
 
 var submerged := false
-var is_on_wheel = false
+var player_controlled = false
 var once = true
 
 var target_position := Vector3(0, 0, 0)  # Where the ship should return to
@@ -21,10 +21,10 @@ var reset_timer := 0.0  # Timer to smoothly interpolate back
 var player_curr = null
 
 func rotate_ship():
-	if Input.is_action_pressed("move_right"):
-		angular_velocity = Vector3(2, 0, 0)
-	elif Input.is_action_pressed("move_left"):
-		angular_velocity = Vector3(-2, 0, 0)
+	if Input.is_action_just_released("move_right"):
+		angular_velocity += Vector3(0.2, 0, 0)
+	elif Input.is_action_just_released("move_left"):
+		angular_velocity += Vector3(-0.2, 0, 0)
 	else:
 		pass
 	#if the degrees of rotation are greater than 90, reset the rotation
@@ -32,7 +32,7 @@ func rotate_ship():
 # Process function to handle ship rotation and resetting
 func _process(delta: float) -> void:
 	get_tree().call_group("timao", "on_body_entered")
-	if is_on_wheel:
+	if player_controlled:
 		if once:
 			var vels = [-1,1]
 			angular_velocity = Vector3(vels[randi_range(0,1)], 0, 0)
@@ -45,18 +45,22 @@ func _process(delta: float) -> void:
 
 # This function resets the ship after a delay
 func reset_ship_after_delay() -> void:
+	await get_tree().create_timer(6).timeout
 	resetting = true  
 	reset_timer = 0.5
-	is_on_wheel = false  
-	once = true  
+	player_controlled = false  
+	once = true
+	$"/root/Main/MinigameController".finished_timao.emit()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if rotation_degrees.x > 45:
-		angular_velocity = Vector3(-1, 0, 0)
-	elif rotation_degrees.x < -45:
-		angular_velocity = Vector3(1, 0, 0)
-	
+	if player_controlled:
+		if rotation_degrees.x > 45:
+			angular_velocity = Vector3(-1, 0, 0)*0.5
+		elif rotation_degrees.x < -45:
+			angular_velocity = Vector3(1, 0, 0)*0.5
+		
 	if resetting:
 		# Gradually return to the original position
 		reset_timer += delta / reset_duration
@@ -65,7 +69,6 @@ func _physics_process(delta: float) -> void:
 		
 		if reset_timer >= 1.0:
 			resetting = false  # Stop resetting once done
-			is_on_wheel = false
 			
 
 	var depth = water_height - global_position.y
@@ -80,10 +83,3 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
-
-func _on_wheel_flag(player):
-	is_on_wheel = true
-	get_parent().stop_player_flag.emit(player.name)
-	player_curr = player
-	return player.name
