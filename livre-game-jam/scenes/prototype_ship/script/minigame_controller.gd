@@ -46,7 +46,7 @@ func _on_cannon_start_body_entered(body):
 		
 func _on_cannon_start_body_exited(body):
 	body.action = null;
-		
+	
 func start_war(player):
 	ENEMY_SHIP.visible = true;
 	player.visible = false;
@@ -59,13 +59,19 @@ func start_war(player):
 	
 	canhao_player.player_controlling = false;
 	
-	points += 3*(4-missing);
+	var p = 3*(4-missing);
+	
+	score.rpc(p);
 	
 	end_war(player);
 	
-func end_war(player):
-	
+func end_war(player: Node3D):
 	player.visible = true;
 	player.is_on_event = false;
-	MinigameEvent.CANNON_WAR.cam.clear_current();
+	player.get_node("SpringArm3D/Camera3D").make_current();
 	$"EnemysShip".visible = false;
+	
+@rpc("any_peer", "call_local", "reliable")
+func score(p: int):
+	points += p;
+	print(points);
