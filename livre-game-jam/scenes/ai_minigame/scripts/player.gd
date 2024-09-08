@@ -4,13 +4,22 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var can_move = true
-var enemy_pos
+var lifter
+var lifted = false
+
+func lift(height, lifter):
+		self.global_transform.origin[1] = 4
+		self.global_position = self.global_position.lerp(lifter.global_transform.origin,0.1)
+
+func throw(lifter):
+	pass
+		
 
 func enable_movement(boolean: bool) -> void:
 	can_move = boolean
-	
-func get_lerp(position) -> void:
-	enemy_pos = position
+
+func get_lerp(obj) -> void:
+	lifter = obj
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -34,5 +43,7 @@ func _physics_process(delta: float) -> void:
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 		move_and_slide()
+
 	else:
-		self.global_position = self.global_position.lerp(enemy_pos,0.1)
+		lift(4, lifter)
+		
