@@ -26,6 +26,7 @@ func spawn_fruits(fruits_parent, positions) -> void:
 		counter += 1
 		
 		await get_tree().create_timer(1.5).timeout
+	print(Global.points_barrel_minigame)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -41,11 +42,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
 	move_and_slide()
-
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "Fruta":
+		await get_tree().create_timer(0.05).timeout
 		body.queue_free()
-		print("BAM")
+		Global.points_barrel_minigame += 1
