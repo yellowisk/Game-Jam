@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cngsfaq7lk1se"]
 
-[ext_resource type="Script" path="res://scenes/minigame_barrel/scripts/barrel.gd" id="1_lxt6r"]
+[ext_resource type="Script" path="res://scenes/minigames/minigame_barrel/scripts/barrel.gd" id="1_lxt6r"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3yawv"]
 height = 1.0

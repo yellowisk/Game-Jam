@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2fi2m0gas6bx"]
+[gd_scene load_steps=11 format=3 uid="uid://b2fi2m0gas6bx"]
 
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/teste.gd" id="1_sa3fu"]
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_btk2o"]
+[ext_resource type="Script" path="res://scenes/prototype_ship/script/minigame_controller.gd" id="3_pp0pw"]
 [ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/prototype_ship/ocean.tscn" id="4_ios3a"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="5_gidye"]
 [ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="6_umlvv"]
@@ -26,6 +27,9 @@ reflected_light_source = 2
 [node name="Main" type="Node3D"]
 script = ExtResource("1_sa3fu")
 player_scene = ExtResource("2_btk2o")
+
+[node name="MinigameController" type="Node3D" parent="."]
+script = ExtResource("3_pp0pw")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
@@ -66,9 +70,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.27856, 0)
 
 [node name="Ship" parent="." instance=ExtResource("6_yxho2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35496, 0, 0)
-
-[node name="Player" parent="." instance=ExtResource("2_btk2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00257, 1.72938, 0)
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
