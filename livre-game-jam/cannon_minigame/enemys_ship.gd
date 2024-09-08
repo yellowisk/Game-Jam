@@ -19,7 +19,7 @@ func spawn_target(target_parents):
 		target.global_transform.origin = Vector3(random_x, random_y, _z)
 		target_parents.add_child(target)
 		counter += 1
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(1).timeout
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
