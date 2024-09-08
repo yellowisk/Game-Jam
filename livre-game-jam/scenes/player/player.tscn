@@ -10,10 +10,10 @@ radius = 0.8
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
+properties/1/path = NodePath(".:current_animation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath(".:current_animation")
+properties/2/path = NodePath("Body:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
