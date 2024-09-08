@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2fi2m0gas6bx"]
+[gd_scene load_steps=16 format=3 uid="uid://b2fi2m0gas6bx"]
 
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/teste.gd" id="1_sa3fu"]
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_btk2o"]
@@ -8,6 +8,17 @@
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="5_gidye"]
 [ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="6_umlvv"]
 [ext_resource type="PackedScene" uid="uid://qd4pui8hx7ml" path="res://scenes/ship/ship.tscn" id="6_yxho2"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8pohd"]
+properties/0/path = NodePath("EnemysShip:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("EnemysShip:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Cannons/CannonStart/MeshInstance3D:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8yim8"]
 height = 0.05
@@ -46,6 +57,9 @@ player_scene = ExtResource("2_btk2o")
 
 [node name="MinigameController" type="Node3D" parent="."]
 script = ExtResource("3_pp0pw")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="MinigameController"]
+replication_config = SubResource("SceneReplicationConfig_8pohd")
 
 [node name="Cannons" type="Node3D" parent="MinigameController"]
 

@@ -34,6 +34,7 @@ func _enter_tree() -> void:
 	
 func _ready():
 	cam.current = is_multiplayer_authority()
+	position.y = 5
 	self.add_to_group("players")
 
 func _physics_process(delta: float) -> void:

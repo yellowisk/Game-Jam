@@ -27,8 +27,6 @@ func _on_join_pressed() -> void:
 func add_player(id = 1):
 	var player = player_scene.instantiate()
 	player.name = str(id)
-	player.position.x += id
-	player.position.y = 14
 	call_deferred("add_child", player)
 	
 func exit_game(id):	
