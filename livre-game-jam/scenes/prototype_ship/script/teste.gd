@@ -20,12 +20,12 @@ func _on_host_pressed() -> void:
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(add_player)
 	add_player()
-	$CanvasLayer.hide()
+	$Hud.hide()
 
 func _on_join_pressed() -> void:
 	peer.create_client("127.0.0.1" if $CanvasLayer/TextEdit.text == "" else $CanvasLayer/TextEdit.text,1027)
 	multiplayer.multiplayer_peer = peer
-	$CanvasLayer.hide()
+	$Hud.hide()
 
 func add_player(id = 1):
 	var player = player_scene.instantiate()

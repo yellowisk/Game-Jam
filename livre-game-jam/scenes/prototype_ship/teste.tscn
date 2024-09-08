@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2fi2m0gas6bx"]
+[gd_scene load_steps=21 format=3 uid="uid://b2fi2m0gas6bx"]
 
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/teste.gd" id="1_sa3fu"]
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_btk2o"]
+[ext_resource type="Texture2D" uid="uid://4ef0kamb8ljc" path="res://scenes/main_scene/fundo.png" id="3_efqg3"]
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/minigame_controller.gd" id="3_pp0pw"]
 [ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/main_scene/ocean.tscn" id="4_ios3a"]
 [ext_resource type="PackedScene" uid="uid://c5ug8ln40g8e7" path="res://scenes/minigames/cannon_minigame/enemys_ship.tscn" id="4_jmuit"]
@@ -10,6 +11,9 @@
 [ext_resource type="Material" uid="uid://271w0br6av3r" path="res://textures/action_material.tres" id="5_j3m4u"]
 [ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="6_umlvv"]
 [ext_resource type="PackedScene" uid="uid://qd4pui8hx7ml" path="res://scenes/ship/ship.tscn" id="6_yxho2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7phof"]
+font_size = 60
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8pohd"]
 properties/0/path = NodePath("EnemysShip:visible")
@@ -63,6 +67,42 @@ reflected_light_source = 2
 script = ExtResource("1_sa3fu")
 player_scene = ExtResource("2_btk2o")
 
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Fundo" type="Sprite2D" parent="Hud"]
+position = Vector2(576, 324)
+texture = ExtResource("3_efqg3")
+
+[node name="Host" type="Button" parent="Hud"]
+offset_left = 510.0
+offset_top = 464.0
+offset_right = 647.0
+offset_bottom = 502.0
+text = "Host Server"
+
+[node name="Join" type="Button" parent="Hud"]
+offset_left = 508.0
+offset_top = 349.0
+offset_right = 647.0
+offset_bottom = 389.0
+text = "Join Server"
+
+[node name="TextEdit" type="TextEdit" parent="Hud"]
+offset_left = 462.0
+offset_top = 296.0
+offset_right = 697.0
+offset_bottom = 333.0
+
+[node name="Title" type="Label" parent="Hud"]
+offset_left = 337.0
+offset_top = 164.0
+offset_right = 815.0
+offset_bottom = 258.0
+text = "Piratas VS Aliens"
+label_settings = SubResource("LabelSettings_7phof")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MinigameController" type="Node3D" parent="."]
 script = ExtResource("3_pp0pw")
 
@@ -112,28 +152,6 @@ visible = false
 _spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
 spawn_path = NodePath("..")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Host" type="Button" parent="CanvasLayer"]
-offset_left = 535.0
-offset_top = 385.0
-offset_right = 672.0
-offset_bottom = 423.0
-text = "Host Server"
-
-[node name="Join" type="Button" parent="CanvasLayer"]
-offset_left = 533.0
-offset_top = 270.0
-offset_right = 672.0
-offset_bottom = 310.0
-text = "Join Server"
-
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
-offset_left = 487.0
-offset_top = 217.0
-offset_right = 722.0
-offset_bottom = 254.0
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.492727, 0.870184, 0, -0.870184, 0.492727, 9.707, 50, 8.538)
 light_color = Color(0.876256, 0.840835, 0.652193, 1)
@@ -148,9 +166,10 @@ transform = Transform3D(0.99897, 0, 0.0453804, 0, 1, 0, -0.0453804, 0, 0.99897, 
 [node name="Ship" parent="." instance=ExtResource("6_yxho2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35496, 0, 0)
 
+
 [connection signal="stop_player_flag" from="." to="." method="_on_stop_player_flag"]
+[connection signal="pressed" from="Hud/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Hud/Join" to="." method="_on_join_pressed"]
 [connection signal="body_entered" from="MinigameController/BarrilGame/BarrelStart" to="MinigameController" method="_on_barrel_start_body_entered"]
 [connection signal="body_entered" from="MinigameController/Cannons/CannonStart" to="MinigameController" method="_on_cannon_start_body_entered"]
 [connection signal="body_exited" from="MinigameController/Cannons/CannonStart" to="MinigameController" method="_on_cannon_start_body_exited"]
-[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
