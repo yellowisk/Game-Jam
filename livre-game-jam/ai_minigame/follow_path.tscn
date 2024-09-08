@@ -79,4 +79,7 @@ shape = SubResource("BoxShape3D_vhuxi")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
 mesh = SubResource("BoxMesh_g8bs4")
 
+[node name="Plank" type="Marker3D" parent="."]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 16, 0, -16)
+
 [connection signal="player_captured" from="." to="." method="_on_player_captured"]
