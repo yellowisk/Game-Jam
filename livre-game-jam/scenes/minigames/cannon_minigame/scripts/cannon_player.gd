@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var start_rotation_z = $"canhão/Cannon".rotation_degrees.z
 @onready var start_rotation_y = $"canhão/Cannon".rotation_degrees.y
 
-const CANNONBALL_SCENE = preload("res://scenes/cannon_minigame/cannonball.tscn")
+const CANNONBALL_SCENE = preload("res://scenes/minigames/cannon_minigame/cannonball.tscn")
 const MAX_ROTATION_Z = 10.0
 const MIN_ROTATION_Z = -30.0
 const MAX_ROTATION_Y = 125.0
