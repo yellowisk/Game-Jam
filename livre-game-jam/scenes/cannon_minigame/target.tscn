@@ -11,7 +11,7 @@ material = SubResource("StandardMaterial3D_rypkg")
 [sub_resource type="SphereShape3D" id="SphereShape3D_6xfxq"]
 
 [node name="Target" type="StaticBody3D"]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_ctsi4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -19,6 +19,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 mesh = SubResource("SphereMesh_g8c5l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_6xfxq")
 
 [node name="Area3D" type="Area3D" parent="."]

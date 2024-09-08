@@ -1,14 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://e0x5oqbw1tb0"]
 
-[ext_resource type="Script" path="res://scenes/cannon_minigame/scripts/cannonball.gd" id="1_1iqtc"]
+[ext_resource type="Script" path="res://scenes/cannon_minigame/scripts/cannonball.gd" id="1_f123p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdqym"]
+albedo_color = Color(0.466181, 0.466181, 0.466181, 1)
 metallic = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_yucpt"]
 material = SubResource("StandardMaterial3D_gdqym")
-radius = 0.25
-height = 0.5
+radius = 0.4
+height = 0.8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5g78q"]
 radius = 0.25
@@ -16,7 +17,7 @@ radius = 0.25
 [sub_resource type="SphereShape3D" id="SphereShape3D_45gew"]
 
 [node name="Cannonball" type="RigidBody3D"]
-script = ExtResource("1_1iqtc")
+script = ExtResource("1_f123p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_yucpt")

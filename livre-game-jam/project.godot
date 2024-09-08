@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 Global="*res://scenes/Global.gd"
 
-[filesystem]
-
-import/blender/enabled=false
-
 [input]
 
 quit={

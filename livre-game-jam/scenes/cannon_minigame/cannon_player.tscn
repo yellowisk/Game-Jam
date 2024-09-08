@@ -1,32 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c050u7yhun235"]
+[gd_scene load_steps=3 format=3 uid="uid://c050u7yhun235"]
 
 [ext_resource type="Script" path="res://scenes/cannon_minigame/scripts/cannon_player.gd" id="1_afo40"]
-[ext_resource type="PackedScene" uid="uid://e0x5oqbw1tb0" path="res://scenes/cannon_minigame/cannonball.tscn" id="2_4ic00"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_86a1m"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wu1c4"]
+[ext_resource type="PackedScene" uid="uid://uqr1omiluk6l" path="res://scenes/prototype_ship/cannon.tscn" id="3_2ymm1"]
 
 [node name="PlayerCanhao" type="CharacterBody3D" groups=["projeteis"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
 script = ExtResource("1_afo40")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -3.01992e-07, 0, 1, 0, 1.50996e-07, 0, -2, 0, 0, 0)
-mesh = SubResource("PrismMesh_86a1m")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_wu1c4")
-
-[node name="Pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99383e-08, 0, -1.6)
-
-[node name="Marker3D" type="Marker3D" parent="Pivot"]
-transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="BalaCanhao" parent="Pivot" instance=ExtResource("2_4ic00")]
-unique_name_in_owner = true
-transform = Transform3D(0.5, 0, -3.55271e-14, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-visible = false
-script = null
+[node name="canhão" parent="." instance=ExtResource("3_2ymm1")]

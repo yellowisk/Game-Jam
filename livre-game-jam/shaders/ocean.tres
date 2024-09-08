@@ -91,7 +91,7 @@ default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0.2, 0.2, 0.2)]
 operator = 2
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_831qt"]
-constant = 0.8
+constant = 5.0
 
 [resource]
 code = "shader_type spatial;
@@ -122,7 +122,7 @@ void vertex() {
 
 
 // FloatConstant:9
-	float n_out9p0 = 0.800000;
+	float n_out9p0 = 5.000000;
 
 
 // VectorOp:8
