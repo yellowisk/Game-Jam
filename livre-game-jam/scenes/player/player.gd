@@ -8,6 +8,7 @@ const JUMP_VELOCITY = 7
 @onready var cam = $SpringArm3D/Camera3D
 @onready var animation = $Body/PlayerRig/AnimationPlayer
 @onready var area_colision = $Body/Area3D/CollisionShape3D
+@onready var area = $Body/Area3D
 @onready var action;
 
 @export var current_animation = "idle"
@@ -74,20 +75,20 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("shoot"):
 			if action != null:
 				action.call(self)
-			elif not is_hold:
-				if is_on_floor():
-					velocity.y = JUMP_VELOCITY
-				current_animation = "jump"
-			else:
+			elif is_hold:
 				throw()
+			if is_on_floor():
+					velocity.y = JUMP_VELOCITY
+					current_animation = "jump"
+			elif area.has_overlapping_bodies():
+				var body = area.get_overlapping_bodies()[0]
+				if body.is_in_group("players") and body.name != self.name:
+					area_colision.disabled = true
+					body.captured(self)
+					is_hold = true
 					
 		move_and_slide()
-		animation.current_animation = current_animation
-
+	animation.current_animation = current_animation
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if is_hold == false and body.is_in_group("players") and body.name != self.name:
-		area_colision.disabled = true
-		body.captured(self)
-		is_hold = true
-		
+	pass # Replace with function body.

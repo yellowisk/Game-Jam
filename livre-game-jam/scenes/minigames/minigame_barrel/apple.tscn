@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7d53tdgksmhg"]
+
+[ext_resource type="PackedScene" uid="uid://cixs4eyr1ickn" path="res://models/apple.glb" id="1_hmugh"]
+
+[node name="apple" instance=ExtResource("1_hmugh")]
+
+[node name="Circle_001" parent="." index="0"]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, -0.074, 0)

@@ -1,21 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://c16olurshplqx"]
+[gd_scene load_steps=7 format=3 uid="uid://c16olurshplqx"]
 
 [ext_resource type="Script" path="res://scenes/minigames/minigame_barrel/scripts/fruta.gd" id="1_jlof0"]
+[ext_resource type="PackedScene" uid="uid://b7d53tdgksmhg" path="res://scenes/minigames/minigame_barrel/apple.tscn" id="2_amot3"]
+[ext_resource type="PackedScene" uid="uid://63due6ulsiuo" path="res://scenes/minigames/minigame_barrel/banana.tscn" id="3_d8mxs"]
+[ext_resource type="PackedScene" uid="uid://b0pgyafw2u1dr" path="res://scenes/minigames/minigame_barrel/bread.tscn" id="4_pf5sy"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_xfyyp"]
-radius = 0.3
-height = 0.6
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wx2rr"]
+bounce = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3738w"]
 radius = 0.3
 
-[node name="Fruta" type="RigidBody3D"]
+[node name="Fruta" type="RigidBody3D" groups=["Fruta"]]
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_wx2rr")
+gravity_scale = 0.765
 script = ExtResource("1_jlof0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
-mesh = SubResource("SphereMesh_xfyyp")
+apple_scene = ExtResource("2_amot3")
+banana_scene = ExtResource("3_d8mxs")
+bread_scene = ExtResource("4_pf5sy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 shape = SubResource("SphereShape3D_3738w")

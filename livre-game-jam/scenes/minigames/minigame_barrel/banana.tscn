@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://63due6ulsiuo"]
+
+[ext_resource type="PackedScene" uid="uid://bkq2ep0f5kj5b" path="res://models/banana.glb" id="1_mkqc0"]
+
+[node name="banana" instance=ExtResource("1_mkqc0")]
+
+[node name="Circle" parent="." index="0"]
+transform = Transform3D(0.15902, 0.192906, 0, -0.192906, 0.15902, 0, 0, 0, 0.25, -0.052, 0, 0)

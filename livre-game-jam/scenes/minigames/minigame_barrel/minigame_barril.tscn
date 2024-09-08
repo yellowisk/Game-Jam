@@ -1,32 +1,28 @@
 [gd_scene load_steps=4 format=3 uid="uid://gux2d446iehj"]
 
 [ext_resource type="PackedScene" uid="uid://cngsfaq7lk1se" path="res://scenes/minigames/minigame_barrel/barrel.tscn" id="1_md43f"]
+[ext_resource type="Script" path="res://scenes/minigames/minigame_barrel/scripts/minigame_barril.gd" id="1_visdf"]
+[ext_resource type="PackedScene" uid="uid://c16olurshplqx" path="res://scenes/minigames/minigame_barrel/fruta.tscn" id="2_yahi6"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uhrup"]
-size = Vector3(30, 1, 30)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0f17n"]
-size = Vector3(30, 1, 30)
-
-[node name="Node3D" type="Node3D"]
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_md43f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.971014, 0)
+[node name="BarrilGame" type="Node3D"]
+script = ExtResource("1_visdf")
+fruit_scene = ExtResource("2_yahi6")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2.5, 2)
+transform = Transform3D(1, 0, 0, 0, 0.95139, 0.307988, 0, -0.307988, 0.95139, -18.8394, 9.502, 0)
 spring_length = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(-0.122541, 0.372709, -0.919822, -0.287292, 0.873805, 0.392337, 0.949972, 0.312335, -4.02067e-08, 0, 0, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.965926, 1.13133e-08, -0.258819, 0.258819, -4.22219e-08, 0.965926, 7.13962e-16, -1, -4.37114e-08, -3, 4, 0)
-shadow_enabled = true
+[node name="barrel" parent="." instance=ExtResource("1_md43f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.61108, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_uhrup")
+[node name="FruitParents" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.9672, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_0f17n")
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

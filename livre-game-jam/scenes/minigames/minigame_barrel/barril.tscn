@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh0dfc2j2cq8r"]
+
+[ext_resource type="PackedScene" uid="uid://dpx5b8m4ybg8v" path="res://models/barril.glb" id="1_cd3q3"]
+
+[node name="barril" instance=ExtResource("1_cd3q3")]
