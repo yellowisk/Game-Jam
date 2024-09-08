@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c050u7yhun235" path="res://scenes/cannon_minigame/cannon_player.tscn" id="2_3dfd2"]
 [ext_resource type="PackedScene" uid="uid://bfbfaqa840517" path="res://scenes/cannon_minigame/target.tscn" id="3_kk2ge"]
 [ext_resource type="PackedScene" uid="uid://c5ug8ln40g8e7" path="res://scenes/cannon_minigame/enemys_ship.tscn" id="3_qxult"]
-[ext_resource type="PackedScene" uid="uid://ilrpfa0adgie" path="res://scenes/prototype_ship/navio_pequen_glb.tscn" id="4_0w7a7"]
+[ext_resource type="PackedScene" uid="uid://ilrpfa0adgie" path="res://scenes/ship/navio_pequen_glb.tscn" id="4_0w7a7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1s75u"]
 
@@ -43,3 +43,4 @@ visible = false
 
 [node name="navio_pequeno" parent="." instance=ExtResource("4_0w7a7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 41.3705)
+script = null
