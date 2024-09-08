@@ -3,7 +3,11 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
+<<<<<<< HEAD
+uid="uid://dpy1r3edkgfp5"
+=======
 uid="uid://suc4v4nk4myb"
+>>>>>>> 862dabc1002d290a8a7c5e12319dce185f1a0142
 path="res://.godot/imported/frutas.blend-3de9110519424f76124867940ea81ab5.scn"
 
 [deps]

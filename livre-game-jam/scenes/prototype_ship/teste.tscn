@@ -30,12 +30,12 @@ shader_parameter/sky_color = Color(0.104505, 0.474991, 0.748132, 1)
 shader_parameter/horizon_color = Color(0.597294, 0.301435, 0.313051, 1)
 shader_parameter/skyTexture = ExtResource("6_umlvv")
 
-[sub_resource type="Sky" id="Sky_1e3tw"]
+[sub_resource type="Sky" id="Sky_pgqww"]
 sky_material = SubResource("ShaderMaterial_l12u6")
 
 [sub_resource type="Environment" id="Environment_xd0cc"]
 background_mode = 2
-sky = SubResource("Sky_1e3tw")
+sky = SubResource("Sky_pgqww")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 2

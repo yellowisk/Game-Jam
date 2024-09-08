@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bfo5ddh7c4naw"]
+[gd_scene load_steps=2 format=3 uid="uid://bfo5ddh7c4naw"]
+
+[ext_resource type="Script" path="res://scenes/prototype_ship/script/hud.gd" id="1_72k7c"]
 
 [node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_72k7c")
 
 [node name="Host" type="Button" parent="."]
 offset_left = 535.0
@@ -21,3 +24,6 @@ offset_left = 487.0
 offset_top = 217.0
 offset_right = 722.0
 offset_bottom = 254.0
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]

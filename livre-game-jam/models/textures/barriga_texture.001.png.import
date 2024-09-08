@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
+uid="uid://beo63c060cn6s"
+=======
 uid="uid://hfde7btvkawi"
+>>>>>>> 862dabc1002d290a8a7c5e12319dce185f1a0142
 path="res://.godot/imported/barriga_texture.001.png-67cdcb57a3d4e074c73427770c46193d.ctex"
 metadata={
 "vram_texture": false
