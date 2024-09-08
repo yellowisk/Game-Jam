@@ -3,17 +3,18 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+signal aaa
+
 var can_move = true
 var lifter
-var lifted = false
+var emitted = false
+var plank
 
 func lift(height, lifter):
-		self.global_transform.origin[1] = 4
-		self.global_position = self.global_position.lerp(lifter.global_transform.origin,0.1)
+	self.global_position = self.global_position.lerp(lifter.global_transform.origin + Vector3(0, 2, 0), 0.9)
 
 func throw(lifter):
-	pass
-		
+	plank = lifter
 
 func enable_movement(boolean: bool) -> void:
 	can_move = boolean
@@ -21,12 +22,11 @@ func enable_movement(boolean: bool) -> void:
 func get_lerp(obj) -> void:
 	lifter = obj
 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
+func _process(delta: float) -> void:
 	if can_move:
+		plank = null
+		lifter = null
+		
 		# Handle jump.
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
@@ -41,9 +41,20 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
+	elif (not emitted):
+		#lift(2, lifter)
+		emitted = true
+		_on_player_aaa()
 
-		move_and_slide()
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 
-	else:
-		lift(4, lifter)
-		
+	move_and_slide()
+	
+func _on_player_aaa() -> void:
+	lift(2, lifter)
+	await get_tree().create_timer(10).timeout
+	velocity = global_basis.x.rotated(global_basis.z, PI/4) * 10
+	can_move = true
