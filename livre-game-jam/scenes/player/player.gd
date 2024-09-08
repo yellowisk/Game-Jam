@@ -27,9 +27,9 @@ func _physics_process(delta: float) -> void:
 			
 		if $Body/RayCastBottom.is_colliding() and not $Body/RayCastTop.is_colliding():
 			if $Body/RayCastMid.is_colliding():
-				velocity.y = JUMP_VELOCITY * 2/3
+				velocity.y = JUMP_VELOCITY * 2.0/3
 			else:
-				velocity.y = JUMP_VELOCITY * 1/2
+				velocity.y = JUMP_VELOCITY * 1.0/2
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var input_dir := Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
