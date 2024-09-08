@@ -17,8 +17,6 @@ radius = 0.25
 [sub_resource type="SphereShape3D" id="SphereShape3D_45gew"]
 
 [node name="Cannonball" type="RigidBody3D"]
-collision_layer = 4
-collision_mask = 4
 script = ExtResource("1_f123p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -26,12 +24,10 @@ mesh = SubResource("SphereMesh_yucpt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_5g78q")
-disabled = true
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_45gew")
-disabled = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_minhas_bolas_body_entered"]

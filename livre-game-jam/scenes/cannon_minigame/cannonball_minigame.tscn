@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://d5623dkeisnc"]
+[gd_scene load_steps=6 format=3 uid="uid://d5623dkeisnc"]
 
 [ext_resource type="PackedScene" uid="uid://c050u7yhun235" path="res://scenes/cannon_minigame/cannon_player.tscn" id="2_3dfd2"]
-[ext_resource type="PackedScene" uid="uid://bfbfaqa840517" path="res://scenes/cannon_minigame/target.tscn" id="3_kk2ge"]
 [ext_resource type="PackedScene" uid="uid://c5ug8ln40g8e7" path="res://scenes/cannon_minigame/enemys_ship.tscn" id="3_qxult"]
 [ext_resource type="PackedScene" uid="uid://ilrpfa0adgie" path="res://scenes/ship/navio_pequen_glb.tscn" id="4_0w7a7"]
 
@@ -28,12 +27,8 @@ shadow_enabled = true
 [node name="EnemysShip" parent="." instance=ExtResource("3_qxult")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 10, 6)
 
-[node name="Target" parent="." instance=ExtResource("3_kk2ge")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 9.63756, 16.2439, 7.54329)
-
 [node name="PlayersShip" parent="." instance=ExtResource("4_0w7a7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 41.3705)
-script = null
 
 [node name="CannonPlayer" parent="." instance=ExtResource("2_3dfd2")]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 4.22666, 12.0282, 35.2955)

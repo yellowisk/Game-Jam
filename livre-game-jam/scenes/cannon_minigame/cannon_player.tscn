@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c050u7yhun235"]
 
 [ext_resource type="Script" path="res://scenes/cannon_minigame/scripts/cannon_player.gd" id="1_afo40"]
-[ext_resource type="PackedScene" uid="uid://jw1ys1xspyp1" path="res://scenes/prototype_ship/cannon.tscn" id="3_2ymm1"]
+[ext_resource type="PackedScene" uid="uid://uqr1omiluk6l" path="res://scenes/prototype_ship/cannon.tscn" id="3_2ymm1"]
 
 [node name="PlayerCanhao" type="CharacterBody3D" groups=["projeteis"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
