@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://player.tscn" id="2_btk2o"]
 [ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://ocean.tscn" id="4_ios3a"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="5_gidye"]
-[ext_resource type="PackedScene" uid="uid://c4axqq74jvh32" path="res://navio_pequeno.tscn" id="5_rsuyt"]
+[ext_resource type="PackedScene" uid="uid://ilrpfa0adgie" path="res://navio_pequen_glb.tscn" id="6_b5xhp"]
 [ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="6_umlvv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l12u6"]
@@ -61,14 +61,10 @@ sky_mode = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xd0cc")
 
-[node name="navio_pequeno" parent="." instance=ExtResource("5_rsuyt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85408, -0.953887, 0)
-
 [node name="Ocean" parent="." instance=ExtResource("4_ios3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.2786, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.27856, 0)
 
-[node name="Player" parent="." instance=ExtResource("2_btk2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0730577, -0.0876585, 1.70308)
+[node name="navio_pequeno" parent="." instance=ExtResource("6_b5xhp")]
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
