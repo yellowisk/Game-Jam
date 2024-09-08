@@ -2,13 +2,13 @@
 
 [ext_resource type="Shader" uid="uid://dwa41k5cbwn0p" path="res://shaders/ocean.tres" id="1_15pkc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yjka2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rq3jb"]
 render_priority = 0
 shader = ExtResource("1_15pkc")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a32e8"]
 lightmap_size_hint = Vector2i(102, 102)
-material = SubResource("ShaderMaterial_yjka2")
+material = SubResource("ShaderMaterial_rq3jb")
 size = Vector2(200, 400)
 subdivide_width = 40
 subdivide_depth = 40
