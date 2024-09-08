@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctxrtoy0p4cm3"
-path.s3tc="res://.godot/imported/braco_textureimgR.png-3c3f388c1fae0bb7955ffc39307b9c61.s3tc.ctex"
+uid="uid://0668yo6hk1by"
+path.s3tc="res://.godot/imported/navio.png-a86cdba99547f17f86b450c2d4db810c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/Invasor textures/braco_textureimgR.png"
-dest_files=["res://.godot/imported/braco_textureimgR.png-3c3f388c1fae0bb7955ffc39307b9c61.s3tc.ctex"]
+source_file="res://models/textures/navio.png"
+dest_files=["res://.godot/imported/navio.png-a86cdba99547f17f86b450c2d4db810c.s3tc.ctex"]
 
 [params]
 
