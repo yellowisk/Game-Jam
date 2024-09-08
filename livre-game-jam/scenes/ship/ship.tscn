@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://qd4pui8hx7ml"]
+[gd_scene load_steps=7 format=3 uid="uid://qd4pui8hx7ml"]
 
 [ext_resource type="Script" path="res://scenes/ship/ship.gd" id="1_4anhi"]
 [ext_resource type="PackedScene" uid="uid://d206jtsdt7lfb" path="res://scenes/ship/navio_pequeno.tscn" id="2_x7ipo"]
 [ext_resource type="PackedScene" uid="uid://uqr1omiluk6l" path="res://scenes/prototype_ship/cannon.tscn" id="3_b7g4k"]
 [ext_resource type="Script" path="res://scenes/minigames/cannon_minigame/scripts/cannon_player.gd" id="3_hhqnf"]
 [ext_resource type="PackedScene" uid="uid://ctgesmql5utg8" path="res://models/timao.blend" id="6_y5qfi"]
+[ext_resource type="PackedScene" uid="uid://d4knqvtnwfgon" path="res://sail.tscn" id="7_jwjpv"]
 
 [node name="Ship" type="RigidBody3D"]
 script = ExtResource("1_4anhi")
@@ -19,6 +20,8 @@ script = ExtResource("3_hhqnf")
 
 [node name="canhaoLeft" parent="." instance=ExtResource("3_b7g4k")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.25671, 0.010545, -6.32312)
+
+[node name="sail" parent="." instance=ExtResource("7_jwjpv")]
 
 [node name="timao" parent="." instance=ExtResource("6_y5qfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5692, 6.11699, 0)
