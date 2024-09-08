@@ -70,7 +70,6 @@ visible = false
 
 [node name="EnemysShip" parent="MinigameController" instance=ExtResource("4_jmuit")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5, 3.7, -35)
-visible = false
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
