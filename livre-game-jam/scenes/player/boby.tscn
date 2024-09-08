@@ -1,0 +1,53 @@
+[gd_scene load_steps=14 format=3 uid="uid://wiapgchkhw8e"]
+
+[ext_resource type="PackedScene" uid="uid://3srmbmvx13qe" path="res://models/boby.glb" id="1_ceph1"]
+[ext_resource type="Texture2D" uid="uid://83nldh306r8g" path="res://textures/Chapeu Texture.png" id="2_bkk4p"]
+[ext_resource type="Texture2D" uid="uid://d2vi5k2yg5pt" path="res://textures/Pe Texture.png" id="3_0i4pm"]
+[ext_resource type="Texture2D" uid="uid://c21kbwaeggiin" path="res://textures/Cabeca Texture.png" id="4_ww5ok"]
+[ext_resource type="Texture2D" uid="uid://clyo1egy83bs1" path="res://textures/Braco Texture.png" id="5_sphqq"]
+[ext_resource type="Texture2D" uid="uid://di52ew1ury0ly" path="res://textures/Corpo Texture.png" id="6_yax8m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssaqt"]
+albedo_texture = ExtResource("2_bkk4p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_joj51"]
+albedo_texture = ExtResource("3_0i4pm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grnt5"]
+albedo_texture = ExtResource("3_0i4pm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_885xn"]
+albedo_texture = ExtResource("4_ww5ok")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfmp8"]
+albedo_texture = ExtResource("5_sphqq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtq44"]
+albedo_texture = ExtResource("5_sphqq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_um2yk"]
+albedo_texture = ExtResource("6_yax8m")
+
+[node name="boby" instance=ExtResource("1_ceph1")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="Circle" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_ssaqt")
+
+[node name="pe_R" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_joj51")
+
+[node name="pe_L" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_grnt5")
+
+[node name="cabeca" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_885xn")
+
+[node name="braco_R" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_kfmp8")
+
+[node name="braco_L" parent="." index="5"]
+material_override = SubResource("StandardMaterial3D_mtq44")
+
+[node name="Barriga" parent="." index="6"]
+material_override = SubResource("StandardMaterial3D_um2yk")
