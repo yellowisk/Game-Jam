@@ -3,7 +3,7 @@ extends RigidBody3D
 @export var float_force := 2.0
 @export var water_drag := 0.05
 @export var water_angular_drag := 0.05
-@export var reset_duration := 0.5 
+@export var reset_duration := 2.0
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -18,6 +18,7 @@ var once = true
 var target_position := Vector3(0, 0, 0)  # Where the ship should return to
 var resetting := false  # To track if the reset is in progress
 var reset_timer := 0.0  # Timer to smoothly interpolate back
+var player_curr = null
 
 func rotate_ship():
 	if Input.is_action_pressed("move_right"):
@@ -33,8 +34,8 @@ func _process(delta: float) -> void:
 	get_tree().call_group("timao", "on_body_entered")
 	if is_on_wheel:
 		if once:
-			var vels = [-2.5, -2, 2, 2.5]
-			angular_velocity = Vector3(vels[randi() % 4], 0, 0)
+			var vels = [-1,1]
+			angular_velocity = Vector3(vels[randi_range(0,1)], 0, 0)
 			once = false
 		
 		rotate_ship()
@@ -44,18 +45,16 @@ func _process(delta: float) -> void:
 
 # This function resets the ship after a delay
 func reset_ship_after_delay() -> void:
-	await get_tree().create_timer(10).timeout
-	print("TIMEOUT")
 	resetting = true  
-	reset_timer = 0.0 
+	reset_timer = 0.5
 	is_on_wheel = false  
 	once = true  
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if rotation_degrees.x > 60:
+	if rotation_degrees.x > 45:
 		angular_velocity = Vector3(-1, 0, 0)
-	elif rotation_degrees.x < -60:
+	elif rotation_degrees.x < -45:
 		angular_velocity = Vector3(1, 0, 0)
 	
 	if resetting:
@@ -64,8 +63,10 @@ func _physics_process(delta: float) -> void:
 		global_position = global_position.lerp(target_position, reset_timer)
 		global_rotation = global_rotation.slerp(Vector3(0, 0, 0), reset_timer)
 		
-		if reset_timer >= 0.5:
+		if reset_timer >= 1.0:
 			resetting = false  # Stop resetting once done
+			is_on_wheel = false
+			
 
 	var depth = water_height - global_position.y
 	if depth > 0:
@@ -81,5 +82,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _on_wheel_flag() -> void:
+func _on_wheel_flag(player):
 	is_on_wheel = true
+	get_parent().stop_player_flag.emit(player.name)
+	player_curr = player
+	return player.name

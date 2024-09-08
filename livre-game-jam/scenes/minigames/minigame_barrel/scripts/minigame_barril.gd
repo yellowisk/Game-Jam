@@ -7,8 +7,8 @@ func spawn_fruits() -> void:
 	var random_int = randi_range(-5, 5)
 	var pos = Vector3(0, 0, random_int)
 	var fruit = fruit_scene.instantiate()
-	fruit.global_transform.origin = pos
 	$FruitParents.add_child(fruit)
+	fruit.global_transform.origin = pos
 	$Timer.start(1.5)
 
 func _on_timer_timeout() -> void:

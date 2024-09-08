@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvrhk8nxqtnya"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fhq88"]
+font_size = 60
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="Host" type="Button" parent="."]
+offset_left = 516.0
+offset_top = 461.0
+offset_right = 653.0
+offset_bottom = 499.0
+text = "Host Server"
+
+[node name="Join" type="Button" parent="."]
+offset_left = 514.0
+offset_top = 346.0
+offset_right = 653.0
+offset_bottom = 386.0
+text = "Join Server"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 468.0
+offset_top = 293.0
+offset_right = 703.0
+offset_bottom = 330.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 273.0
+offset_top = 125.0
+offset_right = 897.0
+offset_bottom = 240.0
+text = "Piratas VS Aliens
+"
+label_settings = SubResource("LabelSettings_fhq88")
+horizontal_alignment = 1
+vertical_alignment = 1

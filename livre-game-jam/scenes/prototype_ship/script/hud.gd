@@ -1,9 +1,7 @@
 extends CanvasLayer
 
 func _on_host_pressed() -> void:
-	get_parent().host()
-	hide()
-
+	get_parent()._on_host_pressed()
+	
 func _on_join_pressed() -> void:
-	get_parent().join($TextEdit.text)
-	hide()
+	get_parent()._on_join_pressed()

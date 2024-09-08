@@ -1,13 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2fi2m0gas6bx"]
+[gd_scene load_steps=21 format=3 uid="uid://b2fi2m0gas6bx"]
 
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/teste.gd" id="1_sa3fu"]
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_btk2o"]
+[ext_resource type="Texture2D" uid="uid://4ef0kamb8ljc" path="res://scenes/main_scene/fundo.png" id="3_efqg3"]
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/minigame_controller.gd" id="3_pp0pw"]
 [ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/main_scene/ocean.tscn" id="4_ios3a"]
 [ext_resource type="PackedScene" uid="uid://c5ug8ln40g8e7" path="res://scenes/minigames/cannon_minigame/enemys_ship.tscn" id="4_jmuit"]
+[ext_resource type="PackedScene" uid="uid://gux2d446iehj" path="res://scenes/minigames/minigame_barrel/minigame_barril.tscn" id="4_nkahd"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="5_gidye"]
+[ext_resource type="Material" uid="uid://271w0br6av3r" path="res://textures/action_material.tres" id="5_j3m4u"]
 [ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="6_umlvv"]
 [ext_resource type="PackedScene" uid="uid://qd4pui8hx7ml" path="res://scenes/ship/ship.tscn" id="6_yxho2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7phof"]
+font_size = 60
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8pohd"]
 properties/0/path = NodePath("EnemysShip:visible")
@@ -22,6 +28,15 @@ properties/2/replication_mode = 2
 properties/3/path = NodePath(".:points")
 properties/3/spawn = true
 properties/3/replication_mode = 2
+properties/4/path = NodePath("BarrilGame/BarrelStart/MeshInstance3D:visible")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_qhyfr"]
+size = Vector3(1, 0.1, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7txfn"]
+data = PackedVector3Array(-0.5, 0.05, 2, 0.5, 0.05, 2, -0.5, -0.05, 2, 0.5, 0.05, 2, 0.5, -0.05, 2, -0.5, -0.05, 2, 0.5, 0.05, -2, -0.5, 0.05, -2, 0.5, -0.05, -2, -0.5, 0.05, -2, -0.5, -0.05, -2, 0.5, -0.05, -2, 0.5, 0.05, 2, 0.5, 0.05, -2, 0.5, -0.05, 2, 0.5, 0.05, -2, 0.5, -0.05, -2, 0.5, -0.05, 2, -0.5, 0.05, -2, -0.5, 0.05, 2, -0.5, -0.05, -2, -0.5, 0.05, 2, -0.5, -0.05, 2, -0.5, -0.05, -2, 0.5, 0.05, 2, -0.5, 0.05, 2, 0.5, 0.05, -2, -0.5, 0.05, 2, -0.5, 0.05, -2, 0.5, 0.05, -2, -0.5, -0.05, 2, 0.5, -0.05, 2, -0.5, -0.05, -2, 0.5, -0.05, 2, 0.5, -0.05, -2, -0.5, -0.05, -2)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8yim8"]
 height = 0.05
@@ -31,12 +46,6 @@ radius = 0.8
 top_radius = 0.8
 bottom_radius = 0.8
 height = 0.05
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e01l5"]
-transparency = 1
-blend_mode = 3
-albedo_color = Color(0.999999, 0.979365, 0.499635, 1)
-metallic = 0.21
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l12u6"]
 shader = ExtResource("5_gidye")
@@ -58,16 +67,69 @@ reflected_light_source = 2
 script = ExtResource("1_sa3fu")
 player_scene = ExtResource("2_btk2o")
 
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Fundo" type="Sprite2D" parent="Hud"]
+position = Vector2(576, 324)
+texture = ExtResource("3_efqg3")
+
+[node name="Host" type="Button" parent="Hud"]
+offset_left = 510.0
+offset_top = 464.0
+offset_right = 647.0
+offset_bottom = 502.0
+text = "Host Server"
+
+[node name="Join" type="Button" parent="Hud"]
+offset_left = 508.0
+offset_top = 349.0
+offset_right = 647.0
+offset_bottom = 389.0
+text = "Join Server"
+
+[node name="TextEdit" type="TextEdit" parent="Hud"]
+offset_left = 462.0
+offset_top = 296.0
+offset_right = 697.0
+offset_bottom = 333.0
+
+[node name="Title" type="Label" parent="Hud"]
+offset_left = 337.0
+offset_top = 164.0
+offset_right = 815.0
+offset_bottom = 258.0
+text = "Piratas VS Aliens"
+label_settings = SubResource("LabelSettings_7phof")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MinigameController" type="Node3D" parent="."]
 script = ExtResource("3_pp0pw")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="MinigameController"]
 replication_config = SubResource("SceneReplicationConfig_8pohd")
 
+[node name="BarrilGame" parent="MinigameController" instance=ExtResource("4_nkahd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4757, 0, -2.10212)
+
+[node name="BarrelStart" type="Area3D" parent="MinigameController/BarrilGame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0205, 0, 1.73196)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MinigameController/BarrilGame/BarrelStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.239534, 0.369968)
+mesh = SubResource("BoxMesh_qhyfr")
+surface_material_override/0 = ExtResource("5_j3m4u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MinigameController/BarrilGame/BarrelStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.239534, 0.369968)
+shape = SubResource("ConcavePolygonShape3D_7txfn")
+
 [node name="Cannons" type="Node3D" parent="MinigameController"]
 
 [node name="CannonStart" type="Area3D" parent="MinigameController/Cannons"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.55769, -0.104349, -4.87754)
+visible = false
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="MinigameController/Cannons/CannonStart"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0.439)
@@ -77,12 +139,10 @@ shape = SubResource("CylinderShape3D_8yim8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0.439)
 mesh = SubResource("CylinderMesh_vi7y0")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_e01l5")
+surface_material_override/0 = ExtResource("5_j3m4u")
 
 [node name="Camera3D" type="Camera3D" parent="MinigameController/Cannons"]
 transform = Transform3D(1, 0, 0, 0, 0.976654, -0.214821, 0, 0.214821, 0.976654, 7.44662, 1.88543, -3.17305)
-
-[node name="EnemyShipPoint" type="Node3D" parent="MinigameController"]
 
 [node name="EnemysShip" parent="MinigameController" instance=ExtResource("4_jmuit")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5, 0.632068, -35)
@@ -91,28 +151,6 @@ visible = false
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
 spawn_path = NodePath("..")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Host" type="Button" parent="CanvasLayer"]
-offset_left = 535.0
-offset_top = 385.0
-offset_right = 672.0
-offset_bottom = 423.0
-text = "Host Server"
-
-[node name="Join" type="Button" parent="CanvasLayer"]
-offset_left = 533.0
-offset_top = 270.0
-offset_right = 672.0
-offset_bottom = 310.0
-text = "Join Server"
-
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
-offset_left = 487.0
-offset_top = 217.0
-offset_right = 722.0
-offset_bottom = 254.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.492727, 0.870184, 0, -0.870184, 0.492727, 9.707, 50, 8.538)
@@ -128,7 +166,10 @@ transform = Transform3D(0.99897, 0, 0.0453804, 0, 1, 0, -0.0453804, 0, 0.99897, 
 [node name="Ship" parent="." instance=ExtResource("6_yxho2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35496, 0, 0)
 
+
+[connection signal="stop_player_flag" from="." to="." method="_on_stop_player_flag"]
+[connection signal="pressed" from="Hud/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Hud/Join" to="." method="_on_join_pressed"]
+[connection signal="body_entered" from="MinigameController/BarrilGame/BarrelStart" to="MinigameController" method="_on_barrel_start_body_entered"]
 [connection signal="body_entered" from="MinigameController/Cannons/CannonStart" to="MinigameController" method="_on_cannon_start_body_entered"]
 [connection signal="body_exited" from="MinigameController/Cannons/CannonStart" to="MinigameController" method="_on_cannon_start_body_exited"]
-[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]

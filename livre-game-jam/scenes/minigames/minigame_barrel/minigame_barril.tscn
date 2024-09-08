@@ -20,7 +20,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.61108, 0)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
-autostart = true
 
 [node name="FruitParents" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.9672, 0)
