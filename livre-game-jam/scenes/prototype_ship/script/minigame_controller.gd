@@ -20,7 +20,7 @@ signal finished_barrel
 	}
 }
 
-@onready var EventList = ["BARREL"]
+@onready var EventList = ["CANNON_WAR", "BARREL"]
 
 const MINIGAMES_PATH = ["res://scenes/minigames/ai_minigame/follow_path.tscn", "res://scenes/minigames/cannon_minigame/cannonball_minigame.tscn", "res://scenes/minigames/minigame_barrel/minigame_barril.tscn"]
 
