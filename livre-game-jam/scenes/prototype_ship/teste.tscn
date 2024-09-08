@@ -65,5 +65,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.27856, 0)
 
 [node name="navio_pequeno" parent="." instance=ExtResource("6_b5xhp")]
 
+[node name="Player" parent="." instance=ExtResource("2_btk2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00257, 1.72938, 0)
+
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
