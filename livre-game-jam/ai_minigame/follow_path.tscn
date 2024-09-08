@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvuvkdkmbv6oi"]
+
+[ext_resource type="Script" path="res://ai_minigame/follow_path.gd" id="1_1msev"]
+[ext_resource type="Script" path="res://ai_minigame/enemy.gd" id="2_875m6"]
+[ext_resource type="Script" path="res://ai_minigame/player.gd" id="3_32fo6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qy7is"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l13us"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_00j3a"]
+material = SubResource("StandardMaterial3D_l13us")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25ne0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ht5f"]
+albedo_color = Color(0, 0.521569, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mbptg"]
+material = SubResource("StandardMaterial3D_7ht5f")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_1fg4s"]
+vertices = PackedVector3Array(-14.5, -4, -14.5, -14.5, -4, 14.5, 14.5, -4, 14.5, 14.5, -4, -14.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_height = 5.0
+agent_max_climb = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhuxi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g8bs4"]
+
+[node name="follow_path" type="Node" groups=["enemies"]]
+script = ExtResource("1_1msev")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0, 0, 1, 0, 8, 8)
+shadow_enabled = true
+
+[node name="Enemy" type="CharacterBody3D" parent="." groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("2_875m6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
+shape = SubResource("CapsuleShape3D_qy7is")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
+mesh = SubResource("CapsuleMesh_00j3a")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy"]
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["players"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 11)
+script = ExtResource("3_32fo6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_25ne0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_mbptg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.997784, 0.0654569, 0.0119568, -0.0600394, 0.808184, 0.585861, 0.0286854, -0.585281, 0.810323, -2.38419e-07, 28, 35)
+current = true
+fov = 25.3125
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+navigation_mesh = SubResource("NavigationMesh_1fg4s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, -5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_vhuxi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+mesh = SubResource("BoxMesh_g8bs4")
+
+[connection signal="player_captured" from="." to="." method="_on_player_captured"]

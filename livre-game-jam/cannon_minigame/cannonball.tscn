@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://e0x5oqbw1tb0"]
+
+[ext_resource type="Script" path="res://cannon_minigame/cannonball.gd" id="1_1iqtc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdqym"]
+metallic = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_yucpt"]
+material = SubResource("StandardMaterial3D_gdqym")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5g78q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_45gew"]
+
+[node name="Cannonball" type="RigidBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_1iqtc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_yucpt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_5g78q")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_45gew")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_minhas_bolas_body_entered"]
