@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d5623dkeisnc"]
 
-[ext_resource type="PackedScene" uid="uid://c050u7yhun235" path="res://cannon_minigame/cannon_player.tscn" id="2_3dfd2"]
-[ext_resource type="PackedScene" uid="uid://c5ug8ln40g8e7" path="res://cannon_minigame/enemys_ship.tscn" id="3_qxult"]
+[ext_resource type="PackedScene" uid="uid://c050u7yhun235" path="res://scenes/cannon_minigame/cannon_player.tscn" id="2_3dfd2"]
+[ext_resource type="PackedScene" uid="uid://c5ug8ln40g8e7" path="res://scenes/cannon_minigame/enemys_ship.tscn" id="3_qxult"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1s75u"]
 
@@ -31,6 +31,8 @@ shadow_enabled = true
 
 [node name="CannonPlayer" parent="." instance=ExtResource("2_3dfd2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.37549, 28.873)
+script = null
 
 [node name="EnemysShip" parent="." instance=ExtResource("3_qxult")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.4, 0)
+script = null

@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://b2fi2m0gas6bx"]
 
-[ext_resource type="Script" path="res://teste.gd" id="1_sa3fu"]
-[ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://player.tscn" id="2_btk2o"]
-[ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://ocean.tscn" id="4_ios3a"]
+[ext_resource type="Script" path="res://scenes/prototype_ship/script/teste.gd" id="1_sa3fu"]
+[ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_btk2o"]
+[ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/prototype_ship/ocean.tscn" id="4_ios3a"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="5_gidye"]
-[ext_resource type="PackedScene" uid="uid://ilrpfa0adgie" path="res://navio_pequen_glb.tscn" id="6_b5xhp"]
+[ext_resource type="PackedScene" uid="uid://ilrpfa0adgie" path="res://scenes/prototype_ship/navio_pequen_glb.tscn" id="6_b5xhp"]
 [ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="6_umlvv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l12u6"]
@@ -28,7 +28,6 @@ script = ExtResource("1_sa3fu")
 player_scene = ExtResource("2_btk2o")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://player.tscn")
 spawn_path = NodePath("..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 
-var scene_to_instance = preload("res://minigame_barrel/fruta.tscn")
+var scene_to_instance = preload("res://scenes/minigame_barrel/fruta.tscn")
 
 func _ready():
 	var fruits_parent = Node3D.new()

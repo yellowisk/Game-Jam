@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://bvuvkdkmbv6oi"]
 
-[ext_resource type="Script" path="res://ai_minigame/follow_path.gd" id="1_1msev"]
-[ext_resource type="Script" path="res://ai_minigame/enemy.gd" id="2_875m6"]
-[ext_resource type="Script" path="res://ai_minigame/player.gd" id="3_32fo6"]
+[ext_resource type="Script" path="res://scenes/ai_minigame/scripts/follow_path.gd" id="1_kxehx"]
+[ext_resource type="Script" path="res://scenes/ai_minigame/scripts/enemy.gd" id="2_875m6"]
+[ext_resource type="Script" path="res://scenes/ai_minigame/scripts/player.gd" id="3_32fo6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qy7is"]
 
@@ -27,11 +27,13 @@ agent_height = 5.0
 agent_max_climb = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vhuxi"]
+size = Vector3(30, 1, 30)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g8bs4"]
+size = Vector3(30, 1, 30)
 
 [node name="follow_path" type="Node" groups=["enemies"]]
-script = ExtResource("1_1msev")
+script = ExtResource("1_kxehx")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
@@ -71,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 navigation_mesh = SubResource("NavigationMesh_1fg4s")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, -5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_vhuxi")
@@ -81,5 +83,3 @@ mesh = SubResource("BoxMesh_g8bs4")
 
 [node name="Plank" type="Marker3D" parent="."]
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 16, 0, -16)
-
-[connection signal="player_captured" from="." to="." method="_on_player_captured"]

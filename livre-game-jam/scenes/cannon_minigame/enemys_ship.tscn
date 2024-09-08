@@ -1,11 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5ug8ln40g8e7"]
 
-[ext_resource type="Script" path="res://cannon_minigame/enemys_ship.gd" id="1_wphtp"]
-[ext_resource type="PackedScene" uid="uid://bfbfaqa840517" path="res://cannon_minigame/target.tscn" id="2_w3qud"]
+[ext_resource type="Script" path="res://scenes/cannon_minigame/scripts/enemys_ship.gd" id="1_wphtp"]
+[ext_resource type="PackedScene" uid="uid://bfbfaqa840517" path="res://scenes/cannon_minigame/target.tscn" id="2_w3qud"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j45ig"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n0o4o"]
+size = Vector3(50, 14, 1)
 
 [node name="EnemysShip" type="StaticBody3D"]
 script = ExtResource("1_wphtp")
@@ -16,7 +17,6 @@ mesh = SubResource("BoxMesh_j45ig")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(50, 0, 0, 0, 14, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_n0o4o")
 
 [node name="Target" parent="." instance=ExtResource("2_w3qud")]

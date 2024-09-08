@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var marker_3d = $Pivot/Marker3D
 
-const CANNONBALL_SCENE = preload("res://cannon_minigame/cannonball.tscn")
+const CANNONBALL_SCENE = preload("res://scenes/cannon_minigame/cannonball.tscn")
 const MAX_ROTATION_X = 30.0
 const MIN_ROTATION_X = -30.0
 const MAX_ROTATION_Y = 40.0

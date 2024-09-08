@@ -1,19 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://e0x5oqbw1tb0"]
 
-[ext_resource type="Script" path="res://cannon_minigame/cannonball.gd" id="1_1iqtc"]
+[ext_resource type="Script" path="res://scenes/cannon_minigame/scripts/cannonball.gd" id="1_1iqtc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdqym"]
 metallic = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_yucpt"]
 material = SubResource("StandardMaterial3D_gdqym")
+radius = 0.25
+height = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5g78q"]
+radius = 0.25
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_45gew"]
 
 [node name="Cannonball" type="RigidBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_1iqtc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
