@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://uqr1omiluk6l"]
+
+[ext_resource type="PackedScene" uid="uid://jfveg4yfwxs3" path="res://models/canhão.glb" id="1_jj80q"]
+[ext_resource type="Texture2D" uid="uid://djm604dalvqyd" path="res://models/textures/cannon_base_texture.png" id="2_2egd2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxdlk"]
+albedo_texture = ExtResource("2_2egd2")
+
+[node name="canhão" instance=ExtResource("1_jj80q")]
+
+[node name="Base" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_bxdlk")

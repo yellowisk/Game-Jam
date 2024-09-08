@@ -12,7 +12,6 @@ const MIN_ROTATION_Y = -40.0
 var current_rotation_x = 0.0
 var current_rotation_y = 0.0
 
-
 func _physics_process(delta: float):
 	if Input.is_action_pressed("move_right"):
 		current_rotation_y -= 2
@@ -35,12 +34,12 @@ func _physics_process(delta: float):
 		rotation_degrees.x = current_rotation_x
 
 	if Input.is_action_just_pressed("shoot"):
+		print(get_child_count())
 		_shoot_cannon_ball()
-		
 
 func _shoot_cannon_ball():
 	var cannonball_node = CANNONBALL_SCENE.instantiate()
 	cannonball_node.global_position = marker_3d.global_position
 	cannonball_node.linear_velocity = global_basis.z * -30
 	get_parent().add_child(cannonball_node)
-	cannonball_node.add_to_group("projeteis")	
+	cannonball_node.add_to_group("projeteis")

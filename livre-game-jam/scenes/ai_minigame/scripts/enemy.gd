@@ -21,5 +21,6 @@ func throw(boolean: bool):
 
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
-	if self.global_position.distance_squared_to(target_location) < 1.5 && throw:
-		queue_free()
+	print(self.global_position.distance_squared_to(target_location))
+	if self.global_position.distance_squared_to(target_location) < 1.5 && throw_mode:
+		pass
