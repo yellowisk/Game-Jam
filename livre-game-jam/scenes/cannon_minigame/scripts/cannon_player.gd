@@ -1,45 +1,40 @@
 extends CharacterBody3D
 
-@onready var marker_3d = $Pivot/Marker3D
+@onready var start_rotation_z = $"canhão/Cannon".rotation_degrees.z
+@onready var start_rotation_y = $"canhão/Cannon".rotation_degrees.y
 
 const CANNONBALL_SCENE = preload("res://scenes/cannon_minigame/cannonball.tscn")
-const MAX_ROTATION_X = 30.0
-const MIN_ROTATION_X = -30.0
-const MAX_ROTATION_Y = 40.0
-const MIN_ROTATION_Y = -40.0
+const MAX_ROTATION_Z = 10.0
+const MIN_ROTATION_Z = -30.0
+const MAX_ROTATION_Y = 125.0
+const MIN_ROTATION_Y = 55.0
 
-# Variables to store the current rotation
-var current_rotation_x = 0.0
-var current_rotation_y = 0.0
+var CAN_SHOOT = true
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	if Input.is_action_pressed("move_right"):
-		current_rotation_y -= 2
-		current_rotation_y = clamp(current_rotation_y, MIN_ROTATION_Y, MAX_ROTATION_Y)
-		rotation_degrees.y = current_rotation_y
+		rotation_degrees.y = clamp(rotation_degrees.y - 1.5, MIN_ROTATION_Y + start_rotation_y, MAX_ROTATION_Y + start_rotation_y)
 
 	if Input.is_action_pressed("move_left"):
-		current_rotation_y += 2
-		current_rotation_y = clamp(current_rotation_y, MIN_ROTATION_Y, MAX_ROTATION_Y)
-		rotation_degrees.y = current_rotation_y
+		rotation_degrees.y = clamp(rotation_degrees.y + 1.5,  MIN_ROTATION_Y + start_rotation_y, MAX_ROTATION_Y + start_rotation_y)
 
 	if Input.is_action_pressed("move_up"):
-		current_rotation_x -= 2
-		current_rotation_x = clamp(current_rotation_x, MIN_ROTATION_X, MAX_ROTATION_X)
-		rotation_degrees.x = current_rotation_x
+		$"canhão/Cannon".rotation_degrees.z = clamp($"canhão/Cannon".rotation_degrees.z + 1, MIN_ROTATION_Z + start_rotation_z, MAX_ROTATION_Z + start_rotation_y)
 
 	if Input.is_action_pressed("move_down"):
-		current_rotation_x += 2
-		current_rotation_x = clamp(current_rotation_x, MIN_ROTATION_X, MAX_ROTATION_X)
-		rotation_degrees.x = current_rotation_x
+		$"canhão/Cannon".rotation_degrees.z = clamp($"canhão/Cannon".rotation_degrees.z - 1, MIN_ROTATION_Z + start_rotation_z, MAX_ROTATION_Z + start_rotation_y)
 
-	if Input.is_action_just_pressed("shoot"):
-		print(get_child_count())
+	if Input.is_action_just_pressed("shoot") and CAN_SHOOT:
+		CAN_SHOOT = false
 		_shoot_cannon_ball()
+		await get_tree().create_timer(1.2).timeout
+		CAN_SHOOT = true
 
 func _shoot_cannon_ball():
 	var cannonball_node = CANNONBALL_SCENE.instantiate()
-	cannonball_node.global_position = marker_3d.global_position
-	cannonball_node.linear_velocity = global_basis.z * -30
 	get_parent().add_child(cannonball_node)
+	cannonball_node.global_position = $"canhão/Cannon".global_position
+	print($"canhão/Cannon".rotation_degrees.z - start_rotation_z)
+	cannonball_node.linear_velocity = global_basis.x.rotated(global_basis.z, deg_to_rad($"canhão/Cannon".rotation_degrees.z - start_rotation_z)) * 22
+	
 	cannonball_node.add_to_group("projeteis")
