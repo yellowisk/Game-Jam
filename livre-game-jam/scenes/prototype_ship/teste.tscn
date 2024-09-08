@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/teste.gd" id="1_sa3fu"]
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_btk2o"]
-[ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/prototype_ship/ocean.tscn" id="4_ios3a"]
+[ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/main_scene/ocean.tscn" id="4_ios3a"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="5_gidye"]
 [ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="6_umlvv"]
 [ext_resource type="PackedScene" uid="uid://qd4pui8hx7ml" path="res://scenes/ship/ship.tscn" id="6_yxho2"]
@@ -13,12 +13,12 @@ shader_parameter/sky_color = Color(0.104505, 0.474991, 0.748132, 1)
 shader_parameter/horizon_color = Color(0.597294, 0.301435, 0.313051, 1)
 shader_parameter/skyTexture = ExtResource("6_umlvv")
 
-[sub_resource type="Sky" id="Sky_1e3tw"]
+[sub_resource type="Sky" id="Sky_pgqww"]
 sky_material = SubResource("ShaderMaterial_l12u6")
 
 [sub_resource type="Environment" id="Environment_xd0cc"]
 background_mode = 2
-sky = SubResource("Sky_1e3tw")
+sky = SubResource("Sky_pgqww")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 2

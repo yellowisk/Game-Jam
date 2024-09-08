@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://bovt58k1ujgm6"]
+
+[ext_resource type="Script" path="res://scenes/main_scene/script/main.gd" id="1_2pvoi"]
+[ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/main_scene/ocean.tscn" id="1_nab8x"]
+[ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_4x84p"]
+[ext_resource type="PackedScene" uid="uid://qd4pui8hx7ml" path="res://scenes/ship/ship.tscn" id="2_5esqt"]
+[ext_resource type="PackedScene" uid="uid://bfo5ddh7c4naw" path="res://scenes/main_scene/hud.tscn" id="3_2c5dh"]
+[ext_resource type="Shader" path="res://shaders/sky.gdshader" id="4_ge8x7"]
+[ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="5_qvc0s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_deoa3"]
+shader = ExtResource("4_ge8x7")
+shader_parameter/sky_color = Color(0.104505, 0.474991, 0.748132, 1)
+shader_parameter/horizon_color = Color(0.597294, 0.301435, 0.313051, 1)
+shader_parameter/skyTexture = ExtResource("5_qvc0s")
+
+[sub_resource type="Sky" id="Sky_1e3tw"]
+sky_material = SubResource("ShaderMaterial_deoa3")
+
+[sub_resource type="Environment" id="Environment_rolrg"]
+background_mode = 2
+sky = SubResource("Sky_1e3tw")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.0
+reflected_light_source = 2
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_2pvoi")
+player_scene = ExtResource("2_4x84p")
+
+[node name="Ocean" parent="." instance=ExtResource("1_nab8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.68005, 0)
+
+[node name="Ship" parent="." instance=ExtResource("2_5esqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247455, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Ship"]
+_spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
+spawn_path = NodePath("../..")
+
+[node name="Hud" parent="." instance=ExtResource("3_2c5dh")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.43804, 34.6178)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.492727, 0.870184, 0, -0.870184, 0.492727, 9.707, 50, 8.538)
+light_color = Color(0.876256, 0.840835, 0.652193, 1)
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rolrg")
