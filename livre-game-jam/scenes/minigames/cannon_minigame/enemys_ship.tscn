@@ -9,4 +9,3 @@ gravity_scale = 0.0
 script = ExtResource("1_wphtp")
 
 [node name="navio_pequeno" parent="." instance=ExtResource("3_jo6lm")]
-script = null

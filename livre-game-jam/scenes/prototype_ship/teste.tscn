@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2fi2m0gas6bx"]
+[gd_scene load_steps=15 format=3 uid="uid://b2fi2m0gas6bx"]
 
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/teste.gd" id="1_sa3fu"]
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_btk2o"]
@@ -8,28 +8,68 @@
 [ext_resource type="Texture2D" uid="uid://dy2frhq0enu86" path="res://textures/sky_day.png" id="6_umlvv"]
 [ext_resource type="PackedScene" uid="uid://qd4pui8hx7ml" path="res://scenes/ship/ship.tscn" id="6_yxho2"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8yim8"]
+height = 0.05
+radius = 0.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vi7y0"]
+top_radius = 0.8
+bottom_radius = 0.8
+height = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e01l5"]
+transparency = 1
+blend_mode = 3
+albedo_color = Color(0.999999, 0.979365, 0.499635, 1)
+metallic = 0.21
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l12u6"]
 shader = ExtResource("5_gidye")
 shader_parameter/sky_color = Color(0.104505, 0.474991, 0.748132, 1)
 shader_parameter/horizon_color = Color(0.597294, 0.301435, 0.313051, 1)
 shader_parameter/skyTexture = ExtResource("6_umlvv")
 
-[sub_resource type="Sky" id="Sky_pgqww"]
+[sub_resource type="Sky" id="Sky_1e3tw"]
 sky_material = SubResource("ShaderMaterial_l12u6")
 
 [sub_resource type="Environment" id="Environment_xd0cc"]
 background_mode = 2
-sky = SubResource("Sky_pgqww")
+sky = SubResource("Sky_1e3tw")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 2
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" groups=["players"]]
 script = ExtResource("1_sa3fu")
 player_scene = ExtResource("2_btk2o")
 
 [node name="MinigameController" type="Node3D" parent="."]
 script = ExtResource("3_pp0pw")
+
+[node name="Cannons" type="Node3D" parent="MinigameController"]
+
+[node name="CannonStart" type="Area3D" parent="MinigameController/Cannons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.55769, -0.104349, -4.87754)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MinigameController/Cannons/CannonStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0.439)
+shape = SubResource("CylinderShape3D_8yim8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MinigameController/Cannons/CannonStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0.439)
+mesh = SubResource("CylinderMesh_vi7y0")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_e01l5")
+
+[node name="Camera3D" type="Camera3D" parent="MinigameController/Cannons"]
+transform = Transform3D(1, 0, 0, 0, 0.976654, -0.214821, 0, 0.214821, 0.976654, 7.44662, 1.88543, -3.17305)
+visible = false
+
+[node name="EnemyShipPoint" type="Node3D" parent="MinigameController"]
+
+[node name="EnemysShip" parent="MinigameController" instance=ExtResource("4_jmuit")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5, 3.7, -35)
+visible = false
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
@@ -71,5 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.27856, 0)
 [node name="Ship" parent="." instance=ExtResource("6_yxho2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35496, 0, 0)
 
+[connection signal="body_entered" from="MinigameController/Cannons/CannonStart" to="MinigameController" method="_on_cannon_start_body_entered"]
+[connection signal="body_exited" from="MinigameController/Cannons/CannonStart" to="MinigameController" method="_on_cannon_start_body_exited"]
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
