@@ -16,6 +16,8 @@ const JUMP_VELOCITY = 7
 var is_capt = false
 var is_hold = false
 var is_on_event = false
+var is_on_wheel = false
+var once = false
 var holder:CharacterBody3D = null
 
 func captured(body: CharacterBody3D):
@@ -28,8 +30,6 @@ func throw():
 	holder.is_capt = false
 	holder = null
 	is_hold = false
-	
-	
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -44,6 +44,12 @@ func _physics_process(delta: float) -> void:
 		
 		if is_on_event:
 			return;
+			
+		if is_on_wheel:
+			if not once:
+				position += Vector3(2, 0, 0)
+				once = true
+			current_animation = "jump"
 		
 		if Input.is_action_just_released("quit"):
 			$"../".exit_game(name.to_int()) 
@@ -60,39 +66,40 @@ func _physics_process(delta: float) -> void:
 				
 			if $Body/RayCastBottom.is_colliding() and not $Body/RayCastMid.is_colliding():
 				velocity.y = JUMP_VELOCITY * 2.0/3
-
-			# Get the input direction and handle the movement/deceleration.
-			# As good practice, you should replace UI actions with custom gameplay actions.
-			var input_dir := Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
-									Input.get_action_strength("move_down") - Input.get_action_strength("move_up"))
-			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-			if direction:
-				velocity.x = direction.x * SPEED
-				velocity.z = direction.z * SPEED
-				current_animation = "run"
 			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				velocity.z = move_toward(velocity.z, 0, SPEED)
-				current_animation = "idle"
-			$Body.rotation.y = lerp_angle($Body.rotation.y, atan2(direction.x, direction.z), delta * ANGULAR_ACELERATION)
-			
-		if Input.is_action_just_pressed("shoot"):
-			if action != null:
-				action.call(self)
-			elif is_hold:
-				throw()
-			if is_on_floor():
-					velocity.y = JUMP_VELOCITY
-					current_animation = "jump"
-			elif area.has_overlapping_bodies():
-				var body = area.get_overlapping_bodies()[0]
-				if body.is_in_group("players") and body.name != self.name:
-					area_colision.disabled = true
-					body.captured(self)
-					is_hold = true
-					
-		move_and_slide()
-	animation.current_animation = current_animation
+
+				# Get the input direction and handle the movement/deceleration.
+				# As good practice, you should replace UI actions with custom gameplay actions.
+				var input_dir := Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
+										Input.get_action_strength("move_down") - Input.get_action_strength("move_up"))
+				var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+				if direction:
+					velocity.x = direction.x * SPEED
+					velocity.z = direction.z * SPEED
+					current_animation = "run"
+				else:
+					velocity.x = move_toward(velocity.x, 0, SPEED)
+					velocity.z = move_toward(velocity.z, 0, SPEED)
+					current_animation = "idle"
+				$Body.rotation.y = lerp_angle($Body.rotation.y, atan2(direction.x, direction.z), delta * ANGULAR_ACELERATION)
+				
+			if Input.is_action_just_pressed("shoot"):
+				if action != null:
+					action.call(self)
+				elif is_hold:
+					throw()
+				if is_on_floor():
+						velocity.y = JUMP_VELOCITY
+						current_animation = "jump"
+				elif area.has_overlapping_bodies():
+					var body = area.get_overlapping_bodies()[0]
+					if body.is_in_group("players") and body.name != self.name:
+						area_colision.disabled = true
+						body.captured(self)
+						is_hold = true
+						
+			move_and_slide()
+		animation.current_animation = current_animation
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	pass # Replace with function body.
