@@ -1,6 +1,10 @@
 extends Node3D
 
+@export var points = 0;
+
 @onready var ENEMY_SHIP = $"EnemysShip";
+
+@onready var CANNON_PLAYER = load("res://scenes/minigames/cannon_minigame/scripts/cannon_player.gd")
 
 @onready var MinigameEvent =  {
 	CANNON_WAR = {
@@ -43,12 +47,25 @@ func _on_cannon_start_body_entered(body):
 func _on_cannon_start_body_exited(body):
 	body.action = null;
 		
-func start_war(_player):
+func start_war(player):
 	ENEMY_SHIP.visible = true;
-	ENEMY_SHIP.start_minigame();
-	
+	player.visible = false;
+	player.is_on_event = true;
 	MinigameEvent.CANNON_WAR.cam.make_current();
+	var canhao_player = $"../Ship/canhaoMinigame";
+	canhao_player.player_controlling = true;
 	
-func end_war():
+	var missing = await ENEMY_SHIP.start_minigame();
+	
+	canhao_player.player_controlling = false;
+	
+	points += 3*(4-missing);
+	
+	end_war(player);
+	
+func end_war(player):
+	
+	player.visible = true;
+	player.is_on_event = false;
 	MinigameEvent.CANNON_WAR.cam.clear_current();
 	$"EnemysShip".visible = false;

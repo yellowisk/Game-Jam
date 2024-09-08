@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/minigames/cannon_minigame/scripts/enemys_ship.gd" id="1_wphtp"]
 [ext_resource type="PackedScene" uid="uid://qd4pui8hx7ml" path="res://scenes/ship/ship.tscn" id="2_boef6"]
 
-[node name="EnemysShip" type="RigidBody3D"]
+[node name="EnemysShip" type="RigidBody3D" groups=["projeteis"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 gravity_scale = 0.0
 script = ExtResource("1_wphtp")

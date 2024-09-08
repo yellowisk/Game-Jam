@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c050u7yhun235" path="res://scenes/minigames/cannon_minigame/cannon_player.tscn" id="2_3dfd2"]
 [ext_resource type="PackedScene" uid="uid://c5ug8ln40g8e7" path="res://scenes/minigames/cannon_minigame/enemys_ship.tscn" id="3_qxult"]
-[ext_resource type="PackedScene" uid="uid://ilrpfa0adgie" path="res://scenes/ship/navio_pequen_glb.tscn" id="4_0w7a7"]
+[ext_resource type="PackedScene" uid="uid://dmhnwdtfs8nj2" path="res://scenes/ship/navio_pequen_glb.tscn" id="4_0w7a7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1s75u"]
 
