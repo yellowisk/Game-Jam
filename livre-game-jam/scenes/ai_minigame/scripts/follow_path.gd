@@ -12,11 +12,7 @@ func _process(delta: float) -> void:
 	get_tree().call_group("enemies", "update_target_location", plank.global_position if capt else player.global_transform.origin)
 	get_tree().call_group("players", "enable_movement", false if capt else true)
 	get_tree().call_group("players", "get_lerp", enemy)
-	get_tree().call_group("enemies", "throw", true if capt else false)
-
-
-
-
+	get_tree().call_group("players", "throw", plank if capt else null)
 
 func _on_player_captured() -> void:
 	capt = true

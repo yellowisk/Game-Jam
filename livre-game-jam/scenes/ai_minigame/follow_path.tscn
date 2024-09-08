@@ -64,9 +64,9 @@ shape = SubResource("CapsuleShape3D_25ne0")
 mesh = SubResource("CapsuleMesh_mbptg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.997784, 0.0654569, 0.0119568, -0.0600394, 0.808184, 0.585861, 0.0286854, -0.585281, 0.810323, -2.38419e-07, 28, 35)
+transform = Transform3D(0.999954, 8.12705e-05, 0.00958077, -0.00273831, 0.960678, 0.277651, -0.00918147, -0.277664, 0.960634, 0.323746, 5.12177, 15.627)
 current = true
-fov = 25.3125
+far = 50.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -85,3 +85,4 @@ mesh = SubResource("BoxMesh_g8bs4")
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 14.363, 1.05594, -14.4363)
 
 [connection signal="player_captured" from="." to="." method="_on_player_captured"]
+[connection signal="aaa" from="Player" to="." method="_on_player_aaa"]
