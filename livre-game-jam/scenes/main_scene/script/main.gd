@@ -8,6 +8,7 @@ func host() -> void:
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(add_player)
 	add_player()
+	Global.is_on_game = true
 
 func join(ip) -> void:
 	peer.create_client("127.0.0.1" if ip == "" else ip,1027)
@@ -16,8 +17,7 @@ func join(ip) -> void:
 func add_player(id = 1):
 	var player = player_scene.instantiate()
 	player.name = str(id)
-	player.position.x += id
-	player.position.y = 10
+	player.position.y += 1
 	call_deferred("add_child", player)
 	
 func exit_game(id):	
