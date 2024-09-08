@@ -5,7 +5,7 @@ const SPEED = 10.0
 const ANGULAR_ACELERATION = 7
 const JUMP_VELOCITY = 7
 @onready var cam = $SpringArm3D/Camera3D
-
+@onready var animation = $Body/PlayerRig/AnimationPlayer
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 	
@@ -22,8 +22,10 @@ func _physics_process(delta: float) -> void:
 			$"../".exit_game(name.to_int()) 
 			get_tree().quit()
 			
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
+		if Input.is_action_just_pressed("ui_accept"):
+			if is_on_floor():
+				velocity.y = JUMP_VELOCITY
+			animation.current_animation = "jump"
 			
 		if $Body/RayCastBottom.is_colliding() and not $Body/RayCastTop.is_colliding():
 			if $Body/RayCastMid.is_colliding():
@@ -38,9 +40,11 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
+			animation.current_animation = "run"
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
+			animation.current_animation = "idle"
 		$Body.rotation.y = lerp_angle($Body.rotation.y, atan2(direction.x, direction.z), delta * ANGULAR_ACELERATION)
 		
 		move_and_slide()
