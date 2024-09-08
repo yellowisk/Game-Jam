@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c16olurshplqx"]
 
-[ext_resource type="Script" path="res://scenes/minigame_barrel/scripts/fruta.gd" id="1_jlof0"]
+[ext_resource type="Script" path="res://scenes/minigames/minigame_barrel/scripts/fruta.gd" id="1_jlof0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_xfyyp"]
 radius = 0.3

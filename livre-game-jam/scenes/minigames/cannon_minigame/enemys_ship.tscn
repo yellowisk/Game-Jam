@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5ug8ln40g8e7"]
 
-[ext_resource type="Script" path="res://scenes/cannon_minigame/scripts/enemys_ship.gd" id="1_wphtp"]
+[ext_resource type="Script" path="res://scenes/minigames/cannon_minigame/scripts/enemys_ship.gd" id="1_wphtp"]
 [ext_resource type="PackedScene" uid="uid://ilrpfa0adgie" path="res://scenes/ship/navio_pequen_glb.tscn" id="3_jo6lm"]
 
 [node name="EnemysShip" type="RigidBody3D"]

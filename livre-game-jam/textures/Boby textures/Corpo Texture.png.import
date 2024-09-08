@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://di52ew1ury0ly"
-path.s3tc="res://.godot/imported/Corpo Texture.png-6dc17766326efb66d8fc5d40ff61dc13.s3tc.ctex"
+path.s3tc="res://.godot/imported/Corpo Texture.png-140ca907a86d241f0a7a64b6042af688.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/Corpo Texture.png"
-dest_files=["res://.godot/imported/Corpo Texture.png-6dc17766326efb66d8fc5d40ff61dc13.s3tc.ctex"]
+source_file="res://textures/Boby textures/Corpo Texture.png"
+dest_files=["res://.godot/imported/Corpo Texture.png-140ca907a86d241f0a7a64b6042af688.s3tc.ctex"]
 
 [params]
 

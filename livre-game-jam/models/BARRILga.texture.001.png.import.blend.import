@@ -3,7 +3,11 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
+<<<<<<< HEAD
 uid="uid://dhgi40syrftiy"
+=======
+uid="uid://bsfhfs81ehqb3"
+>>>>>>> 862dabc1002d290a8a7c5e12319dce185f1a0142
 path="res://.godot/imported/BARRILga.texture.001.png.import.blend-160cd1a1a91803439f4ea0f1c679cd11.scn"
 
 [deps]

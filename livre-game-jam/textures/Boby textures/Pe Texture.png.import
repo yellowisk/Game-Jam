@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clyo1egy83bs1"
-path.s3tc="res://.godot/imported/Braco Texture.png-f434ee8c845e9d98eea2ce22bd8d8b21.s3tc.ctex"
+uid="uid://d2vi5k2yg5pt"
+path.s3tc="res://.godot/imported/Pe Texture.png-c3a67f6eb6caba8aab1f2b4ed41c26e8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/Braco Texture.png"
-dest_files=["res://.godot/imported/Braco Texture.png-f434ee8c845e9d98eea2ce22bd8d8b21.s3tc.ctex"]
+source_file="res://textures/Boby textures/Pe Texture.png"
+dest_files=["res://.godot/imported/Pe Texture.png-c3a67f6eb6caba8aab1f2b4ed41c26e8.s3tc.ctex"]
 
 [params]
 

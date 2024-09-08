@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfbfaqa840517"]
 
-[ext_resource type="Script" path="res://scenes/cannon_minigame/scripts/target.gd" id="1_ctsi4"]
+[ext_resource type="Script" path="res://scenes/minigames/cannon_minigame/scripts/target.gd" id="1_ctsi4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rypkg"]
 albedo_color = Color(1, 0, 0, 1)
