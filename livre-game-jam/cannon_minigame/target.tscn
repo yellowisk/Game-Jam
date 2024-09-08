@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfbfaqa840517"]
+
+[ext_resource type="Script" path="res://cannon_minigame/target.gd" id="1_ctsi4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rypkg"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_g8c5l"]
+material = SubResource("StandardMaterial3D_rypkg")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6xfxq"]
+
+[node name="Target" type="StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
+script = ExtResource("1_ctsi4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("SphereMesh_g8c5l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6xfxq")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_6xfxq")
+
+[connection signal="body_entered" from="Area3D" to="." method="_cannon_hit"]
