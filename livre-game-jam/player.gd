@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			
-		if $Body/RayCastBottom.is_colliding() and not $Body/RayCastTop.is_colliding() and is_on_floor():
+		if $Body/RayCastBottom.is_colliding() and not $Body/RayCastTop.is_colliding():
 			if $Body/RayCastMid.is_colliding():
 				velocity.y = JUMP_VELOCITY * 2/3
 			else:

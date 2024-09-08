@@ -67,5 +67,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85408, -0.953887, 0)
 [node name="Ocean" parent="." instance=ExtResource("4_ios3a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.2786, 0)
 
+[node name="Player" parent="." instance=ExtResource("2_btk2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0730577, -0.0876585, 1.70308)
+
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
