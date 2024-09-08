@@ -15,6 +15,7 @@ const JUMP_VELOCITY = 7
 
 var is_capt = false
 var is_hold = false
+var is_on_event = false
 var holder:CharacterBody3D = null
 
 func captured(body: CharacterBody3D):
@@ -40,6 +41,9 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
+		
+		if is_on_event:
+			return;
 		
 		if Input.is_action_just_released("quit"):
 			$"../".exit_game(name.to_int()) 

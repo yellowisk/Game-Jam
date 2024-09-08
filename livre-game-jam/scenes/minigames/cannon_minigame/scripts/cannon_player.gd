@@ -11,7 +11,12 @@ const MIN_ROTATION_Y = 55.0
 
 var CAN_SHOOT = true
 
-func _physics_process(_delta: float):
+var player_controlling = false
+
+func _process(_delta: float):
+	if not player_controlling:
+		return;
+	
 	if Input.is_action_pressed("move_right"):
 		rotation_degrees.y = clamp(rotation_degrees.y - 1.5, MIN_ROTATION_Y + start_rotation_y, MAX_ROTATION_Y + start_rotation_y)
 
@@ -34,7 +39,7 @@ func _shoot_cannon_ball():
 	var cannonball_node = CANNONBALL_SCENE.instantiate()
 	get_parent().add_child(cannonball_node)
 	cannonball_node.global_position = $"canhão/Cannon".global_position
-	print($"canhão/Cannon".rotation_degrees.z - start_rotation_z)
+
 	cannonball_node.linear_velocity = global_basis.x.rotated(global_basis.z, deg_to_rad($"canhão/Cannon".rotation_degrees.z - start_rotation_z)) * 22
 	
 	cannonball_node.add_to_group("projeteis")

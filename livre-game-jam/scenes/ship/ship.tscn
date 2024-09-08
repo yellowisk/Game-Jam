@@ -1,44 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://qd4pui8hx7ml"]
+[gd_scene load_steps=4 format=3 uid="uid://qd4pui8hx7ml"]
 
 [ext_resource type="Script" path="res://scenes/ship/ship.gd" id="1_4anhi"]
 [ext_resource type="PackedScene" uid="uid://d206jtsdt7lfb" path="res://scenes/ship/navio_pequeno.tscn" id="2_x7ipo"]
 [ext_resource type="PackedScene" uid="uid://uqr1omiluk6l" path="res://scenes/prototype_ship/cannon.tscn" id="3_b7g4k"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_54d35"]
-size = Vector2(9.71, 10.415)
-subdivide_width = 10
-subdivide_depth = 10
 
 [node name="Ship" type="RigidBody3D"]
 script = ExtResource("1_4anhi")
 
 [node name="navio_pequeno" parent="." instance=ExtResource("2_x7ipo")]
 
-[node name="canhaoRight" parent="." instance=ExtResource("3_b7g4k")]
+[node name="canhaoMinigame" type="CharacterBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.16396, 0, -6.29326)
+script = ExtResource("3_hhqnf")
+
+[node name="canhão" parent="canhaoMinigame" instance=ExtResource("3_b7g4k")]
 
 [node name="canhaoLeft" parent="." instance=ExtResource("3_b7g4k")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.25671, 0.010545, -6.32312)
-
-[node name="SoftBody3D" type="SoftBody3D" parent="."]
-transform = Transform3D(0.0511507, 0.998691, 0, -0.998691, 0.0511507, 0, 0, 0, 1, 1.56524, 5.78267, 0)
-mesh = SubResource("PlaneMesh_54d35")
-pinned_points = [83, 11, 23, 143, 131, 95]
-attachments/0/point_index = 83
-attachments/0/spatial_attachment_path = NodePath("")
-attachments/0/offset = Vector3(0, 0, 0)
-attachments/1/point_index = 11
-attachments/1/spatial_attachment_path = NodePath("")
-attachments/1/offset = Vector3(0, 0, 0)
-attachments/2/point_index = 23
-attachments/2/spatial_attachment_path = NodePath("")
-attachments/2/offset = Vector3(0, 0, 0)
-attachments/3/point_index = 143
-attachments/3/spatial_attachment_path = NodePath("")
-attachments/3/offset = Vector3(0, 0, 0)
-attachments/4/point_index = 131
-attachments/4/spatial_attachment_path = NodePath("")
-attachments/4/offset = Vector3(0, 0, 0)
-attachments/5/point_index = 95
-attachments/5/spatial_attachment_path = NodePath("")
-attachments/5/offset = Vector3(0, 0, 0)
