@@ -28,6 +28,7 @@ signal finished_timao
 
 @onready var EventList = ["TIMAO", "CANNON_WAR", "BARREL"]
 
+
 const MINIGAMES_PATH = ["res://scenes/minigames/ai_minigame/follow_path.tscn", "res://scenes/minigames/cannon_minigame/cannonball_minigame.tscn", "res://scenes/minigames/minigame_barrel/minigame_barril.tscn"]
 
 const MINIGAMES = {
@@ -63,7 +64,8 @@ func _on_cannon_start_body_entered(body):
 		body.action = Callable(MinigameEvent.CANNON_WAR.start)
 		
 func _on_cannon_start_body_exited(body):
-	body.action = null;
+	if body.is_in_group("players"):
+		body.action = null;
 	
 func start_war(player):
 	player.visible = false;
@@ -96,6 +98,7 @@ func start_barrel(player: Node3D):
 	
 	await finished_barrel;
 	
+	$BarrilGame/Timer.stop();
 	$BarrilGame/barrel.player_controlling = false;
 	player.visible = true;
 	player.is_on_event = false;
@@ -125,10 +128,15 @@ func _on_barrel_start_body_entered(body):
 	if body.is_in_group("players") and Lobby.CURRENT_EVENT == "BARREL":
 		body.action = Callable(MinigameEvent.BARREL.start)
 		
+func _on_barrel_start_body_exited(body):
+	if body.is_in_group("players"):
+		body.action = null;
+
 func _on_timao_start_body_entered(body):
 	if body.is_in_group("players") and Lobby.CURRENT_EVENT == "TIMAO":
 		body.action = Callable(MinigameEvent.TIMAO.start)
 
 
 func _on_timao_start_body_exited(body):
-	body.action = null;
+	if body.is_in_group("players"):
+		body.action = null;

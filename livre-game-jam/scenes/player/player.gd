@@ -41,7 +41,6 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
-		
 		if is_on_event:
 			return;
 			

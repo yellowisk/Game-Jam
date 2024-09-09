@@ -12,11 +12,13 @@ height = 2.47104
 radius = 0.981
 
 [node name="barrel" type="CharacterBody3D"]
-collision_layer = 2
+collision_layer = 0
 script = ExtResource("1_lxt6r")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 2.40864, 0)
+collision_layer = 0
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.284563, 0)
@@ -27,5 +29,6 @@ shape = SubResource("CylinderShape3D_6bp1f")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30538, 0)
 shape = SubResource("CylinderShape3D_qqgos")
+disabled = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

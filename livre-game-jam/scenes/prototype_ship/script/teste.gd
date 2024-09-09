@@ -23,7 +23,8 @@ func _on_host_pressed() -> void:
 	$Hud.hide()
 
 func _on_join_pressed() -> void:
-	peer.create_client("127.0.0.1" if $Hud/TextEdit.text == "" else $Hud/TextEdit.text,1027)
+	var ip = "127.0.0.1" if $Hud/TextEdit.text == "" else $Hud/TextEdit.text
+	peer.create_client(ip,1027)
 	multiplayer.multiplayer_peer = peer
 	$Hud.hide()
 
@@ -43,3 +44,8 @@ func del_player(id):
 @rpc("any_peer", "call_local")
 func _del_player(id):
 	get_node(str(id)).queue_free()
+
+
+func _on_ocean_bottom_body_entered(body):
+	if body.is_in_group("players"):
+		body.position = Vector3(0, 5, 0)

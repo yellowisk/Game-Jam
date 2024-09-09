@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://uqr1omiluk6l" path="res://scenes/prototype_ship/cannon.tscn" id="3_b7g4k"]
 [ext_resource type="Script" path="res://scenes/minigames/cannon_minigame/scripts/cannon_player.gd" id="3_hhqnf"]
 [ext_resource type="PackedScene" uid="uid://ctgesmql5utg8" path="res://models/timao.blend" id="6_y5qfi"]
-[ext_resource type="PackedScene" uid="uid://d4knqvtnwfgon" path="res://sail.tscn" id="7_jwjpv"]
+[ext_resource type="PackedScene" path="res://sail.tscn" id="7_jwjpv"]
 
 [node name="Ship" type="RigidBody3D"]
 script = ExtResource("1_4anhi")
