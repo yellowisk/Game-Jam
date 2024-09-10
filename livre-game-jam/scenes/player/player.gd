@@ -49,10 +49,6 @@ func _physics_process(delta: float) -> void:
 				position += Vector3(2, 0, 0)
 				once = true
 			current_animation = "jump"
-		
-		if Input.is_action_just_released("quit"):
-			$"../".exit_game(name.to_int()) 
-			get_tree().quit()
 			
 		if is_capt:
 			position = holder.position + Vector3(0, 2, 0)
@@ -102,3 +98,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	pass # Replace with function body.
+	
+	

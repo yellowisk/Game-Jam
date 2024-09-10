@@ -26,7 +26,9 @@ signal finished_timao
 	}
 }
 
-@onready var EventList = ["TIMAO", "CANNON_WAR", "BARREL"]
+#@onready var EventList = ["TIMAO", "CANNON_WAR", "BARREL"]
+@onready var EventList = ["TIMAO"]
+
 
 
 const MINIGAMES_PATH = ["res://scenes/minigames/ai_minigame/follow_path.tscn", "res://scenes/minigames/cannon_minigame/cannonball_minigame.tscn", "res://scenes/minigames/minigame_barrel/minigame_barril.tscn"]
@@ -45,6 +47,7 @@ const MINIGAMES = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	await get_tree().create_timer(1).timeout
 	if is_multiplayer_authority():
 		await get_tree().create_timer(10).timeout;
 		minigame_loop();
@@ -52,6 +55,9 @@ func _ready():
 	
 
 func minigame_loop():
+	if not is_multiplayer_authority():
+		return;
+		
 	while true:
 		if Lobby.CURRENT_EVENT:
 			await get_tree().create_timer(randi_range(12,22)).timeout

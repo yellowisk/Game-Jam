@@ -21,27 +21,19 @@ var reset_timer := 0.0  # Timer to smoothly interpolate back
 var player_curr = null
 
 func rotate_ship():
-	if Input.is_action_just_released("move_right"):
-		angular_velocity += Vector3(0.2, 0, 0)
-	elif Input.is_action_just_released("move_left"):
-		angular_velocity += Vector3(-0.2, 0, 0)
+	if Input.is_action_pressed("move_right"):
+		angular_velocity += Vector3(0.02, 0, 0)
+	elif Input.is_action_pressed("move_left"):
+		angular_velocity += Vector3(-0.02, 0, 0)
 	else:
 		pass
 	#if the degrees of rotation are greater than 90, reset the rotation
 
 # Process function to handle ship rotation and resetting
 func _process(delta: float) -> void:
-	get_tree().call_group("timao", "on_body_entered")
 	if player_controlled:
-		if once:
-			var vels = [-1,1]
-			angular_velocity = Vector3(vels[randi_range(0,1)], 0, 0)
-			once = false
-		
 		rotate_ship()
 
-		if not resetting:
-			call_deferred("reset_ship_after_delay")
 
 # This function resets the ship after a delay
 func reset_ship_after_delay() -> void:
@@ -55,20 +47,17 @@ func reset_ship_after_delay() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if player_controlled:
-		if rotation_degrees.x > 45:
-			angular_velocity = Vector3(-1, 0, 0)*0.5
-		elif rotation_degrees.x < -45:
-			angular_velocity = Vector3(1, 0, 0)*0.5
-		
 	if resetting:
 		# Gradually return to the original position
 		reset_timer += delta / reset_duration
-		global_position = global_position.lerp(target_position, reset_timer)
 		global_rotation = global_rotation.slerp(Vector3(0, 0, 0), reset_timer)
 		
 		if reset_timer >= 1.0:
 			resetting = false  # Stop resetting once done
+			position = Vector3(0, 0, 0)
+			linear_velocity = Vector3(0, 0, 0)
+			angular_velocity = Vector3(0, 0, 0)
+			rotation = Vector3(0, 0, 0)
 			
 
 	var depth = water_height - global_position.y

@@ -7,14 +7,16 @@ signal stop_player_flag
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	peer.connect("peer_disconnected", del_player)
+	multiplayer.connect("server_disconnected", server_closed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
-
+	if Input.is_action_just_released("quit"):
+			multiplayer.multiplayer_peer.close()
+			$Hud.visible = true
+			
 func _on_host_pressed() -> void:
 	peer.create_server(1027)
 	multiplayer.multiplayer_peer = peer
@@ -34,17 +36,11 @@ func add_player(id = 1):
 	call_deferred("add_child", player)
 	player.add_to_group("players")
 	
-func exit_game(id):	
-	multiplayer.peer_disconnected.connect(del_player)
-	del_player(id)
-	
 func del_player(id):
-	rpc("del_player", id)
-	
-@rpc("any_peer", "call_local")
-func _del_player(id):
 	get_node(str(id)).queue_free()
-
+	
+func server_closed():
+	$Hud.visible = true;
 
 func _on_ocean_bottom_body_entered(body):
 	if body.is_in_group("players"):
