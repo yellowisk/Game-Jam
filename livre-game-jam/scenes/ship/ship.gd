@@ -7,15 +7,13 @@ extends RigidBody3D
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-signal wheel_flag
-
 const water_height := 0.0
 
 var submerged := false
 var player_controlled = false
 var once = true
 
-var target_position := Vector3(0, 0, 0)  # Where the ship should return to
+var target_position := Vector3(3.355, 0, 0)  # Where the ship should return to
 var resetting := false  # To track if the reset is in progress
 var reset_timer := 0.0  # Timer to smoothly interpolate back
 var player_curr = null
@@ -30,20 +28,19 @@ func rotate_ship():
 	#if the degrees of rotation are greater than 90, reset the rotation
 
 # Process function to handle ship rotation and resetting
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_controlled:
 		rotate_ship()
 
 
 # This function resets the ship after a delay
 func reset_ship_after_delay() -> void:
-	await get_tree().create_timer(6).timeout
+	await get_tree().create_timer(12).timeout
 	resetting = true  
 	reset_timer = 0.5
 	player_controlled = false  
 	once = true
 	$"/root/Main/MinigameController".finished_timao.emit()
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -54,17 +51,20 @@ func _physics_process(delta: float) -> void:
 		
 		if reset_timer >= 1.0:
 			resetting = false  # Stop resetting once done
-			position = Vector3(0, 0, 0)
+			position = Vector3(3.355, 0, 0)
 			linear_velocity = Vector3(0, 0, 0)
 			angular_velocity = Vector3(0, 0, 0)
 			rotation = Vector3(0, 0, 0)
-			
+	else:
+		if rotation_degrees.x >= 40:
+			angular_velocity
 
 	var depth = water_height - global_position.y
 	if depth > 0:
 		apply_central_force(Vector3.UP * float_force * gravity * depth)
 		
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	rotation_degrees.x = clamp(rotation_degrees.x, -40, 40)
 	if submerged:
 		state.linear_velocity.y *= 1 - water_drag
 		state.angular_velocity.y *= 1 - water_angular_drag

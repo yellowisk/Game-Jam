@@ -25,5 +25,3 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.256
 
 [node name="timao" parent="." instance=ExtResource("6_y5qfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5692, 6.11699, 0)
-
-[connection signal="wheel_flag" from="." to="." method="_on_wheel_flag"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dia5gxv6arif1"]
+[gd_scene load_steps=2 format=3 uid="uid://isxr0rejch7w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kkrw"]
 bg_color = Color(0.286275, 0.411765, 1, 1)
@@ -15,10 +15,10 @@ corner_radius_bottom_left = 5
 [node name="Instructions" type="Node2D"]
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 946.0
-offset_top = 587.0
-offset_right = 1138.0
-offset_bottom = 635.0
+offset_left = 1056.0
+offset_top = 643.0
+offset_right = 1248.0
+offset_bottom = 691.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0kkrw")
 
 [node name="Label" type="Label" parent="Panel"]

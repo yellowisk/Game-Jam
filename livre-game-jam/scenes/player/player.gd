@@ -16,7 +16,6 @@ const JUMP_VELOCITY = 7
 var is_capt = false
 var is_hold = false
 var is_on_event = false
-var is_on_wheel = false
 var once = false
 var holder:CharacterBody3D = null
 
@@ -40,15 +39,9 @@ func _ready():
 	self.add_to_group("players")
 
 func _physics_process(delta: float) -> void:
-	if is_multiplayer_authority():
+	if multiplayer.multiplayer_peer and is_multiplayer_authority():
 		if is_on_event:
 			return;
-			
-		if is_on_wheel:
-			if not once:
-				position += Vector3(2, 0, 0)
-				once = true
-			current_animation = "jump"
 			
 		if is_capt:
 			position = holder.position + Vector3(0, 2, 0)
@@ -95,8 +88,3 @@ func _physics_process(delta: float) -> void:
 						
 			move_and_slide()
 		animation.current_animation = current_animation
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	pass # Replace with function body.
-	
-	

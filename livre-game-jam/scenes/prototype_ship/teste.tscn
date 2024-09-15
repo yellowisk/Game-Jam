@@ -1,11 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://b2fi2m0gas6bx"]
+[gd_scene load_steps=26 format=3 uid="uid://b2fi2m0gas6bx"]
 
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/teste.gd" id="1_sa3fu"]
 [ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_btk2o"]
+[ext_resource type="PackedScene" uid="uid://busraqws1bbuf" path="res://scenes/score.tscn" id="3_0d3fc"]
 [ext_resource type="Texture2D" uid="uid://4ef0kamb8ljc" path="res://scenes/main_scene/fundo.png" id="3_efqg3"]
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/minigame_controller.gd" id="3_pp0pw"]
 [ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/main_scene/ocean.tscn" id="4_ios3a"]
 [ext_resource type="PackedScene" uid="uid://c5ug8ln40g8e7" path="res://scenes/minigames/cannon_minigame/enemys_ship.tscn" id="4_jmuit"]
+[ext_resource type="PackedScene" uid="uid://isxr0rejch7w" path="res://scenes/instructions.tscn" id="4_kgwfk"]
 [ext_resource type="PackedScene" uid="uid://gux2d446iehj" path="res://scenes/minigames/minigame_barrel/minigame_barril.tscn" id="4_nkahd"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="5_gidye"]
 [ext_resource type="Material" uid="uid://271w0br6av3r" path="res://textures/action_material.tres" id="5_j3m4u"]
@@ -79,7 +81,16 @@ size = Vector3(200, 1, 200)
 script = ExtResource("1_sa3fu")
 player_scene = ExtResource("2_btk2o")
 
+[node name="IngameHUD" type="Node2D" parent="."]
+
+[node name="Score" parent="IngameHUD" instance=ExtResource("3_0d3fc")]
+
+[node name="Instructions" parent="IngameHUD" instance=ExtResource("4_kgwfk")]
+visible = false
+
 [node name="Hud" type="CanvasLayer" parent="."]
+scale = Vector2(1.111, 1.111)
+transform = Transform2D(1.111, 0, 0, 1.111, 0, 0)
 
 [node name="Fundo" type="Sprite2D" parent="Hud"]
 position = Vector2(576, 324)
@@ -205,7 +216,6 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_hwg0e")
 
-[connection signal="stop_player_flag" from="." to="." method="_on_stop_player_flag"]
 [connection signal="pressed" from="Hud/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Hud/Join" to="." method="_on_join_pressed"]
 [connection signal="body_entered" from="MinigameController/BarrilGame/BarrelStart" to="MinigameController" method="_on_barrel_start_body_entered"]

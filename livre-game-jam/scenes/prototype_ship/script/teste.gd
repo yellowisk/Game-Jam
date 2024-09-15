@@ -3,8 +3,6 @@ extends Node3D
 var peer = ENetMultiplayerPeer.new()
 @export var player_scene : PackedScene
 
-signal stop_player_flag
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	peer.connect("peer_disconnected", del_player)
@@ -12,7 +10,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_released("quit"):
 			multiplayer.multiplayer_peer.close()
 			$Hud.visible = true

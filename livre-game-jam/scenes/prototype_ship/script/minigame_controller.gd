@@ -26,9 +26,7 @@ signal finished_timao
 	}
 }
 
-#@onready var EventList = ["TIMAO", "CANNON_WAR", "BARREL"]
-@onready var EventList = ["TIMAO"]
-
+@onready var EventList = ["TIMAO", "CANNON_WAR", "BARREL"]
 
 
 const MINIGAMES_PATH = ["res://scenes/minigames/ai_minigame/follow_path.tscn", "res://scenes/minigames/cannon_minigame/cannonball_minigame.tscn", "res://scenes/minigames/minigame_barrel/minigame_barril.tscn"]
@@ -67,10 +65,12 @@ func minigame_loop():
 
 func _on_cannon_start_body_entered(body):
 	if body.is_in_group("players") and Lobby.CURRENT_EVENT == "CANNON_WAR":
+		$/root/Main/IngameHUD/Instructions.visible = true
 		body.action = Callable(MinigameEvent.CANNON_WAR.start)
 		
 func _on_cannon_start_body_exited(body):
 	if body.is_in_group("players"):
+		$/root/Main/IngameHUD/Instructions.visible = false
 		body.action = null;
 	
 func start_war(player):
@@ -127,22 +127,26 @@ func start_timao(player: CharacterBody3D):
 	player.is_on_event = false;
 	player.get_node("SpringArm3D/Camera3D").make_current();
 	
-	Lobby.score(15);	
+	Lobby.score(5);	
 	Lobby.end_event.rpc("TIMAO");
 
 func _on_barrel_start_body_entered(body):
 	if body.is_in_group("players") and Lobby.CURRENT_EVENT == "BARREL":
+		$/root/Main/IngameHUD/Instructions.visible = true
 		body.action = Callable(MinigameEvent.BARREL.start)
 		
 func _on_barrel_start_body_exited(body):
 	if body.is_in_group("players"):
+		$/root/Main/IngameHUD/Instructions.visible = false
 		body.action = null;
 
 func _on_timao_start_body_entered(body):
 	if body.is_in_group("players") and Lobby.CURRENT_EVENT == "TIMAO":
+		$/root/Main/IngameHUD/Instructions.visible = true
 		body.action = Callable(MinigameEvent.TIMAO.start)
 
 
 func _on_timao_start_body_exited(body):
 	if body.is_in_group("players"):
+		$/root/Main/IngameHUD/Instructions.visible = false
 		body.action = null;
