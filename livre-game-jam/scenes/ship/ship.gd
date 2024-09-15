@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 
 # This function resets the ship after a delay
 func reset_ship_after_delay() -> void:
-	await get_tree().create_timer(12).timeout
+	await get_tree().create_timer(8).timeout
 	resetting = true  
 	reset_timer = 0.5
 	player_controlled = false  
@@ -49,15 +49,13 @@ func _physics_process(delta: float) -> void:
 		reset_timer += delta / reset_duration
 		global_rotation = global_rotation.slerp(Vector3(0, 0, 0), reset_timer)
 		
-		if reset_timer >= 1.0:
+		if reset_timer >= reset_duration:
 			resetting = false  # Stop resetting once done
 			position = Vector3(3.355, 0, 0)
 			linear_velocity = Vector3(0, 0, 0)
 			angular_velocity = Vector3(0, 0, 0)
 			rotation = Vector3(0, 0, 0)
-	else:
-		if rotation_degrees.x >= 40:
-			angular_velocity
+			$"/root/Main/MinigameController".finished_timao.emit()
 
 	var depth = water_height - global_position.y
 	if depth > 0:

@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_released("quit"):
+	if Input.is_action_just_released("quit"):				
 			multiplayer.multiplayer_peer.close()
 			$Hud.visible = true
 			
@@ -20,6 +20,7 @@ func _on_host_pressed() -> void:
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(add_player)
 	add_player()
+	$/root/Lobby.global_points = 0
 	$Hud.hide()
 
 func _on_join_pressed() -> void:
@@ -38,6 +39,7 @@ func del_player(id):
 	get_node(str(id)).queue_free()
 	
 func server_closed():
+	del_player(1);
 	$Hud.visible = true;
 
 func _on_ocean_bottom_body_entered(body):

@@ -39,7 +39,7 @@ func _ready():
 	self.add_to_group("players")
 
 func _physics_process(delta: float) -> void:
-	if multiplayer.multiplayer_peer and is_multiplayer_authority():
+	if is_multiplayer_authority():
 		if is_on_event:
 			return;
 			
