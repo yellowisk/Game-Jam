@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://f6vwck6555tp"]
+
+[ext_resource type="PackedScene" uid="uid://bp7ata2u7ipjw" path="res://objects/ships/resources/navio_pequeno.glb" id="1_ir2dr"]
+[ext_resource type="Script" path="res://objects/ships/scripts/ship.gd" id="1_vgqm0"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c2h3i"]
+points = PackedVector3Array(-16, 0, -7, -16, 0, 7, 13, 0, 7, 13, 0, -7, -15, -4, -6, -15, -4, 6, 13, -4, 6, 13, -4, -6, 19, 0, 0, 17, -4, 0)
+
+[node name="BasicShip" type="RigidBody3D"]
+script = ExtResource("1_vgqm0")
+
+[node name="ProbeContainer" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -15, -4, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, 0.5, 0, -0.433013, 0.75, 0.5, 0.25, -0.433013, 0.866025, -15, -4, 6)
+
+[node name="Marker3D3" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, 0.5, 0, -0.433013, 0.75, -0.5, -0.25, 0.433013, 0.866025, -15, -4, -6)
+
+[node name="Marker3D4" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="Marker3D5" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -4, 6)
+
+[node name="Marker3D6" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, -4, -6)
+
+[node name="Marker3D7" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 15, -4, 0)
+
+[node name="Marker3D8" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, 0.5, -0.25, -0.433013, 0.866025, 15, -4, 6)
+
+[node name="Marker3D9" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, -0.5, 0.25, 0.433013, 0.866025, 15, -4, -6)
+
+[node name="navio_pequeno" parent="." instance=ExtResource("1_ir2dr")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_c2h3i")

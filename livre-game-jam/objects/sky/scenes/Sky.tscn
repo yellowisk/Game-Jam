@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjvndulu51q5f"]
+
+[ext_resource type="Shader" path="res://shaders/sky.gdshader" id="1_0u1mp"]
+[ext_resource type="Texture2D" uid="uid://dk4d26c8ejipw" path="res://objects/sky/resources/kloppenheim_06_puresky_4k.exr" id="2_mrbge"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ba1tf"]
+shader = ExtResource("1_0u1mp")
+shader_parameter/sky_color = Color(0.579732, 0.794362, 1, 1)
+shader_parameter/horizon_color = Color(0.458651, 0.797703, 0.999999, 1)
+shader_parameter/skyTexture = ExtResource("2_mrbge")
+
+[sub_resource type="Sky" id="Sky_dwxpp"]
+sky_material = SubResource("ShaderMaterial_ba1tf")
+
+[sub_resource type="Environment" id="Environment_urt56"]
+background_mode = 2
+sky = SubResource("Sky_dwxpp")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0chw"]
+albedo_color = Color(1, 0.828051, 0.684182, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1l17e"]
+material = SubResource("StandardMaterial3D_q0chw")
+radius = 5.0
+height = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmuaq"]
+albedo_color = Color(0.739858, 0.848606, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6b115"]
+material = SubResource("StandardMaterial3D_kmuaq")
+radius = 4.0
+height = 8.0
+
+[node name="Sky" type="WorldEnvironment"]
+environment = SubResource("Environment_urt56")
+
+[node name="SunMoon" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+visible = false
+
+[node name="Sun" type="MeshInstance3D" parent="SunMoon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+mesh = SubResource("SphereMesh_1l17e")
+
+[node name="SunLight" type="DirectionalLight3D" parent="SunMoon/Sun"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_color = Color(0.875331, 0.809542, 0.69702, 1)
+
+[node name="Moon" type="MeshInstance3D" parent="SunMoon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+mesh = SubResource("SphereMesh_6b115")
+
+[node name="MoonLight" type="DirectionalLight3D" parent="SunMoon/Moon"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+light_color = Color(0.606833, 0.811651, 0.96874, 1)
+light_energy = 0.1

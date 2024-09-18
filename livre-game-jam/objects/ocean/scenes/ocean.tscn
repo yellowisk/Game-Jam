@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://dp0oi718r47kl"]
+
+[ext_resource type="Shader" path="res://objects/ocean/shaders/ocean.gdshader" id="1_0iixy"]
+[ext_resource type="Script" path="res://objects/ocean/scripts/ocean.gd" id="2_0lrrb"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1jiwn"]
+noise_type = 2
+seed = 4
+fractal_type = 0
+cellular_distance_function = 1
+domain_warp_frequency = 1.735
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tefrm"]
+seamless = true
+noise = SubResource("FastNoiseLite_1jiwn")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iwsfx"]
+noise_type = 2
+seed = 4
+fractal_type = 0
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0mgay"]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource("FastNoiseLite_iwsfx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfp08"]
+render_priority = 0
+shader = ExtResource("1_0iixy")
+shader_parameter/wave_speed = Vector2(0.1, 0.1)
+shader_parameter/wave_height = 1.0
+shader_parameter/time = 0.0
+shader_parameter/wave_bump = SubResource("NoiseTexture2D_tefrm")
+shader_parameter/wave_texture_0 = SubResource("NoiseTexture2D_tefrm")
+shader_parameter/wave_texture_1 = SubResource("NoiseTexture2D_0mgay")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rspan"]
+material = SubResource("ShaderMaterial_dfp08")
+size = Vector2(512, 512)
+subdivide_width = 128
+subdivide_depth = 128
+
+[node name="Ocean" type="Node3D"]
+script = ExtResource("2_0lrrb")
+
+[node name="CenterOcean" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_rspan")

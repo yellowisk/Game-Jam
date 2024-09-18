@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://88dqxk7rs1fk"]
+
+[ext_resource type="Script" path="res://objects/ships/scripts/ship.gd" id="1_avi2f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_54y87"]
+size = Vector3(2, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d04ym"]
+size = Vector3(2, 0.2, 1)
+
+[node name="Prancha" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96714, 10.9509, 9.9798)
+mass = 10.0
+script = ExtResource("1_avi2f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_54y87")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_d04ym")
+
+[node name="ProbeContainer" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.1, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.1, 0.5)
+
+[node name="Marker3D3" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.1, -0.5)
+
+[node name="Marker3D4" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="Marker3D5" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0.5)
+
+[node name="Marker3D6" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.5)
+
+[node name="Marker3D7" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.1, 0)
+
+[node name="Marker3D8" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.1, 0.5)
+
+[node name="Marker3D9" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.1, -0.5)

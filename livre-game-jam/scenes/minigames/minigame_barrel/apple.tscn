@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7d53tdgksmhg"]
 
-[ext_resource type="PackedScene" uid="uid://cixs4eyr1ickn" path="res://models/apple.glb" id="1_hmugh"]
+[ext_resource type="PackedScene" uid="uid://cixs4eyr1ickn" path="res://models/glb/apple.glb" id="1_hmugh"]
 
 [node name="apple" instance=ExtResource("1_hmugh")]
 

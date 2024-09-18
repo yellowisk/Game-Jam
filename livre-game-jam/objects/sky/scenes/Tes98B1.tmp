@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7wsqwms1v41j"]
+
+[ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="1_3xkjm"]
+[ext_resource type="PackedScene" uid="uid://b3wxoacvtp4js" path="res://objects/free_camera/scenes/free_camera.tscn" id="2_qsdxt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xoy8n"]
+albedo_color = Color(0, 0.371499, 0.24903, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ktibd"]
+material = SubResource("StandardMaterial3D_xoy8n")
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe0cg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_haftp"]
+material = SubResource("StandardMaterial3D_xe0cg")
+
+[node name="TestScene" type="Node3D"]
+
+[node name="Sky" parent="." instance=ExtResource("1_3xkjm")]
+time_of_day = 2038.0
+simulate_time = true
+rate_of_time = 1.0
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ktibd")
+
+[node name="Box" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631305, 0)
+mesh = SubResource("BoxMesh_haftp")
+
+[node name="FreeCamera" parent="." instance=ExtResource("2_qsdxt")]

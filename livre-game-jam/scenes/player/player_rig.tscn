@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvlibgxrldwev"]
 
-[ext_resource type="PackedScene" uid="uid://55k4vqch7ldt" path="res://models/base_mesh.glb" id="1_h8s4f"]
+[ext_resource type="PackedScene" uid="uid://55k4vqch7ldt" path="res://models/glb/base_mesh.glb" id="1_h8s4f"]
 
 [node name="PlayerRig" instance=ExtResource("1_h8s4f")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0, 0)

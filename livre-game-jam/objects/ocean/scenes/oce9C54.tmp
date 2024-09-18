@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8ojqiribqelp"]
+
+[ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="1_2433o"]
+[ext_resource type="PackedScene" uid="uid://b3wxoacvtp4js" path="res://objects/free_camera/scenes/free_camera.tscn" id="2_xknl6"]
+[ext_resource type="Script" path="res://objects/ships/scripts/ship.gd" id="3_x6rl3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ydnej"]
+sky_top_color = Color(5.77569e-06, 0.819851, 0.979774, 1)
+sky_horizon_color = Color(0.850983, 0.94148, 1, 1)
+sun_angle_max = 74.38
+
+[sub_resource type="Sky" id="Sky_0rjnx"]
+sky_material = SubResource("ProceduralSkyMaterial_ydnej")
+
+[sub_resource type="Environment" id="Environment_7nob8"]
+background_mode = 2
+sky = SubResource("Sky_0rjnx")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a6xpw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ijbvi"]
+
+[node name="OceanTestScene" type="Node3D"]
+
+[node name="Ocean" parent="." instance=ExtResource("1_2433o")]
+
+[node name="FreeCamera" parent="." instance=ExtResource("2_xknl6")]
+transform = Transform3D(1, 0, 0, 0, 0.683388, 0.730055, 0, -0.730055, 0.683388, 0, 33.7733, 57.7389)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7nob8")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65791, 0)
+script = ExtResource("3_x6rl3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_a6xpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_ijbvi")
+
+[node name="ProbeContainer" type="Node3D" parent="RigidBody3D"]
+
+[node name="Marker3D" type="Marker3D" parent="RigidBody3D/ProbeContainer"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0pgyafw2u1dr"]
 
-[ext_resource type="PackedScene" uid="uid://b2hwdnugwpfr0" path="res://models/bread.glb" id="1_hn3a8"]
+[ext_resource type="PackedScene" uid="uid://b2hwdnugwpfr0" path="res://models/glb/bread.glb" id="1_hn3a8"]
 
 [node name="bread" instance=ExtResource("1_hn3a8")]
 
