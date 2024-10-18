@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://ehsf4vjimima"]
+
+[ext_resource type="Script" path="res://utils/scripts/hud_controller.gd" id="1_pkgsk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ng436"]
+font_size = 60
+
+[node name="ServerHud" type="CanvasLayer" node_paths=PackedStringArray("text_box")]
+script = ExtResource("1_pkgsk")
+text_box = NodePath("TextEdit")
+
+[node name="Host" type="Button" parent="."]
+offset_left = 510.0
+offset_top = 464.0
+offset_right = 647.0
+offset_bottom = 502.0
+text = "Host Server"
+
+[node name="Join" type="Button" parent="."]
+offset_left = 508.0
+offset_top = 349.0
+offset_right = 647.0
+offset_bottom = 389.0
+text = "Join Server"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 462.0
+offset_top = 296.0
+offset_right = 697.0
+offset_bottom = 333.0
+
+[node name="Title" type="Label" parent="."]
+offset_left = 337.0
+offset_top = 164.0
+offset_right = 815.0
+offset_bottom = 258.0
+text = "Piratas VS Aliens"
+label_settings = SubResource("LabelSettings_ng436")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]

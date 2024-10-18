@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://b2fi2m0gas6bx"]
 
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/teste.gd" id="1_sa3fu"]
-[ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_btk2o"]
+[ext_resource type="PackedScene" uid="uid://dan4uea334n3i" path="res://objects/player/scenes/player.tscn" id="2_btk2o"]
 [ext_resource type="Texture2D" uid="uid://4ef0kamb8ljc" path="res://scenes/main_scene/fundo.png" id="3_efqg3"]
 [ext_resource type="Script" path="res://scenes/prototype_ship/script/minigame_controller.gd" id="3_pp0pw"]
 [ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/main_scene/ocean.tscn" id="4_ios3a"]
@@ -164,7 +164,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9569, -3.73106, 0)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
+_spawnable_scenes = PackedStringArray("res://objects/player/scenes/player.tscn")
 spawn_path = NodePath("..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7wsqwms1v41j"]
 
 [ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="1_3xkjm"]
-[ext_resource type="PackedScene" uid="uid://b3wxoacvtp4js" path="res://objects/free_camera/scenes/free_camera.tscn" id="2_qsdxt"]
+[ext_resource type="PackedScene" uid="uid://b3wxoacvtp4js" path="res://objects/camera/scenes/free_camera.tscn" id="2_qsdxt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xoy8n"]
 albedo_color = Color(0, 0.371499, 0.24903, 1)

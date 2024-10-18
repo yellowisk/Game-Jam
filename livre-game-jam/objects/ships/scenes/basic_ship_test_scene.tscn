@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="1_4xblr"]
 [ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="2_tyokn"]
-[ext_resource type="PackedScene" uid="uid://b3wxoacvtp4js" path="res://objects/free_camera/scenes/free_camera.tscn" id="3_tjdfm"]
+[ext_resource type="PackedScene" uid="uid://b3wxoacvtp4js" path="res://objects/camera/scenes/free_camera.tscn" id="3_tjdfm"]
 [ext_resource type="PackedScene" uid="uid://88dqxk7rs1fk" path="res://objects/ocean/scenes/prancha.tscn" id="4_pg7af"]
 [ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="5_o0wbg"]
 
@@ -10,10 +10,8 @@
 
 [node name="BasicShip" parent="." instance=ExtResource("1_4xblr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.44588, 0)
-mass = 10.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -5, 0)
-float_force = 1.5
 water_angular_drag = 0.1
 
 [node name="Ocean" parent="." instance=ExtResource("2_tyokn")]

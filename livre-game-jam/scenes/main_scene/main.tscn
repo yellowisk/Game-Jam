@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/main_scene/script/main.gd" id="1_2pvoi"]
 [ext_resource type="PackedScene" uid="uid://bku0vo72g81j" path="res://scenes/main_scene/ocean.tscn" id="1_nab8x"]
-[ext_resource type="PackedScene" uid="uid://bvctmpf0hmq2k" path="res://scenes/player/player.tscn" id="2_4x84p"]
+[ext_resource type="PackedScene" uid="uid://dan4uea334n3i" path="res://objects/player/scenes/player.tscn" id="2_4x84p"]
 [ext_resource type="PackedScene" uid="uid://qd4pui8hx7ml" path="res://scenes/ship/ship.tscn" id="2_5esqt"]
 [ext_resource type="PackedScene" uid="uid://bfo5ddh7c4naw" path="res://scenes/main_scene/hud.tscn" id="3_2c5dh"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="4_ge8x7"]
@@ -37,7 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.68005, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247455, 0)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Ship"]
-_spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
 spawn_path = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="."]

@@ -1,0 +1,118 @@
+[gd_scene load_steps=18 format=3 uid="uid://qaipl84v5jas"]
+
+[ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="2_0hgrm"]
+[ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="3_o048a"]
+[ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="4_w1c8m"]
+[ext_resource type="Texture2D" uid="uid://cbc5qcpyn6mjb" path="res://addons/kenney_prototype_textures/light/texture_06.png" id="5_7ecw6"]
+[ext_resource type="PackedScene" uid="uid://veibi4gf8bgg" path="res://objects/camera/scenes/follow_camera.tscn" id="5_sjkqy"]
+[ext_resource type="PackedScene" uid="uid://crb0l1g5s41xw" path="res://objects/foods/scenes/apple.tscn" id="6_jokk3"]
+[ext_resource type="PackedScene" uid="uid://dan4uea334n3i" path="res://objects/player/scenes/player.tscn" id="6_xg0ui"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b1tlt"]
+friction = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgq08"]
+albedo_color = Color(0.687215, 0.687215, 0.687215, 1)
+albedo_texture = ExtResource("5_7ecw6")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv2_scale = Vector3(0.25, 0.25, 0.25)
+uv2_triplanar = true
+uv2_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_es7lc"]
+material = SubResource("StandardMaterial3D_vgq08")
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fj68"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d5nu3"]
+material = SubResource("StandardMaterial3D_vgq08")
+size = Vector3(1, 10, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvn4l"]
+size = Vector3(1, 10, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_npb3y"]
+material = SubResource("StandardMaterial3D_vgq08")
+size = Vector3(30, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rx27r"]
+size = Vector3(30, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_abaru"]
+material = SubResource("StandardMaterial3D_vgq08")
+size = Vector3(2, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hord"]
+size = Vector3(2, 5, 1)
+
+[node name="PlayerTestScene" type="Node3D"]
+
+[node name="Ocean" parent="." instance=ExtResource("2_0hgrm")]
+
+[node name="Sky" parent="." instance=ExtResource("3_o048a")]
+
+[node name="BasicShip" parent="." instance=ExtResource("4_w1c8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.58259, -15.6254)
+physics_material_override = SubResource("PhysicsMaterial_b1tlt")
+
+[node name="Player" parent="BasicShip" instance=ExtResource("6_xg0ui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48833, 1.5119, 2.88607)
+
+[node name="Apple" parent="." instance=ExtResource("6_jokk3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1375, 7.80625, 6.53373)
+collision_layer = 2
+
+[node name="TestField" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="TestField"]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Ground"]
+mesh = SubResource("BoxMesh_es7lc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Ground"]
+shape = SubResource("BoxShape3D_0fj68")
+
+[node name="Wall" type="StaticBody3D" parent="TestField"]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 10, 10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Wall"]
+mesh = SubResource("BoxMesh_d5nu3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Wall"]
+shape = SubResource("BoxShape3D_bvn4l")
+
+[node name="Wall2" type="StaticBody3D" parent="TestField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 10, 10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Wall2"]
+mesh = SubResource("BoxMesh_d5nu3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Wall2"]
+shape = SubResource("BoxShape3D_bvn4l")
+
+[node name="Wall3" type="StaticBody3D" parent="TestField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Wall3"]
+mesh = SubResource("BoxMesh_npb3y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Wall3"]
+shape = SubResource("BoxShape3D_rx27r")
+
+[node name="Wall4" type="StaticBody3D" parent="TestField"]
+transform = Transform3D(1, 0, 0, 0, 0.53883, 0.842415, 0, -0.842415, 0.53883, 0, 6.49991, -6.61797)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Wall4"]
+mesh = SubResource("BoxMesh_abaru")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Wall4"]
+shape = SubResource("BoxShape3D_1hord")
+
+[node name="FollowCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_sjkqy")]
+target = NodePath("../BasicShip/Player")

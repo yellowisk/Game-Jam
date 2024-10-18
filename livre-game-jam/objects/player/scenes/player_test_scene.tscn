@@ -1,0 +1,149 @@
+[gd_scene load_steps=23 format=3 uid="uid://qaipl84v5jas"]
+
+[ext_resource type="Script" path="res://utils/scripts/multiplayer_controller.gd" id="1_hcvw2"]
+[ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="2_0hgrm"]
+[ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="3_o048a"]
+[ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="4_w1c8m"]
+[ext_resource type="Texture2D" uid="uid://cbc5qcpyn6mjb" path="res://addons/kenney_prototype_textures/light/texture_06.png" id="5_7ecw6"]
+[ext_resource type="Texture2D" uid="uid://ccl5pd7cfritl" path="res://addons/kenney_prototype_textures/dark/texture_08.png" id="6_6skr4"]
+[ext_resource type="PackedScene" uid="uid://crb0l1g5s41xw" path="res://objects/foods/scenes/apple.tscn" id="6_jokk3"]
+[ext_resource type="PackedScene" uid="uid://ehsf4vjimima" path="res://utils/scenes/server_hud.tscn" id="9_4yerv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b1tlt"]
+friction = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgq08"]
+albedo_color = Color(0.687215, 0.687215, 0.687215, 1)
+albedo_texture = ExtResource("5_7ecw6")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv2_scale = Vector3(0.25, 0.25, 0.25)
+uv2_triplanar = true
+uv2_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_es7lc"]
+material = SubResource("StandardMaterial3D_vgq08")
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fj68"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d5nu3"]
+material = SubResource("StandardMaterial3D_vgq08")
+size = Vector3(1, 10, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvn4l"]
+size = Vector3(1, 10, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_npb3y"]
+material = SubResource("StandardMaterial3D_vgq08")
+size = Vector3(30, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rx27r"]
+size = Vector3(30, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_abaru"]
+material = SubResource("StandardMaterial3D_vgq08")
+size = Vector3(2, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hord"]
+size = Vector3(2, 5, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kdny1"]
+friction = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1831"]
+albedo_texture = ExtResource("6_6skr4")
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.25, 0.25, 0.25)
+uv2_triplanar = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_ef74f"]
+material = SubResource("StandardMaterial3D_a1831")
+left_to_right = 0.0
+size = Vector3(10, 5, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lsroo"]
+points = PackedVector3Array(5, -5, 5, -5, -5, 5, -5, -5, -5, 5, -5, -5, -5, 0, 5, -5, 0, -5)
+
+[node name="PlayerTestScene" type="Node3D"]
+script = ExtResource("1_hcvw2")
+
+[node name="Ocean" parent="." instance=ExtResource("2_0hgrm")]
+
+[node name="Sky" parent="." instance=ExtResource("3_o048a")]
+
+[node name="BasicShip" parent="." instance=ExtResource("4_w1c8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.58259, -15.6254)
+physics_material_override = SubResource("PhysicsMaterial_b1tlt")
+
+[node name="TestField" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="TestField"]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Ground"]
+mesh = SubResource("BoxMesh_es7lc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Ground"]
+shape = SubResource("BoxShape3D_0fj68")
+
+[node name="Wall" type="StaticBody3D" parent="TestField"]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 10, 10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Wall"]
+mesh = SubResource("BoxMesh_d5nu3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Wall"]
+shape = SubResource("BoxShape3D_bvn4l")
+
+[node name="Wall2" type="StaticBody3D" parent="TestField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 10, 10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Wall2"]
+mesh = SubResource("BoxMesh_d5nu3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Wall2"]
+shape = SubResource("BoxShape3D_bvn4l")
+
+[node name="Wall3" type="StaticBody3D" parent="TestField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Wall3"]
+mesh = SubResource("BoxMesh_npb3y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Wall3"]
+shape = SubResource("BoxShape3D_rx27r")
+
+[node name="Wall4" type="StaticBody3D" parent="TestField"]
+transform = Transform3D(1, 0, 0, 0, 0.53883, 0.842415, 0, -0.842415, 0.53883, 0, 6.49991, -6.61797)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Wall4"]
+mesh = SubResource("BoxMesh_abaru")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Wall4"]
+shape = SubResource("BoxShape3D_1hord")
+
+[node name="Rampa" type="RigidBody3D" parent="TestField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82684, 10.0907, 0)
+physics_material_override = SubResource("PhysicsMaterial_kdny1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestField/Rampa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+mesh = SubResource("PrismMesh_ef74f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestField/Rampa"]
+shape = SubResource("ConvexPolygonShape3D_lsroo")
+
+[node name="Apple" parent="TestField" instance=ExtResource("6_jokk3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1375, 7.80625, 6.53373)
+collision_layer = 2
+
+[node name="ServerHud" parent="." instance=ExtResource("9_4yerv")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://objects/player/scenes/player.tscn")
+spawn_path = NodePath("..")

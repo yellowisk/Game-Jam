@@ -1,7 +1,9 @@
 extends CanvasLayer
 
 func _on_host_pressed() -> void:
-	get_parent()._on_host_pressed()
+	get_parent().host()
+	visible = false
 	
 func _on_join_pressed() -> void:
-	get_parent()._on_join_pressed()
+	get_parent().join()
+	visible = false

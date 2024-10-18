@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="1_2433o"]
 [ext_resource type="Script" path="res://objects/ocean/scripts/ocean_test_scene.gd" id="1_ee6ux"]
-[ext_resource type="PackedScene" uid="uid://b3wxoacvtp4js" path="res://objects/free_camera/scenes/free_camera.tscn" id="2_xknl6"]
+[ext_resource type="PackedScene" uid="uid://b3wxoacvtp4js" path="res://objects/camera/scenes/free_camera.tscn" id="2_xknl6"]
 [ext_resource type="PackedScene" uid="uid://durj0x6c4d485" path="res://objects/ocean/scenes/Boia.tscn" id="3_kfjyp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ydnej"]
