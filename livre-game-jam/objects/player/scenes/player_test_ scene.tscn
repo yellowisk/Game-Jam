@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlmfbjj8ks04l"]
+
+[ext_resource type="PackedScene" uid="uid://cgydmujhlr7at" path="res://objects/player/scenes/test_field.tscn" id="1_dlo05"]
+[ext_resource type="PackedScene" uid="uid://dcfbkrwpsvoo0" path="res://objects/player/scenes/rb_player.tscn" id="2_1e0mm"]
+[ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="3_2bf0g"]
+
+[node name="PlayerTestScene" type="Node2D"]
+
+[node name="TestField" parent="." instance=ExtResource("1_dlo05")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.42614, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_1e0mm")]
+stop_speed = 0.74
+
+[node name="Sky" parent="." instance=ExtResource("3_2bf0g")]

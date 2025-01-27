@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs46xkse3sml6"
-path.s3tc="res://.godot/imported/base_mesh_Corpo Texture.png-8a3f443308bc73bf414169b74095f08a.s3tc.ctex"
+uid="uid://djxpyguod0810"
+path.s3tc="res://.godot/imported/navio_pequeno_navio.png-04a8388ab12df41c366f3186583dc8a7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "16ac61a022b9019558bac7f39701c3b3"
+}
 
 [deps]
 
-source_file="res://models/glb/base_mesh_Corpo Texture.png"
-dest_files=["res://.godot/imported/base_mesh_Corpo Texture.png-8a3f443308bc73bf414169b74095f08a.s3tc.ctex"]
+source_file="res://models/glb/navio_pequeno_navio.png"
+dest_files=["res://.godot/imported/navio_pequeno_navio.png-04a8388ab12df41c366f3186583dc8a7.s3tc.ctex"]
 
 [params]
 

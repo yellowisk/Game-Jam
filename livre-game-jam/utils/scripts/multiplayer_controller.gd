@@ -1,7 +1,7 @@
 extends Node3D
 
 var peer = ENetMultiplayerPeer.new()
-@export var player_scene : PackedScene = preload("res://objects/player/scenes/player.tscn")
+@export var player_scene : PackedScene = preload("res://objects/player/scenes/rb_player.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
