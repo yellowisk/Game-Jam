@@ -16,11 +16,12 @@ size = Vector3(14, 1.4, 1)
 size = Vector3(9, 4, 14)
 
 [node name="BasicShip" type="RigidBody3D"]
-axis_lock_angular_y = true
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_afssd")
 script = ExtResource("1_vgqm0")
 float_force = 150.0
+water_drag = 0.1
+water_angular_drag = 0.5
 
 [node name="ProbeContainer" type="Node3D" parent="."]
 
