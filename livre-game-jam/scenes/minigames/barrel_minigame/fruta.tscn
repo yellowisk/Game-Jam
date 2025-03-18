@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5jbvqns05dgm"]
+
+[ext_resource type="PackedScene" uid="uid://cixs4eyr1ickn" path="res://models/glb/apple.glb" id="1_u3005"]
+[ext_resource type="PackedScene" uid="uid://bkq2ep0f5kj5b" path="res://models/glb/banana.glb" id="2_fqvsv"]
+[ext_resource type="PackedScene" uid="uid://b2hwdnugwpfr0" path="res://models/glb/bread.glb" id="3_uhro1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wx2rr"]
+bounce = 0.2
+
+[sub_resource type="GDScript" id="GDScript_1njhg"]
+script/source = "extends RigidBody3D
+
+@export var apple_scene : PackedScene
+@export var banana_scene : PackedScene
+@export var bread_scene : PackedScene
+
+# Called when the node enters the scene tree for the first time
+func _ready():
+	var variant_list = [apple_scene, banana_scene, bread_scene]
+	var obj = variant_list[randi_range(0, 2)].instantiate()
+	add_child(obj)
+"
+
+[sub_resource type="PackedScene" id="PackedScene_qq3rl"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("apple", "Circle_001", "transform"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0),
+"variants": [ExtResource("1_u3005"), Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, -0.074, 0)],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_j02rw"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("banana", "Circle", "transform"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0),
+"variants": [ExtResource("2_fqvsv"), Transform3D(0.15902, 0.192906, 0, -0.192906, 0.15902, 0, 0, 0, 0.25, -0.052, 0, 0)],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_jsf08"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("bread", "Plane", "transform"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0),
+"variants": [ExtResource("3_uhro1"), Transform3D(0.285, 0, 0, 0, 0.285, 0, 0, 0, 0.042, 0, -0.254, 0)],
+"version": 3
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3738w"]
+radius = 0.3
+
+[node name="Fruta" type="RigidBody3D" groups=["Fruta"]]
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_wx2rr")
+gravity_scale = 0.765
+script = SubResource("GDScript_1njhg")
+apple_scene = SubResource("PackedScene_qq3rl")
+banana_scene = SubResource("PackedScene_j02rw")
+bread_scene = SubResource("PackedScene_jsf08")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_3738w")

@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://scenes/Global.gd"
-Lobby="*res://scenes/Lobby.gd"
+Global="*res://utils/scripts/Global.gd"
+Lobby="*res://utils/scripts/Lobby.gd"
 Signals="*res://utils/scripts/Signals.gd"
 NetworkTime="*res://addons/netfox/network-time.gd"
 NetworkTimeSynchronizer="*res://addons/netfox/network-time-synchronizer.gd"

@@ -1,17 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://qaipl84v5jas"]
+[gd_scene load_steps=9 format=3 uid="uid://qaipl84v5jas"]
 
 [ext_resource type="Script" path="res://utils/scripts/multiplayer_controller.gd" id="1_x2s1o"]
 [ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="2_5yo5j"]
+[ext_resource type="PackedScene" uid="uid://dan4uea334n3i" path="res://objects/player/scenes/player.tscn" id="2_e28s3"]
 [ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="3_nbbq1"]
 [ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="4_2q31n"]
 [ext_resource type="PackedScene" uid="uid://cgydmujhlr7at" path="res://objects/player/scenes/test_field.tscn" id="5_3erll"]
-[ext_resource type="PackedScene" uid="uid://ehsf4vjimima" path="res://utils/scenes/server_hud.tscn" id="6_1uxaf"]
+[ext_resource type="PackedScene" uid="uid://ehsf4vjimima" path="res://scenes/hud/server_hud.tscn" id="6_1uxaf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b1tlt"]
 friction = 0.1
 
 [node name="PlayerTestScene" type="Node3D"]
 script = ExtResource("1_x2s1o")
+player_scene = ExtResource("2_e28s3")
 
 [node name="Ocean" parent="." instance=ExtResource("2_5yo5j")]
 
@@ -26,5 +28,5 @@ physics_material_override = SubResource("PhysicsMaterial_b1tlt")
 [node name="ServerHud" parent="." instance=ExtResource("6_1uxaf")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://objects/player/scenes/rb_player.tscn")
+_spawnable_scenes = PackedStringArray("res://objects/player/scenes/player.tscn")
 spawn_path = NodePath("..")

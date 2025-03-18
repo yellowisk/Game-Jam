@@ -1,8 +1,8 @@
 extends RigidBody3D
 
-@export var float_force := 1.0
-@export var water_drag := 0.05
-@export var water_angular_drag := 0.05
+@export var float_force := 150.0
+@export var water_drag := 0.1
+@export var water_angular_drag := 0.5
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var water = $"../Ocean"

@@ -1,27 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://f6vwck6555tp"]
+[gd_scene load_steps=6 format=3 uid="uid://c5ug8ln40g8e7"]
 
-[ext_resource type="PackedScene" uid="uid://bp7ata2u7ipjw" path="res://objects/ships/resources/navio_pequeno.glb" id="1_ir2dr"]
-[ext_resource type="Script" path="res://objects/ships/scripts/ship.gd" id="1_vgqm0"]
+[ext_resource type="Script" path="res://objects/ships/scripts/enemys_ship.gd" id="1_wphtp"]
+[ext_resource type="PackedScene" uid="uid://bp7ata2u7ipjw" path="res://objects/ships/resources/navio_pequeno.glb" id="2_liihi"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_afssd"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bcn7x"]
 friction = 0.5
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c2h3i"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4fi42"]
 points = PackedVector3Array(-16, 0, -7, -16, 0, 7, 13, 0, 7, 13, 0, -7, -15, -4, -6, -15, -4, 6, 13, -4, 6, 13, -4, -6, 19, 0, 0, 17, -4, 0)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4tw1s"]
-size = Vector3(14, 1.4, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cdsxo"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_aw3tp"]
 size = Vector3(9, 4, 14)
 
-[node name="BasicShip" type="RigidBody3D"]
-collision_layer = 255
-collision_mask = 0
+[node name="EnemysShip" type="RigidBody3D" groups=["projeteis"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mass = 1000.0
-physics_material_override = SubResource("PhysicsMaterial_afssd")
-script = ExtResource("1_vgqm0")
-float_force = 149.215
+physics_material_override = SubResource("PhysicsMaterial_bcn7x")
+script = ExtResource("1_wphtp")
 
 [node name="ProbeContainer" type="Node3D" parent="."]
 
@@ -52,19 +47,11 @@ transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, 0.5, -0.25, -0.433013
 [node name="Marker3D9" type="Marker3D" parent="ProbeContainer"]
 transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, -0.5, 0.25, 0.433013, 0.866025, 15, -4, -6)
 
-[node name="navio_pequeno" parent="." instance=ExtResource("1_ir2dr")]
+[node name="navio_pequeno" parent="." instance=ExtResource("2_liihi")]
 
 [node name="Ground" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_c2h3i")
-
-[node name="Corrimao" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 6.5)
-shape = SubResource("BoxShape3D_4tw1s")
-
-[node name="Corrimao2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -6.5)
-shape = SubResource("BoxShape3D_4tw1s")
+shape = SubResource("ConvexPolygonShape3D_4fi42")
 
 [node name="Cabine" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2, 0)
-shape = SubResource("BoxShape3D_cdsxo")
+shape = SubResource("BoxShape3D_aw3tp")

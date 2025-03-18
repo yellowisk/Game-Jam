@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://d5623dkeisnc"]
+
+[ext_resource type="PackedScene" uid="uid://c050u7yhun235" path="res://objects/cannon/scenes/cannon_player.tscn" id="2_3dfd2"]
+[ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="3_5fb11"]
+[ext_resource type="PackedScene" uid="uid://c5ug8ln40g8e7" path="res://objects/ships/scenes/enemys_ship.tscn" id="3_qxult"]
+
+[node name="CannonMinigame" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.842678, -0.431887, -0.321508, -5.67673e-08, -0.597135, 0.802141, -0.538418, 0.675946, 0.503193, -3.08547, 16.7561, 40.5333)
+shadow_enabled = true
+
+[node name="EnemysShip" parent="." instance=ExtResource("3_qxult")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 10, 6)
+
+[node name="CannonPlayer" parent="." instance=ExtResource("2_3dfd2")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 4.22666, 10.1623, 35.2955)
+
+[node name="CameraPivot" type="Marker3D" parent="CannonPlayer" groups=["projeteis"]]
+transform = Transform3D(0.0315852, 0, -0.999501, 0, 1, 0, 0.999501, 0, 0.0315852, -4.9302, 2.2781, 0.0348765)
+
+[node name="Camera3D" type="Camera3D" parent="CannonPlayer/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277828, 0.324479)
+fov = 78.0
+
+[node name="Ocean" parent="." instance=ExtResource("3_5fb11")]

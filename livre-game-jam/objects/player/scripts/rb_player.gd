@@ -8,16 +8,19 @@ extends RigidBody3D
 @export_range(0.01,1.0) var stop_speed = 0.5
 @export var view_sensitivity = 10.0
 @export var current_speed = 0.0
+@export var angular_restitution = 0.5
+
+@export var animated_player : Node3D
 
 var accel_multiplier = 1.0
 var velocity=Vector3()
 var mouse_input = Vector2()
+var _last_movement_dir = Vector3.ZERO
 
 @onready var head = $CameraPivot
 @onready var eyes = $CameraPivot/SpringArm3D/Camera3D
 @onready var body = $Body
-@onready var feet = %Feet
-@onready var feet_detector = %Feet/RayCast3D
+@onready var feet : ShapeCast3D = %Feet
 
 var is_on_floor = false
 var move_input = Vector2.ZERO
@@ -37,11 +40,22 @@ func _physics_process(delta):
 	#movement input
 	move_input = Input.get_vector("move_left","move_right","move_up", "move_down")
 	dir = (transform.basis * Vector3(move_input.x, 0, move_input.y)).normalized()
-	var dir_rotated = dir.rotated(Vector3(1, 0, 0), feet.rotation.x).rotated(Vector3(0, 0, 1), feet.rotation.z)
+	var colision_normal = Vector3.ZERO
+	if feet.is_colliding():
+		colision_normal = feet.get_collision_normal(0)
+	#var dir_rotated = (dir.rotated(Vector3(1, 0, 0), colision_normal.x)
+	#					  .rotated(Vector3(0, 0, 1), colision_normal.z))
+	var dir_rotated = (dir.rotated(Vector3(1, 0, 0), asin(colision_normal.z))
+						  .rotated(Vector3(0, 0, 1), -asin(colision_normal.x)))
+	print(feet.get_collision_normal(0), dir, dir_rotated)
 	velocity = dir_rotated * speed
-
 	
-	if feet_detector.is_colliding():
+	if dir.length() > 0.2:
+		_last_movement_dir = dir
+	var target_angle := Vector3.BACK.signed_angle_to(_last_movement_dir, Vector3.UP)
+	animated_player.global_rotation.y = lerp_angle(animated_player.rotation.y, target_angle, 2.0 * delta)
+	
+	if feet.is_colliding():
 		apply_central_impulse(velocity)
 		is_on_floor = true
 		physics_material_override.friction = 1.0
@@ -49,10 +63,15 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor:
 		accel_multiplier = 0.1
 		is_on_floor = false
-		apply_central_impulse(Vector3.UP * jump_velocity)
+		apply_central_impulse(colision_normal * jump_velocity)
+	
+	#print(global_basis.x, -10 * global_basis.x * angular_restitution)
+	#rotation = lerp(rotation, Vector3.ZERO, angular_restitution) 
+		
 	mouse_input =Vector2.ZERO
 	
 
+	
 func _integrate_forces(state):
 	#limit max speed
 	if state.linear_velocity.length() > max_speed:
