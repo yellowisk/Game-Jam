@@ -1,39 +1,72 @@
-extends Node3D
+extends Node
 
-var peer = ENetMultiplayerPeer.new()
-@export var player_scene : PackedScene = preload("res://objects/player/scenes/rb_player.tscn")
+@export var address = "127.0.0.1"
+var multiplayer_peer
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Signals.connect("host_server", host)
-	Signals.connect("join_server", join)
-	peer.connect("peer_disconnected", del_player)
-	multiplayer.connect("server_disconnected", server_closed)
+	multiplayer.peer_connected.connect(peer_connected)
+	multiplayer.peer_disconnected.connect(peer_disconnected)
+	multiplayer.connected_to_server.connect(connected_to_server)
+	multiplayer.connection_failed.connect(connection_failed)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_released("quit"):
-			multiplayer.multiplayer_peer.close()
-			emit_signal("player_disconnect")
-			
-func host() -> void:
-	peer.create_server(1027)
-	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(add_player)
-	add_player()
-
-func join(ip : String = "127.0.0.1") -> void:
-	peer.create_client(ip,1027)
-	multiplayer.multiplayer_peer = peer
-
-func add_player(id = 1):
-	var player = player_scene.instantiate()
-	player.name = str(id)
-	call_deferred("add_child", player)
+func peer_connected(id):
+	print("Player Connected " + str(id))
 	
-func del_player(id):
-	get_node(str(id)).queue_free()
+func peer_disconnected(id):
+	print("Player Disconnected " + str(id))
+
+func connected_to_server():
+	print("Conected to Server!")
+	send_player_information.rpc_id(1, "player", multiplayer.get_unique_id())
 	
-func server_closed():
-	emit_signal("server_disconnect")
+func connection_failed():
+	print("Couldnt Connect")
+	
+@rpc("any_peer", "call_local")
+func start_game():
+	var scene = preload("res://scenes/map/scenes/Map.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	Signals.hide_menu.emit()
+
+	
+func host(port, max_players) -> void:
+	multiplayer_peer = ENetMultiplayerPeer.new()
+	var error = multiplayer_peer.create_server(port, max_players)
+	if error != OK:
+		print("cannot host: " + str(error))
+		return
+		
+	multiplayer_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
+	multiplayer.set_multiplayer_peer(multiplayer_peer)
+	print("Waiting for Players!")
+	GameManager.max_players = max_players
+
+func join(port) -> void:
+	multiplayer_peer = ENetMultiplayerPeer.new()
+	multiplayer_peer.create_client(address, port)
+	multiplayer_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
+	multiplayer.set_multiplayer_peer(multiplayer_peer)
+
+func start() -> void:
+	start_game.rpc()
+	pass # Replace with function body.
+	
+func add_player_character(peer_id):
+	var player_character = preload("res://objects/player/scenes/rb_player.tscn").instantiate()
+	player_character.set_multiplayer_authority(peer_id)
+	add_child(player_character)
+	
+@rpc("any_peer")
+func send_player_information(name, id):
+	if !GameManager.players.has(id):
+		GameManager.players[id] = {
+			"name":name,
+			"id": id,
+			"score": 0
+		}
+
+	if multiplayer.is_server():
+		for i in GameManager.players:
+			send_player_information.rpc(GameManager.players[i].name, i)
+	
+	Signals.update_player_count.emit(str(len(GameManager.players)) + "/" + str(GameManager.max_players))

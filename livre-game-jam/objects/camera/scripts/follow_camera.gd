@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var target: Node3D
+@export var distance_view:= 30.0
 
 var obj_list : Array
 var target_pos
@@ -28,3 +29,16 @@ func _process(delta):
 		target = obj_list[target_pos]
 		 
 	global_position = target.global_position
+
+func _input(event):
+
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			# zoom in
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				distance_view -= 0.5
+				# call the zoom function
+			# zoom out
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				distance_view += 0.5
+			$SpringArm3D.spring_length = distance_view

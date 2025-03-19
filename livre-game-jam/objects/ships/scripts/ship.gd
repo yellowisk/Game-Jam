@@ -5,7 +5,7 @@ extends RigidBody3D
 @export var water_angular_drag := 0.5
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-@onready var water = $"../Ocean"
+@onready var water = %Ocean
 
 @onready var probes = $ProbeContainer.get_children()
 

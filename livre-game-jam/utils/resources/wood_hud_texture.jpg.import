@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ogbi1hffcoyh"
-path="res://.godot/imported/state-synchronizer.svg-9cb9447ba79f114a58e468a24d17b860.ctex"
+uid="uid://cq2gjkbwriguc"
+path="res://.godot/imported/wood_hud_texture.jpg-c17cb46b1afef7ebbaa169ed6f2dc7cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/netfox/icons/state-synchronizer.svg"
-dest_files=["res://.godot/imported/state-synchronizer.svg-9cb9447ba79f114a58e468a24d17b860.ctex"]
+source_file="res://utils/resources/wood_hud_texture.jpg"
+dest_files=["res://.godot/imported/wood_hud_texture.jpg-c17cb46b1afef7ebbaa169ed6f2dc7cc.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

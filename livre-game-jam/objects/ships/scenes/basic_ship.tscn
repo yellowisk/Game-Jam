@@ -21,7 +21,6 @@ collision_mask = 0
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_afssd")
 script = ExtResource("1_vgqm0")
-float_force = 149.215
 
 [node name="ProbeContainer" type="Node3D" parent="."]
 

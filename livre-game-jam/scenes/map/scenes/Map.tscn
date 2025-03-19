@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://oj0iinmteyex"]
+
+[ext_resource type="Script" path="res://scenes/map/scripts/map.gd" id="1_jj4tg"]
+[ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="1_unc2g"]
+[ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="2_nv7wo"]
+[ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="3_b7rj4"]
+[ext_resource type="PackedScene" uid="uid://veibi4gf8bgg" path="res://objects/camera/scenes/follow_camera.tscn" id="4_p6u2l"]
+[ext_resource type="PackedScene" uid="uid://bovdjdn63dev8" path="res://scenes/map/scenes/checkpoints.tscn" id="5_q28x7"]
+
+[sub_resource type="Curve3D" id="Curve3D_1v2st"]
+_data = {
+"points": PackedVector3Array(-60.8088, -4.98605, -14.7315, 60.809, 0, 14.731, 0, 0, 0, -21.064, 0, 16.108, 21.064, 0, -16.108, 94.899, 0, -0.353, -28.683, 0, 0.789, 28.683, 0, -0.789, 162.845, 0, -29.303, 0, 0, 0, 0, 0, 0, 261.834, 0, 6.081),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ua5wk"]
+properties/0/path = NodePath("Path3D/ShipPathFollow:progress")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_jj4tg")
+
+[node name="Sky" parent="." instance=ExtResource("1_unc2g")]
+
+[node name="Ocean" parent="." instance=ExtResource("2_nv7wo")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, -5, 0)
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_1v2st")
+
+[node name="ShipPathFollow" type="PathFollow3D" parent="Path3D"]
+unique_name_in_owner = true
+transform = Transform3D(-0.235438, 0, -0.971881, 0, 1, 0, 0.971881, 0, -0.235438, 0, 0, 0)
+
+[node name="BasicShip" parent="Path3D/ShipPathFollow" instance=ExtResource("3_b7rj4")]
+transform = Transform3D(-0.23544, 0, 0.971889, 0, 1, 0, -0.971889, 0, -0.23544, 0, 3.0683, 0)
+
+[node name="Checkpoint0" parent="Path3D" instance=ExtResource("5_q28x7")]
+transform = Transform3D(-0.23544, 0, -0.971889, 0, 1, 0, 0.971889, 0, -0.23544, 0, 0, 0)
+
+[node name="Checkpoint1" parent="Path3D" instance=ExtResource("5_q28x7")]
+transform = Transform3D(-0.0908333, 0, -0.995866, 0, 1, 0, 0.995866, 0, -0.0908333, 54.8593, 0, 10.9997)
+progress = 55.994
+
+[node name="Checkpoint2" parent="Path3D" instance=ExtResource("5_q28x7")]
+transform = Transform3D(0.578575, 0, -0.815629, 0, 1, 0, 0.815629, 0, 0.578575, 105.435, 0, -8.16454)
+progress = 111.988
+
+[node name="Checkpoint3" parent="Path3D" instance=ExtResource("5_q28x7")]
+transform = Transform3D(0.0884237, 0, -0.996083, 0, 1, 0, 0.996083, 0, 0.0884237, 156.65, 0, -28.9462)
+progress = 167.982
+
+[node name="FollowCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_p6u2l")]
+target = NodePath("../Path3D/ShipPathFollow/BasicShip")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ua5wk")
