@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://wta5mn833sks"]
+
+[ext_resource type="Script" path="res://scenes/levels/scripts/level_controller.gd" id="1_oc5bt"]
+[ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="2_wl4xi"]
+[ext_resource type="PackedScene" uid="uid://veibi4gf8bgg" path="res://objects/camera/scenes/follow_camera.tscn" id="3_0fk5l"]
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_oc5bt")
+
+[node name="Ship" parent="." instance=ExtResource("2_wl4xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247455, 0)
+
+[node name="FollowCamera" parent="." groups=["camera"] instance=ExtResource("3_0fk5l")]

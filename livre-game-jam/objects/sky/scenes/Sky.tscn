@@ -17,6 +17,7 @@ background_mode = 2
 sky = SubResource("Sky_dwxpp")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
 reflected_light_source = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0chw"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Livre Game Jam"
-run/main_scene="res://objects/player/scenes/multiplayer_player_test_scene.tscn"
+run/main_scene="res://scenes/main_scene/scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,9 @@ config/icon="res://icon.svg"
 GameManager="*res://utils/scripts/game_manager.gd"
 MultiplayerController="*res://utils/scripts/multiplayer_controller.gd"
 Signals="*res://utils/scripts/Signals.gd"
+GlobalSky="*res://objects/sky/scenes/Sky.tscn"
+Ocean="*res://objects/ocean/scenes/ocean.tscn"
+SceneTransition="*res://scenes/hud/scene_transition.tscn"
 
 [display]
 
@@ -35,7 +38,9 @@ enabled=PackedStringArray()
 [global_group]
 
 players=""
-Fruta=""
+fruta=""
+ships=""
+camera=""
 
 [input]
 

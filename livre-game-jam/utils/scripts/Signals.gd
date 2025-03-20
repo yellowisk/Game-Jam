@@ -3,5 +3,7 @@ signal host_server
 signal join_server(id:String)
 signal player_disconnect
 signal server_disconnect
-signal hide_menu
+signal start_game
 signal update_player_count(player_count:String)
+signal level_area_enter(level_name:String)
+signal level_area_exit()

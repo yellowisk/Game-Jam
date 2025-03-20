@@ -5,7 +5,6 @@ extends RigidBody3D
 @export var water_angular_drag := 0.5
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-@onready var water = %Ocean
 
 @onready var probes = $ProbeContainer.get_children()
 
@@ -23,7 +22,7 @@ func _process(delta):
 func _physics_process(delta):
 	submerged = false
 	for p in probes:
-		var depth = water.get_height(p.global_position) - p.global_position.y 
+		var depth = Ocean.get_height(p.global_position) - p.global_position.y 
 		if depth > 0:
 			submerged = true
 			apply_force(Vector3.UP * float_force * gravity * depth, p.global_position - global_position)

@@ -30,20 +30,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u068p"]
-bg_color = Color(0.295384, 0.173846, 0.0197229, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.272011, 0.142961, 0.0403426, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.572549)
-shadow_size = 10
-shadow_offset = Vector2(5, 5)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gl6uh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c3ey"]
 corner_radius_top_left = 5
@@ -84,7 +71,7 @@ LineEdit/colors/caret_color = Color(0.95, 0.95, 0.95, 1)
 LineEdit/colors/font_color = Color(0.968627, 0.905882, 0.682353, 1)
 LineEdit/styles/focus = SubResource("StyleBoxTexture_002uh")
 MenuButton/styles/normal = SubResource("StyleBoxFlat_33i8f")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_u068p")
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_gl6uh")
 TabBar/colors/drop_mark_color = Color(0.968627, 0.905882, 0.682353, 1)
 TabBar/colors/font_disabled_color = Color(0.847347, 0.645027, 0.287932, 0.54902)
 TabBar/colors/font_hovered_color = Color(0.988771, 0.966188, 0.883718, 1)

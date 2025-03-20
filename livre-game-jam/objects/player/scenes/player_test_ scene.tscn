@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dcfbkrwpsvoo0" path="res://objects/player/scenes/rb_player.tscn" id="2_1e0mm"]
 [ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="2_yk6af"]
 [ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="3_2bf0g"]
-[ext_resource type="Script" path="res://objects/player/scripts/PlayerMetrics.gd" id="4_1dv1g"]
+[ext_resource type="Script" path="res://objects/player/scripts/scripts_aux/player_metrics.gd" id="4_1dv1g"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b5oln"]
 

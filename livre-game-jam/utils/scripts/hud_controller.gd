@@ -1,7 +1,7 @@
 extends CanvasLayer
 	
 func _ready() -> void: 
-	Signals.hide_menu.connect(_hide)
+	Signals.start_game.connect(_hide)
 	Signals.update_player_count.connect(_update_players)
 
 func _on_host_pressed() -> void:

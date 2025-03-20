@@ -66,7 +66,7 @@ _bundled = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_3738w"]
 radius = 0.3
 
-[node name="Fruta" type="RigidBody3D" groups=["Fruta"]]
+[node name="Fruta" type="RigidBody3D" groups=["fruta"]]
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_wx2rr")
 gravity_scale = 0.765

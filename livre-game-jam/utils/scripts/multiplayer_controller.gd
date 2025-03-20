@@ -11,9 +11,11 @@ func _ready() -> void:
 
 func peer_connected(id):
 	print("Player Connected " + str(id))
-	
+	Signals.join_server.emit(id)
+
 func peer_disconnected(id):
 	print("Player Disconnected " + str(id))
+	Signals.player_disconnect.emit()
 
 func connected_to_server():
 	print("Conected to Server!")
@@ -21,12 +23,11 @@ func connected_to_server():
 	
 func connection_failed():
 	print("Couldnt Connect")
-	
+
 @rpc("any_peer", "call_local")
 func start_game():
-	var scene = preload("res://scenes/map/scenes/Map.tscn").instantiate()
-	get_tree().root.add_child(scene)
-	Signals.hide_menu.emit()
+	SceneTransition.change_scene(preload("res://scenes/map/scenes/Map.tscn"))
+	Signals.start_game.emit()
 
 	
 func host(port, max_players) -> void:
@@ -40,6 +41,7 @@ func host(port, max_players) -> void:
 	multiplayer.set_multiplayer_peer(multiplayer_peer)
 	print("Waiting for Players!")
 	GameManager.max_players = max_players
+	Signals.host_server.emit()
 
 func join(port) -> void:
 	multiplayer_peer = ENetMultiplayerPeer.new()
@@ -49,6 +51,7 @@ func join(port) -> void:
 
 func start() -> void:
 	start_game.rpc()
+	Signals.start_game.emit()
 	pass # Replace with function body.
 	
 func add_player_character(peer_id):

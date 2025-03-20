@@ -73,7 +73,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jul3j")
 
-[node name="Banana" type="RigidBody3D" groups=["Fruta"]]
+[node name="Banana" type="RigidBody3D" groups=["fruta"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.538785, -0.842443, 0, 0.842443, 0.538785, 0, 0, 0, 1, 0.223192, -0.153282, 0)

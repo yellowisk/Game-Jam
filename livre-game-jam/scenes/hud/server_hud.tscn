@@ -28,7 +28,6 @@ theme = ExtResource("2_n6m6b")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
-theme = ExtResource("2_n6m6b")
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 50
@@ -40,6 +39,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.327224, 0.208929, 0.0603824, 1)
 theme_override_font_sizes/font_size = 121
 text = "O Captão Mandou!"
 horizontal_alignment = 1
