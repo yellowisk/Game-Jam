@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://euigm2smsces"]
 
-[ext_resource type="Script" path="res://utils/scripts/scene_transition.gd" id="1_n5c5q"]
+[ext_resource type="Script" path="res://scenes/hud/scripts/scene_transition.gd" id="1_n5c5q"]
 
 [sub_resource type="Animation" id="Animation_mku76"]
 resource_name = "reset"

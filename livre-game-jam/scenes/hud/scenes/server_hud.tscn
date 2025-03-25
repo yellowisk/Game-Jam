@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ehsf4vjimima"]
 
-[ext_resource type="Script" path="res://utils/scripts/hud_controller.gd" id="1_pkgsk"]
+[ext_resource type="Script" path="res://scenes/hud/scripts/hud_controller.gd" id="1_pkgsk"]
 [ext_resource type="Theme" uid="uid://bpu1g488umdue" path="res://utils/resources/main_theme.tres" id="2_n6m6b"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_e4v37"]

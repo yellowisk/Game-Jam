@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyfknapd7erv"]
+
+[ext_resource type="Script" path="res://scenes/hud/scripts/event_ticket.gd" id="1_6bdyx"]
+[ext_resource type="Theme" uid="uid://cet82knbbdcm4" path="res://utils/resources/level_theme.tres" id="2_41bab"]
+[ext_resource type="Texture2D" uid="uid://b4t5dut587pjv" path="res://scenes/hud/resources/question.png" id="3_oymmj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8eivt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78c03"]
+bg_color = Color(0, 1, 0, 1)
+
+[node name="EventTicket" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 50)
+offset_right = 119.0
+offset_bottom = 50.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_41bab")
+script = ExtResource("1_6bdyx")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("3_oymmj")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="EventName" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unknown"
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_8eivt")
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_78c03")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

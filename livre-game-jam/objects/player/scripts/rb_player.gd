@@ -64,7 +64,9 @@ func _physics_process(delta):
 		peer_position = global_position
 	else:
 		global_position = lerp(global_position, peer_position, 0.2)
-		animated_player.rotation = lerp(animated_player.rotation, peer_rotation, 0.1)
+		if peer_position.distance_squared_to(global_position) > 10:
+			global_position = peer_position
+		animated_player.rotation = lerp(animated_player.rotation, peer_rotation, 0.5)
 
 	
 func _integrate_forces(state):
