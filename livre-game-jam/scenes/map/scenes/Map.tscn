@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://oj0iinmteyex"]
 
-[ext_resource type="Script" path="res://scenes/map/scripts/map.gd" id="1_kpmsk"]
+[ext_resource type="Script" uid="uid://2sva8ur4gjgi" path="res://scenes/map/scripts/map.gd" id="1_kpmsk"]
 [ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="2_pwioc"]
 [ext_resource type="PackedScene" uid="uid://bovdjdn63dev8" path="res://scenes/map/scenes/checkpoints.tscn" id="3_1ltsr"]
 [ext_resource type="PackedScene" uid="uid://veibi4gf8bgg" path="res://objects/camera/scenes/follow_camera.tscn" id="4_3vmdt"]

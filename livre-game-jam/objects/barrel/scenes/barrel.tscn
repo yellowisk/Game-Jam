@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cngsfaq7lk1se"]
 
-[ext_resource type="Script" path="res://objects/barrel/scripts/barrel.gd" id="1_lxt6r"]
+[ext_resource type="Script" uid="uid://cx3vccdtiympw" path="res://objects/barrel/scripts/barrel.gd" id="1_lxt6r"]
 [ext_resource type="PackedScene" uid="uid://bh0dfc2j2cq8r" path="res://objects/barrel/resources/barril.tscn" id="2_lbnpl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6owre"]

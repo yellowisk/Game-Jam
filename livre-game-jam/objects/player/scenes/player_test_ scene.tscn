@@ -1,19 +1,20 @@
 [gd_scene load_steps=8 format=3 uid="uid://dlmfbjj8ks04l"]
 
 [ext_resource type="PackedScene" uid="uid://cgydmujhlr7at" path="res://objects/player/scenes/test_field.tscn" id="1_dlo05"]
-[ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="1_ptnf8"]
+[ext_resource type="Script" uid="uid://8jtccul05jqv" path="res://objects/player/scripts/player_test__scene.gd" id="1_eu4gx"]
 [ext_resource type="PackedScene" uid="uid://dcfbkrwpsvoo0" path="res://objects/player/scenes/rb_player.tscn" id="2_1e0mm"]
 [ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="2_yk6af"]
-[ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="3_2bf0g"]
-[ext_resource type="Script" path="res://objects/player/scripts/scripts_aux/player_metrics.gd" id="4_1dv1g"]
+[ext_resource type="Script" uid="uid://dbrqk4l4mwium" path="res://objects/player/scripts/scripts_aux/player_metrics.gd" id="4_1dv1g"]
+[ext_resource type="PackedScene" uid="uid://veibi4gf8bgg" path="res://objects/camera/scenes/follow_camera.tscn" id="5_u1qx6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b5oln"]
 
 [node name="PlayerTestScene" type="Node3D"]
+script = ExtResource("1_eu4gx")
 
-[node name="Ocean" parent="." instance=ExtResource("1_ptnf8")]
-wave_speed = Vector2(0.05, 0.05)
-wave_height = 7.0
+[node name="FollowCamera" parent="." instance=ExtResource("5_u1qx6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.03366, 0.484524)
+distance_view = 10.0
 
 [node name="BasicShip" parent="." instance=ExtResource("2_yk6af")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.58259, -15.6254)
@@ -23,9 +24,7 @@ physics_material_override = SubResource("PhysicsMaterial_b5oln")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60039, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_1e0mm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.02653, 0)
-
-[node name="Sky" parent="." instance=ExtResource("3_2bf0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.241, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

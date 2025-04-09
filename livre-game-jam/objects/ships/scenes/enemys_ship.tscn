@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5ug8ln40g8e7"]
 
-[ext_resource type="Script" path="res://objects/ships/scripts/enemys_ship.gd" id="1_wphtp"]
+[ext_resource type="Script" uid="uid://dj0extdt217p2" path="res://objects/ships/scripts/enemys_ship.gd" id="1_wphtp"]
 [ext_resource type="PackedScene" uid="uid://bp7ata2u7ipjw" path="res://objects/ships/resources/navio_pequeno.glb" id="2_liihi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bcn7x"]
@@ -55,3 +55,8 @@ shape = SubResource("ConvexPolygonShape3D_4fi42")
 [node name="Cabine" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 2, 0)
 shape = SubResource("BoxShape3D_aw3tp")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="TargetParent" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.30754e-07, 0, -7.21498)

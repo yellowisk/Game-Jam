@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bjvndulu51q5f"]
 
-[ext_resource type="Shader" path="res://objects/sky/shaders/Sky.gdshader" id="1_0u1mp"]
+[ext_resource type="Shader" uid="uid://dfqsjge2h8lir" path="res://objects/sky/shaders/Sky.gdshader" id="1_0u1mp"]
 [ext_resource type="Texture2D" uid="uid://dk4d26c8ejipw" path="res://objects/sky/resources/kloppenheim_06_puresky_4k.exr" id="2_mrbge"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ba1tf"]

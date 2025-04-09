@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://durj0x6c4d485"]
 
-[ext_resource type="Script" path="res://objects/ships/scripts/ship.gd" id="1_k1axs"]
+[ext_resource type="Script" uid="uid://c4rwdpq43xk0f" path="res://objects/ships/scripts/ship.gd" id="1_k1axs"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a6xpw"]
 

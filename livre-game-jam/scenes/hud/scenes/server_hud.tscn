@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ehsf4vjimima"]
 
-[ext_resource type="Script" path="res://scenes/hud/scripts/hud_controller.gd" id="1_pkgsk"]
+[ext_resource type="Script" uid="uid://tfoj1v3xmuig" path="res://scenes/hud/scripts/hud_controller.gd" id="1_pkgsk"]
 [ext_resource type="Theme" uid="uid://bpu1g488umdue" path="res://utils/resources/main_theme.tres" id="2_n6m6b"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_e4v37"]
@@ -78,6 +78,7 @@ flat = false
 item_count = 3
 popup/item_0/text = "localhost"
 popup/item_0/checked = true
+popup/item_0/id = 0
 popup/item_1/text = "Campinas"
 popup/item_1/id = 1
 popup/item_2/text = "São Paulo"
@@ -123,6 +124,7 @@ text = "Join
 [node name="Start" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/Play/Play/ServerJoin"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+disabled = true
 text = "Start"
 
 [node name="Host" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer"]
@@ -155,6 +157,7 @@ flat = false
 item_count = 3
 popup/item_0/text = "localhost"
 popup/item_0/checked = true
+popup/item_0/id = 0
 popup/item_1/text = "Campinas"
 popup/item_1/id = 1
 popup/item_2/text = "São Paulo"

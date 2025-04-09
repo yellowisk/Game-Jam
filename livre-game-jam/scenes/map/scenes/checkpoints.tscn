@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bovdjdn63dev8"]
 
-[ext_resource type="Script" path="res://scenes/map/scripts/checkpoints.gd" id="1_jnhgy"]
+[ext_resource type="Script" uid="uid://cdsmgrq8rasi2" path="res://scenes/map/scripts/checkpoints.gd" id="1_jnhgy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stt35"]
 albedo_color = Color(0.995615, 0.796606, 7.70092e-07, 1)

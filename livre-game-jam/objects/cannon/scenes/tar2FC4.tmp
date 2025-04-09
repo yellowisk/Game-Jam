@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfbfaqa840517"]
+
+[ext_resource type="Script" path="res://objects/ships/scripts/target.gd" id="1_37wlh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve570"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_frr0w"]
+material = SubResource("StandardMaterial3D_ve570")
+inner_radius = 0.9
+
+[sub_resource type="TorusMesh" id="TorusMesh_0bq2x"]
+material = SubResource("StandardMaterial3D_ve570")
+inner_radius = 0.6
+outer_radius = 0.7
+
+[sub_resource type="TorusMesh" id="TorusMesh_bko5u"]
+material = SubResource("StandardMaterial3D_ve570")
+inner_radius = 0.3
+outer_radius = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o36uy"]
+height = 0.2
+radius = 3.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6xfxq"]
+
+[node name="Target" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_37wlh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("TorusMesh_frr0w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("TorusMesh_0bq2x")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("TorusMesh_bko5u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_o36uy")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_6xfxq")
+
+[connection signal="body_entered" from="Area3D" to="." method="_cannon_hit"]

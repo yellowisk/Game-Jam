@@ -10,16 +10,16 @@ config_version=5
 
 [application]
 
-config/name="Livre Game Jam"
+config/name="Sailor Says"
 run/main_scene="res://scenes/main_scene/scenes/main.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://utils/scripts/game_manager.gd"
 MultiplayerController="*res://utils/scripts/multiplayer_controller.gd"
-Signals="*res://utils/scripts/Signals.gd"
+Signals="*res://utils/scripts/signals.gd"
 GlobalSky="*res://objects/sky/scenes/Sky.tscn"
 Ocean="*res://objects/ocean/scenes/ocean.tscn"
 SceneTransition="*res://scenes/hud/scenes/scene_transition.tscn"
@@ -41,6 +41,8 @@ players=""
 fruta=""
 ships=""
 camera=""
+projeteis=""
+cannon=""
 
 [input]
 
@@ -90,6 +92,11 @@ jump={
 change={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+shift={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

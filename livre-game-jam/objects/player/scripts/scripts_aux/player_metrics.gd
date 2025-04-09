@@ -14,7 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	acceleration.text = "Acceleration: " + str(player.accel_multiplier).pad_decimals(2)
+	#acceleration.text = "Acceleration: " + str(player.accel_multiplier).pad_decimals(2)
 	friction.text = "Friction: " + str(player.physics_material_override.friction).pad_decimals(2)
 	speed.text = "Speed: " + str(player.current_speed).pad_decimals(2)
 	is_on_floor.text = "Is on floor: " +  str(player.is_on_floor)

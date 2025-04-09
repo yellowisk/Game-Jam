@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://gux2d446iehj"]
 
-[ext_resource type="Script" path="res://scenes/minigames/barrel_minigame/scripts/minigame_barril.gd" id="1_k1v7n"]
+[ext_resource type="Script" uid="uid://dv3ty2w8gpawr" path="res://scenes/minigames/barrel_minigame/scripts/minigame_barril.gd" id="1_k1v7n"]
 [ext_resource type="PackedScene" uid="uid://cngsfaq7lk1se" path="res://objects/barrel/scenes/barrel.tscn" id="2_h4u77"]
 [ext_resource type="PackedScene" uid="uid://crb0l1g5s41xw" path="res://objects/foods/scenes/apple.tscn" id="2_rwn38"]
 [ext_resource type="PackedScene" uid="uid://d0n8cbcl6go10" path="res://objects/foods/scenes/banana.tscn" id="3_ydhub"]
 [ext_resource type="PackedScene" uid="uid://qdtnnq4jnqdr" path="res://objects/foods/scenes/bread.tscn" id="4_r7oqq"]
 [ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="6_mh5l3"]
 [ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="7_dxqi8"]
-[ext_resource type="Script" path="res://scenes/minigames/barrel_minigame/scripts/pin.gd" id="8_js0sq"]
+[ext_resource type="Script" uid="uid://b44t8amqxkyrh" path="res://scenes/minigames/barrel_minigame/scripts/pin.gd" id="8_js0sq"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1y5v6"]
 

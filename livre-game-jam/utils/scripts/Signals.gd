@@ -7,3 +7,5 @@ signal start_game
 signal update_player_count(player_count:String)
 signal level_area_enter(level_name:String)
 signal level_area_exit()
+signal start_minigame(event)
+signal end_minigame(id:String)

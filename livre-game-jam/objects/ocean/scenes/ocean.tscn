@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dp0oi718r47kl"]
 
-[ext_resource type="Shader" path="res://objects/ocean/shaders/ocean.gdshader" id="1_0iixy"]
-[ext_resource type="Script" path="res://objects/ocean/scripts/ocean.gd" id="2_0lrrb"]
+[ext_resource type="Shader" uid="uid://cy0lv7jydvgfa" path="res://objects/ocean/shaders/ocean.gdshader" id="1_0iixy"]
+[ext_resource type="Script" uid="uid://bosfo331tovbp" path="res://objects/ocean/scripts/ocean.gd" id="2_0lrrb"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1jiwn"]
 noise_type = 2
@@ -29,12 +29,12 @@ noise = SubResource("FastNoiseLite_iwsfx")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dfp08"]
 render_priority = 0
 shader = ExtResource("1_0iixy")
-shader_parameter/wave_speed = Vector2(0.1, 0.1)
-shader_parameter/wave_height = 1.0
-shader_parameter/time = 0.0
 shader_parameter/wave_bump = SubResource("NoiseTexture2D_tefrm")
 shader_parameter/wave_texture_0 = SubResource("NoiseTexture2D_tefrm")
 shader_parameter/wave_texture_1 = SubResource("NoiseTexture2D_0mgay")
+shader_parameter/wave_speed = Vector2(0.1, 0.1)
+shader_parameter/wave_height = 1.0
+shader_parameter/time = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rspan"]
 material = SubResource("ShaderMaterial_dfp08")

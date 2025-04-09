@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://wta5mn833sks"]
+[gd_scene load_steps=6 format=3 uid="uid://wta5mn833sks"]
 
-[ext_resource type="Script" path="res://scenes/levels/scripts/level_controller.gd" id="1_oc5bt"]
+[ext_resource type="Script" uid="uid://du6j3sjmv48yu" path="res://scenes/levels/scripts/level_controller.gd" id="1_oc5bt"]
 [ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="2_wl4xi"]
-[ext_resource type="PackedScene" uid="uid://veibi4gf8bgg" path="res://objects/camera/scenes/follow_camera.tscn" id="3_0fk5l"]
+[ext_resource type="PackedScene" uid="uid://3gwaqysq082q" path="res://scenes/hud/scenes/level_hud.tscn" id="4_6ek3x"]
+[ext_resource type="PackedScene" uid="uid://veibi4gf8bgg" path="res://objects/camera/scenes/follow_camera.tscn" id="4_py1cr"]
+[ext_resource type="Script" uid="uid://bftcuybteylsq" path="res://scenes/levels/scripts/minigame_controller.gd" id="5_th4x5"]
 
-[node name="Level1" type="Node3D"]
+[node name="Level" type="Node3D"]
 script = ExtResource("1_oc5bt")
 
 [node name="Ship" parent="." instance=ExtResource("2_wl4xi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247455, 0)
 
-[node name="FollowCamera" parent="." groups=["camera"] instance=ExtResource("3_0fk5l")]
+[node name="LevelHud" parent="." instance=ExtResource("4_6ek3x")]
+
+[node name="FollowCamera" parent="." instance=ExtResource("4_py1cr")]
+
+[node name="MinigameController" type="Node" parent="."]
+script = ExtResource("5_th4x5")

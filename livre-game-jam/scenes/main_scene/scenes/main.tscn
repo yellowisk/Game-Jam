@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bovt58k1ujgm6"]
 
-[ext_resource type="Script" path="res://scenes/main_scene/script/main.gd" id="1_c5ls5"]
+[ext_resource type="Script" uid="uid://cwcbu8keq0vw" path="res://scenes/main_scene/script/main.gd" id="1_c5ls5"]
 [ext_resource type="PackedScene" uid="uid://ehsf4vjimima" path="res://scenes/hud/scenes/server_hud.tscn" id="2_dtekl"]
 [ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="3_frvpc"]
 
@@ -12,5 +12,5 @@ script = ExtResource("1_c5ls5")
 [node name="Ship" parent="." instance=ExtResource("3_frvpc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247455, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CameraTarget" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.96363, 0.267238, 0, -0.267238, 0.96363, 0, 13.2709, 33.6059)

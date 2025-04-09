@@ -1,0 +1,30 @@
+{
+	"name": "default",
+	"minigames": [
+		{
+			"type": "cannon_war",
+			"start": 5,
+			"duration": 20
+		},
+		{
+			"type": "barrel_food",
+			"start": 15,
+			"duration": 20
+		},
+		{
+			"type": "timao",
+			"start": 25,
+			"duration": 20
+		},
+		{
+			"type": "kraken",
+			"start": 35,
+			"duration": 20
+		},
+		{
+			"type": "invasion",
+			"start": 45,
+			"duration": 20
+		}
+	]
+}

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyfknapd7erv"]
 
-[ext_resource type="Script" path="res://scenes/hud/scripts/event_ticket.gd" id="1_6bdyx"]
+[ext_resource type="Script" uid="uid://cyieh6brhndyg" path="res://scenes/hud/scripts/event_ticket.gd" id="1_6bdyx"]
 [ext_resource type="Theme" uid="uid://cet82knbbdcm4" path="res://utils/resources/level_theme.tres" id="2_41bab"]
 [ext_resource type="Texture2D" uid="uid://b4t5dut587pjv" path="res://scenes/hud/resources/question.png" id="3_oymmj"]
 

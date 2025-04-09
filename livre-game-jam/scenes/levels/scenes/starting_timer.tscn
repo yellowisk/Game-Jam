@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://pol61p5npeh7"]
+
+[ext_resource type="Script" uid="uid://c2gh1y1jtoi1g" path="res://scenes/levels/scripts/starting_timer.gd" id="1_sr4ul"]
+
+[node name="StartingTimer" type="Timer"]
+script = ExtResource("1_sr4ul")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

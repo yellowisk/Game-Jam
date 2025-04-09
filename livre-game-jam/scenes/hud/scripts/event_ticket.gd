@@ -2,22 +2,21 @@ extends Control
 
 var image = Image.new()
 var total_duration = 0
+var id := 'Undefined'
+
 func config_ticket(id: String, type:String, duration: int):
 	match type:
 		"timao": image.load("res://scenes/hud/resources/helm.png")
 		"food": image.load("res://scenes/hud/resources/apple.png")
-		"fight": image.load("res://scenes/hud/resources/pirate-ship.png")
+		"cannon_war": image.load("res://scenes/hud/resources/pirate-ship.png")
 		"barrel": image.load("res://scenes/hud/resources/barrel.png")
 		"invasion": image.load("res://scenes/hud/resources/pirate.png")
 		"kraken": image.load("res://scenes/hud/resources/kraken.png")
 	%Icon.texture = ImageTexture.new().create_from_image(image)
 	%EventName.text = type
 	total_duration = duration
-	$Timer.start(duration)
+	$Timer.start(total_duration)
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	config_ticket("111", "timao", randi_range(10, 60))
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -30,4 +29,5 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
+	Signals.end_minigame.emit(id)
 	queue_free()
