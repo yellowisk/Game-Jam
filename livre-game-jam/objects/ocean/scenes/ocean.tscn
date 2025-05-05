@@ -33,7 +33,7 @@ shader_parameter/wave_bump = SubResource("NoiseTexture2D_tefrm")
 shader_parameter/wave_texture_0 = SubResource("NoiseTexture2D_tefrm")
 shader_parameter/wave_texture_1 = SubResource("NoiseTexture2D_0mgay")
 shader_parameter/wave_speed = Vector2(0.1, 0.1)
-shader_parameter/wave_height = 1.0
+shader_parameter/wave_height = 0.5
 shader_parameter/time = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rspan"]
@@ -44,6 +44,7 @@ subdivide_depth = 128
 
 [node name="Ocean" type="Node3D"]
 script = ExtResource("2_0lrrb")
+wave_speed = Vector2(0.05, 0.05)
 
 [node name="CenterOcean" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_rspan")

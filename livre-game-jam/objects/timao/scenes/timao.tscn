@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://chpsggl0kpris"]
+[gd_scene load_steps=11 format=4 uid="uid://chpsggl0kpris"]
 
 [ext_resource type="Script" uid="uid://doku0cxj61pv6" path="res://objects/timao/scripts/leme.gd" id="1_ds4ie"]
 
@@ -88,25 +88,42 @@ shadow_mesh = SubResource("ArrayMesh_pxyoj")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6am7b"]
 points = PackedVector3Array(-0.404343, 0.249886, 0.960037, 0.151352, -0.002789, -1.61737, 0.151352, 0.199333, -1.61737, 1.61737, -0.002789, 0.353681, -1.41504, -0.002789, 0.859031, -1.61737, 0.199333, -0.353681, 0.960037, 0.199333, 1.36438, 1.41504, 0.199333, -0.859031, -0.353681, -0.002789, 1.61737, -1.0107, -0.002789, -1.31404, -1.31404, 0.199333, 1.0107, 0.657018, 0.249886, -0.808686, 1.31404, -0.002789, -1.0107, 0.247401, -0.0255402, -0.0411042, -0.353681, 0.199333, 1.61737, 0.859031, -0.002789, 1.41504, 1.61737, 0.199333, 0.353681, -0.960037, 0.199333, -1.36438, -0.960037, 0.249886, -0.404343, -1.61737, -0.002789, -0.353681, 0.960037, 0.249886, 0.404343, 0.454688, 0.199333, -1.56671, -0.202013, 0.249886, -1.0107, -0.247401, -0.0255402, 0.0411042, -0.960037, 0.249886, 0.404343, 0.404343, 0.249886, 0.960037, 0.353681, -0.002789, -1.61737, -1.61737, 0.199333, -0.151352, 1.0107, -0.002789, 1.31404, -0.859031, -0.002789, -1.41504, 1.61737, -0.002789, 0.151352, 1.0107, 0.249886, -0.202013)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ds4ie"]
+properties/0/path = NodePath(".:player_controlling")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("LemeMesh:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Timao" type="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 129
+collision_mask = 129
 
 [node name="Caixa" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_fset3")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_x4n1m")
 
 [node name="Leme" type="CharacterBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 129
+collision_mask = 129
 script = ExtResource("1_ds4ie")
 
-[node name="Leme" type="MeshInstance3D" parent="Leme"]
-transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.123347, 0, 0)
+[node name="LemeMesh" type="MeshInstance3D" parent="Leme"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -0.123347, 0, 0)
 mesh = SubResource("ArrayMesh_hyrmk")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Leme"]
-transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, -0.123347, 0, 0)
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -0.123347, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_6am7b")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Leme"]
+replication_config = SubResource("SceneReplicationConfig_ds4ie")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://f6vwck6555tp"]
+[gd_scene load_steps=17 format=4 uid="uid://f6vwck6555tp"]
 
 [ext_resource type="PackedScene" uid="uid://bp7ata2u7ipjw" path="res://objects/ships/resources/navio_pequeno.glb" id="1_ir2dr"]
 [ext_resource type="Script" uid="uid://c4rwdpq43xk0f" path="res://objects/ships/scripts/ship.gd" id="1_vgqm0"]
@@ -96,12 +96,21 @@ shadow_mesh = SubResource("ArrayMesh_qyhhp")
 data = PackedVector3Array(0.7372, 0.0967, 1.3134, 0.7372, 0.6772, -1.3134, 0.7372, 0.6772, 1.3134, 0.7372, 0.0967, 1.3134, 0.7372, 0.0967, -1.3134, 0.7372, 0.6772, -1.3134, 2.0011, -1.0642, -1.3134, 1.3692, -0.4838, -1.3134, 2.0011, -0.4838, -1.3134, 2.0011, -1.0642, -1.3134, 0.7372, 0.0967, -1.3134, 1.3692, -0.4838, -1.3134, 1.3692, -0.4838, -1.3134, 0.7372, 0.0967, -1.3134, 1.3691, 0.0967, -1.3134, 2.0011, -1.0642, -1.3134, 0.1053, 0.6772, -1.3134, 0.7372, 0.0967, -1.3134, 0.7372, 0.0967, -1.3134, 0.1053, 0.6772, -1.3134, 0.7372, 0.6772, -1.3134, 0.1053, 0.6772, -1.3134, 2.0011, -1.0642, -1.3134, -1.1585, 1.8382, -1.3134, -1.1585, 1.8382, -1.3134, 2.0011, -1.0642, -1.3134, -1.1585, -1.0642, -1.3134, 0.1053, 0.6772, -1.3134, -1.1585, 1.8382, -1.3134, -0.5267, 1.2577, -1.3134, -0.5267, 1.2577, -1.3134, -1.1585, 1.8382, -1.3134, -0.5267, 1.8381, -1.3134, 0.1053, 0.6772, -1.3134, -0.5267, 1.2577, -1.3134, 0.1053, 1.2576, -1.3134, 1.3691, 0.0967, 1.3134, 0.7372, 0.0967, -1.3134, 0.7372, 0.0967, 1.3134, 1.3691, 0.0967, 1.3134, 1.3691, 0.0967, -1.3134, 0.7372, 0.0967, -1.3134, 1.3692, -0.4838, 1.3134, 1.3691, 0.0967, -1.3134, 1.3691, 0.0967, 1.3134, 1.3692, -0.4838, 1.3134, 1.3692, -0.4838, -1.3134, 1.3691, 0.0967, -1.3134, -1.1585, -1.0642, 1.3134, 2.0011, -1.0642, -1.3134, 2.0011, -1.0642, 1.3134, -1.1585, -1.0642, 1.3134, -1.1585, -1.0642, -1.3134, 2.0011, -1.0642, -1.3134, 2.0011, -0.4838, 1.3134, 1.3692, -0.4838, -1.3134, 1.3692, -0.4838, 1.3134, 2.0011, -0.4838, 1.3134, 2.0011, -0.4838, -1.3134, 1.3692, -0.4838, -1.3134, -0.5267, 1.8381, 1.3134, -1.1585, 1.8382, -1.3134, -1.1585, 1.8382, 1.3134, -0.5267, 1.8381, 1.3134, -0.5267, 1.8381, -1.3134, -1.1585, 1.8382, -1.3134, 2.0011, -1.0642, 1.3134, 2.0011, -0.4838, -1.3134, 2.0011, -0.4838, 1.3134, 2.0011, -1.0642, 1.3134, 2.0011, -1.0642, -1.3134, 2.0011, -0.4838, -1.3134, -0.5267, 1.2577, 1.3134, -0.5267, 1.8381, -1.3134, -0.5267, 1.8381, 1.3134, -0.5267, 1.2577, 1.3134, -0.5267, 1.2577, -1.3134, -0.5267, 1.8381, -1.3134, 0.1053, 1.2576, 1.3134, -0.5267, 1.2577, -1.3134, -0.5267, 1.2577, 1.3134, 0.1053, 1.2576, 1.3134, 0.1053, 1.2576, -1.3134, -0.5267, 1.2577, -1.3134, 0.1053, 0.6772, 1.3134, 0.1053, 1.2576, -1.3134, 0.1053, 1.2576, 1.3134, 0.1053, 0.6772, 1.3134, 0.1053, 0.6772, -1.3134, 0.1053, 1.2576, -1.3134, -1.1585, 1.8382, 1.3134, -1.1585, -1.0642, -1.3134, -1.1585, -1.0642, 1.3134, -1.1585, 1.8382, 1.3134, -1.1585, 1.8382, -1.3134, -1.1585, -1.0642, -1.3134, 0.7372, 0.6772, 1.3134, 0.1053, 0.6772, -1.3134, 0.1053, 0.6772, 1.3134, 0.7372, 0.6772, 1.3134, 0.7372, 0.6772, -1.3134, 0.1053, 0.6772, -1.3134, 1.3692, -0.4838, 1.3134, 2.0011, -1.0642, 1.3134, 2.0011, -0.4838, 1.3134, 1.3692, -0.4838, 1.3134, -1.1585, -1.0642, 1.3134, 2.0011, -1.0642, 1.3134, 0.7372, 0.0967, 1.3134, 1.3692, -0.4838, 1.3134, 1.3691, 0.0967, 1.3134, 0.7372, 0.0967, 1.3134, -1.1585, -1.0642, 1.3134, 1.3692, -0.4838, 1.3134, -1.1585, -1.0642, 1.3134, 0.7372, 0.0967, 1.3134, 0.1053, 0.6772, 1.3134, 0.1053, 0.6772, 1.3134, 0.7372, 0.0967, 1.3134, 0.7372, 0.6772, 1.3134, -1.1585, -1.0642, 1.3134, 0.1053, 0.6772, 1.3134, -0.5267, 1.2577, 1.3134, -0.5267, 1.2577, 1.3134, 0.1053, 0.6772, 1.3134, 0.1053, 1.2576, 1.3134, -1.1585, -1.0642, 1.3134, -0.5267, 1.2577, 1.3134, -0.5267, 1.8381, 1.3134, -1.1585, -1.0642, 1.3134, -0.5267, 1.8381, 1.3134, -1.1585, 1.8382, 1.3134)
 backface_collision = true
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_x4n1m"]
+properties/0/path = NodePath(".:constant_torque")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:angular_velocity")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="BasicShip" type="RigidBody3D" groups=["ships"]]
 collision_layer = 255
 collision_mask = 0
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_afssd")
 script = ExtResource("1_vgqm0")
+float_force = 300.0
 
 [node name="ProbeContainer" type="Node3D" parent="."]
 
@@ -109,10 +118,10 @@ script = ExtResource("1_vgqm0")
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -15, -4, 0)
 
 [node name="Marker3D2" type="Marker3D" parent="ProbeContainer"]
-transform = Transform3D(0.866025, 0.5, 0, -0.433013, 0.75, 0.5, 0.25, -0.433013, 0.866025, -15, -4, 6)
+transform = Transform3D(0.866025, 0.5, 2.36279e-07, -0.433013, 0.75, 0.5, 0.25, -0.433013, 0.866025, -13, -4, 6)
 
 [node name="Marker3D3" type="Marker3D" parent="ProbeContainer"]
-transform = Transform3D(0.866025, 0.5, 0, -0.433013, 0.75, -0.5, -0.25, 0.433013, 0.866025, -15, -4, -6)
+transform = Transform3D(0.866025, 0.5, -2.36279e-07, -0.433013, 0.75, -0.5, -0.25, 0.433013, 0.866025, -13, -4, -6)
 
 [node name="Marker3D4" type="Marker3D" parent="ProbeContainer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
@@ -127,10 +136,37 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, -4, -6)
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 15, -4, 0)
 
 [node name="Marker3D8" type="Marker3D" parent="ProbeContainer"]
-transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, 0.5, -0.25, -0.433013, 0.866025, 15, -4, 6)
+transform = Transform3D(0.866025, -0.5, -2.36279e-07, 0.433013, 0.75, 0.5, -0.25, -0.433013, 0.866025, 13, -4, 6)
 
 [node name="Marker3D9" type="Marker3D" parent="ProbeContainer"]
-transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, -0.5, 0.25, 0.433013, 0.866025, 15, -4, -6)
+transform = Transform3D(0.866025, -0.5, 2.36279e-07, 0.433013, 0.75, -0.5, 0.25, 0.433013, 0.866025, 13, -4, -6)
+
+[node name="Marker3D10" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 0, 2.72831e-07, 0, 1, 0, -2.72831e-07, 0, 1, 0, -6.5, 0)
+
+[node name="Marker3D11" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866026, 0, 0, 0, 1, 12, -6.5, 0)
+
+[node name="Marker3D12" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866026, 0, 0, 0, 1, -12, -6.5, 0)
+
+[node name="Marker3D13" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 1.36416e-07, 2.36279e-07, 0, 0.866026, -0.5, -2.72831e-07, 0.5, 0.866025, 0, -6.5, -4.5)
+
+[node name="Marker3D14" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, -0.5, 0.25, 0.433013, 0.866025, 10, -6.5, -4.5)
+
+[node name="Marker3D15" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, -0.5, 2.36279e-07, 0.433013, 0.75, -0.5, 0.25, 0.433013, 0.866025, -10, -6.5, -4.5)
+
+[node name="Marker3D16" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(1, 1.38621e-08, 2.81304e-07, -1.52657e-07, 0.866025, 0.5, -2.36685e-07, -0.5, 0.866025, 0, -6.5, 4.5)
+
+[node name="Marker3D17" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.945827, -0.289323, -0.147321, 0.323602, 0.803294, 0.5, -0.0263195, -0.520587, 0.853403, 10, -6.5, 4.5)
+
+[node name="Marker3D18" type="Marker3D" parent="ProbeContainer"]
+transform = Transform3D(0.866025, -0.5, 2.81304e-07, 0.433013, 0.75, 0.5, -0.25, -0.433013, 0.866025, -10, -6.5, 4.5)
 
 [node name="navio_pequeno" parent="." instance=ExtResource("1_ir2dr")]
 
@@ -190,7 +226,13 @@ shape = SubResource("ConcavePolygonShape3D_hyrmk")
 [node name="Cannons" type="Node3D" parent="."]
 
 [node name="Cannon" parent="Cannons" instance=ExtResource("3_fset3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.08752, 0, -6.02087)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08752, 0, -6.02087)
+
+[node name="Cannon2" parent="Cannons" instance=ExtResource("3_fset3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24771, 0, -6.02087)
 
 [node name="Timao" parent="." instance=ExtResource("4_x4n1m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89631, 5.98983, 0)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_x4n1m")

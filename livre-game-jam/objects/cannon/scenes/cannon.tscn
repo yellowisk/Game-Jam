@@ -43,7 +43,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5rddo")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n0bpy"]
-height = 2.44882
+height = 2.23061
 radius = 0.257474
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_48viq"]
@@ -117,25 +117,29 @@ script = ExtResource("1_jf0a4")
 [node name="Body" type="Node3D" parent="."]
 
 [node name="Cannon" type="StaticBody3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+collision_layer = 129
+collision_mask = 129
 
 [node name="Cannon" type="MeshInstance3D" parent="Body/Cannon"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16021, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_i2q2y")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Cannon"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.30395, 1.16021, -0.000798643)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.181225)
 shape = SubResource("CylinderShape3D_n0bpy")
 
 [node name="ShootPos" type="Marker3D" parent="Body/Cannon"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79426, 1.15038, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.52555)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_48viq")
 
 [node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_8hke5")
 skeleton = NodePath("")
 

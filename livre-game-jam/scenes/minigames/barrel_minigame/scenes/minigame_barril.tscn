@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://gux2d446iehj"]
+[gd_scene load_steps=8 format=3 uid="uid://gux2d446iehj"]
 
 [ext_resource type="Script" uid="uid://dv3ty2w8gpawr" path="res://scenes/minigames/barrel_minigame/scripts/minigame_barril.gd" id="1_k1v7n"]
 [ext_resource type="PackedScene" uid="uid://cngsfaq7lk1se" path="res://objects/barrel/scenes/barrel.tscn" id="2_h4u77"]
 [ext_resource type="PackedScene" uid="uid://crb0l1g5s41xw" path="res://objects/foods/scenes/apple.tscn" id="2_rwn38"]
 [ext_resource type="PackedScene" uid="uid://d0n8cbcl6go10" path="res://objects/foods/scenes/banana.tscn" id="3_ydhub"]
 [ext_resource type="PackedScene" uid="uid://qdtnnq4jnqdr" path="res://objects/foods/scenes/bread.tscn" id="4_r7oqq"]
-[ext_resource type="PackedScene" uid="uid://dp0oi718r47kl" path="res://objects/ocean/scenes/ocean.tscn" id="6_mh5l3"]
-[ext_resource type="PackedScene" uid="uid://bjvndulu51q5f" path="res://objects/sky/scenes/Sky.tscn" id="7_dxqi8"]
 [ext_resource type="Script" uid="uid://b44t8amqxkyrh" path="res://scenes/minigames/barrel_minigame/scripts/pin.gd" id="8_js0sq"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1y5v6"]
@@ -18,7 +16,7 @@ banana_scene = ExtResource("3_ydhub")
 bread_scene = ExtResource("4_r7oqq")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.854776, 0.518997, 0, -0.518997, 0.854776, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.854776, 0.518997, 0, -0.518997, 0.854776, 0, 0, 3.21553)
 spring_length = 30.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
@@ -33,10 +31,6 @@ autostart = true
 [node name="FruitParents" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.9672, 0)
 
-[node name="Ocean" parent="." instance=ExtResource("6_mh5l3")]
-
-[node name="Sky" parent="." instance=ExtResource("7_dxqi8")]
-
 [node name="Pin" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.1745, 0)
 motion_mode = 1
@@ -45,21 +39,9 @@ script = ExtResource("8_js0sq")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pin"]
 mesh = SubResource("SphereMesh_1y5v6")
 
-[node name="PinJoint" type="JoltGeneric6DOFJoint3D" parent="Pin"]
-linear_spring_x/enabled = true
-linear_spring_x/frequency = 20.0
-linear_spring_x/damping = 20.0
-linear_spring_x/equilibrium_point = 20.0
-linear_spring_y/enabled = true
-linear_spring_y/frequency = 20.0
-linear_spring_y/damping = 20.0
-linear_spring_y/equilibrium_point = 20.0
-linear_spring_z/enabled = true
-linear_spring_z/frequency = 20.0
-linear_spring_z/damping = 20.0
-linear_spring_z/equilibrium_point = 20.0
-node_a = NodePath("..")
-node_b = NodePath("../../barrel")
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0937653, 0)
+[node name="PinJoint3D" type="PinJoint3D" parent="Pin"]
+node_a = NodePath("../../barrel")
+node_b = NodePath("..")
+params/damping = 0.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

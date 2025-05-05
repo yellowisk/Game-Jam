@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 		queue_free()
 	
 func start_minigame() -> int:
-	add_child(target_parents)
 	return await spawn_target(target_parents);
 
 func spawn_target(target_parents) -> int:

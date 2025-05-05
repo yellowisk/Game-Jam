@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlmfbjj8ks04l"]
+[gd_scene load_steps=9 format=3 uid="uid://dlmfbjj8ks04l"]
 
 [ext_resource type="PackedScene" uid="uid://cgydmujhlr7at" path="res://objects/player/scenes/test_field.tscn" id="1_dlo05"]
 [ext_resource type="Script" uid="uid://8jtccul05jqv" path="res://objects/player/scripts/player_test__scene.gd" id="1_eu4gx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://f6vwck6555tp" path="res://objects/ships/scenes/basic_ship.tscn" id="2_yk6af"]
 [ext_resource type="Script" uid="uid://dbrqk4l4mwium" path="res://objects/player/scripts/scripts_aux/player_metrics.gd" id="4_1dv1g"]
 [ext_resource type="PackedScene" uid="uid://veibi4gf8bgg" path="res://objects/camera/scenes/follow_camera.tscn" id="5_u1qx6"]
+[ext_resource type="PackedScene" uid="uid://byagk7i2ofpk5" path="res://objects/rope/scenes/rope.tscn" id="7_gu6gj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b5oln"]
 
@@ -49,3 +50,6 @@ text = "Speed: 0"
 [node name="IsOnFloor" type="Label" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 text = "Is On Floor: true"
+
+[node name="Rope" parent="." instance=ExtResource("7_gu6gj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1545, 8.91888, 0)

@@ -9,8 +9,8 @@ size = Vector3(2, 0.2, 1)
 size = Vector3(2, 0.2, 1)
 
 [node name="Prancha" type="RigidBody3D"]
-mass = 10.0
 script = ExtResource("1_avi2f")
+float_force = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_54y87")

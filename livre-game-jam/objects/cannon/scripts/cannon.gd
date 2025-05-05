@@ -32,10 +32,10 @@ func _process(_delta: float):
 		rot.y = clamp(rotation_degrees.y + sens_horizontal, -MAX_ROTATION_Y + start_y, MAX_ROTATION_Y + start_y)
 
 	if Input.is_action_pressed("move_up"):
-		rot.z = clamp(cannon.rotation_degrees.z + sens_vertical, MIN_ROTATION_Z, MAX_ROTATION_Z)
+		rot.x = clamp(cannon.rotation_degrees.x + sens_vertical, MIN_ROTATION_Z, MAX_ROTATION_Z)
 
 	if Input.is_action_pressed("move_down"):
-		rot.z = clamp(cannon.rotation_degrees.z - sens_vertical, MIN_ROTATION_Z, MAX_ROTATION_Z)
+		rot.x = clamp(cannon.rotation_degrees.x - sens_vertical, MIN_ROTATION_Z, MAX_ROTATION_Z)
 
 	move_cannon.rpc_id(1, rot)
 	if Input.is_action_just_pressed("shoot") and can_shoot:
@@ -48,13 +48,17 @@ func _shoot_cannon_ball():
 	var cannonball_node = CANNONBALL_SCENE.instantiate()
 	get_tree().get_root().add_child(cannonball_node)
 	cannonball_node.global_position = %ShootPos.global_position
-	cannonball_node.linear_velocity = global_basis.x.rotated(global_basis.z, deg_to_rad(cannon.rotation_degrees.z)) * shoot_power
+	#print(global_basis)
+	#cannonball_node.linear_velocity = Vector3.FORWARD * shoot_power
+	#cannonball_node.global_basis = global_basis
+	#cannonball_node.apply_central_impulse(basis.z.rotated(Vector3.RIGHT, cannon.rotation.x) * shoot_power)
+	cannonball_node.linear_velocity = -global_basis.z.rotated(Vector3.RIGHT, cannon.global_rotation.x) * shoot_power
+	#cannonball_node.linear_velocity = %ShootPos.basis.z * shoot_power
 
-
-@rpc("any_peer", "call_remote")
+@rpc("any_peer", "call_local")
 func move_cannon(rot):
 	rotation_degrees.y = rot.y
-	cannon.rotation_degrees.z = rot.z
+	cannon.rotation_degrees.x = rot.x
 	
 func _on_timer_timeout() -> void:
 	can_shoot = true

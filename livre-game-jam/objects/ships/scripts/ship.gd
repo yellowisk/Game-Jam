@@ -47,7 +47,7 @@ func _physics_process(delta):
 func _integrate_forces(state: PhysicsDirectBodyState3D):
 	if submerged:
 		state.linear_velocity *=  1 - water_drag
-		state.angular_velocity *= 1 - water_angular_drag 
+		state.angular_velocity *= (1 - water_angular_drag )
 		
 func reset_ship_after_delay() -> void:
 	resetting = true

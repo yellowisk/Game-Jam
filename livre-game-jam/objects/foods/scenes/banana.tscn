@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=4 uid="uid://d0n8cbcl6go10"]
+[gd_scene load_steps=7 format=4 uid="uid://d0n8cbcl6go10"]
+
+[ext_resource type="Script" uid="uid://b27qi7x7d8ari" path="res://objects/foods/scripts/floatable.gd" id="1_8mnds"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1vnyw"]
 height = 0.928771
@@ -74,6 +76,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jul3j")
 
 [node name="Banana" type="RigidBody3D" groups=["fruta"]]
+collision_layer = 129
+collision_mask = 129
+mass = 0.2
+script = ExtResource("1_8mnds")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.538785, -0.842443, 0, 0.842443, 0.538785, 0, 0, 0, 1, 0.223192, -0.153282, 0)

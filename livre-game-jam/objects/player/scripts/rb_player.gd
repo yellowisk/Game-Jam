@@ -63,6 +63,7 @@ func _physics_process(delta):
 		peer_position = global_position
 		#Exit Controller
 		if Input.is_action_just_pressed("shift"):
+			print("shift" + name)
 			if controlling:
 				leave_control(controlling)
 			else:
@@ -71,10 +72,9 @@ func _physics_process(delta):
 						obj.set_player_controlling.rpc(name.to_int())
 						controlling = obj
 						get_tree().get_first_node_in_group("camera").target = obj
+						get_tree().get_first_node_in_group("camera").rotation = obj.rotation
 						get_tree().get_first_node_in_group("camera").distance_view = 1.0
 						break
-
-
 	else:
 		global_position = lerp(global_position, peer_position, 0.5)
 		if peer_position.distance_squared_to(global_position) > 10:
@@ -82,14 +82,14 @@ func _physics_process(delta):
 
 	if is_on_floor:
 		colision_normal = feet.get_collision_normal(0)
-		apply_central_impulse(velocity)
-		physics_material_override.friction = 1.0
-		
-		
-	var dir_rotated = (dir.rotated(Vector3(1, 0, 0), asin(colision_normal.z))
+		var dir_rotated = (dir.rotated(Vector3(1, 0, 0), asin(colision_normal.z))
 						  .rotated(Vector3(0, 0, 1), -asin(colision_normal.x)))
+		velocity = dir_rotated * speed
+	else:
+		velocity = dir * speed
 
-	velocity = dir_rotated * speed
+	apply_central_impulse(velocity)
+	physics_material_override.friction = 1.0
 	
 	if dir.length() > 0.2:
 		_last_movement_dir = dir
@@ -122,6 +122,7 @@ func leave_control(obj):
 	controlling = null
 	get_tree().get_first_node_in_group("camera").target = self
 	get_tree().get_first_node_in_group("camera").distance_view = 5.0
+	get_tree().get_first_node_in_group("camera").rotation = self.rotation
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
